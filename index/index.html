@@ -8,16 +8,19 @@
         :root {
             --light-background: #fefdf9;
             --light-text: #000000;
-            --dark-background: #3b3b3b;
+            --dark-background: #3b3b3bd3;
             --dark-text: #ffffff;
             --light-card-background: #f0f0f0; 
-            --dark-card-background: #4a4a4a;
+            --dark-card-background: #3f3f3f66;
             --light-nav-background: #f0f0f0;
             --dark-nav-background: #4a4a4a;
         }
 
         body {
+            /*background-image: url('pexels-photo-1072179.jpeg');*/
             background-color: var(--light-background);
+            /*background-repeat: no-repeat;
+            background-size: cover;*/
             color: var(--light-text);
             display: flex;
             flex-direction: column;
@@ -25,6 +28,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            overflow-x: hidden;
+            --text-color: var(--light-text);
             --card-background: var(--light-card-background);
             --border-color: var(--dark-card-background);
             --nav-background: var(--light-nav-background);
@@ -50,15 +55,49 @@
             padding: 10px;
         }
 
+        .container-fluid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
         .navbar {
             margin-top: 0;
             width: 100%;
             display: flex;
             align-items: center;
-            flex-direction: row;
             padding: 20px;
             background-color: var(--nav-background);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .pseudo {
+            margin-right: 10px;
+            font-size: 18px;
+            font-family: Arial;
+            font-weight: bold;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            justify-content: flex-end;
+            margin-left: auto;
         }
 
         
@@ -67,13 +106,10 @@
             height: 50px; /* Assurez-vous que la hauteur est la même que la largeur pour un cercle parfait */
             border-radius: 50%; /* Pour rendre l'image ronde */
             border: 3px solid var(--border-color); /* Ajoute une bordure */
-            margin-left: auto; /* Pour aligner l'avatar à droite */
+            
         }
 
-        .nav {
-            display: flex;
-            align-items: center;
-        }
+
 
         #courses {
             display: flex;
@@ -110,6 +146,7 @@
             border-radius: 5px;
             flex: 0 0 30%;
             margin: 1%;
+            margin-left: 2%;
             border-radius: 30px;
             border: 2px solid black;
             font-family: Arial, sans-serif;
@@ -165,6 +202,144 @@
             text-decoration: none;
             display: inline-block;
         }
+        
+        /* <reset-style> ============================ */
+            button {
+            border: none;
+            background: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        /* <style for change-theme__icon> ======== */
+        .change-theme__icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-sun,
+        .icon-moon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            margin-left: auto;
+        }
+
+        /* .icon-sun */
+        .icon-sun {
+            animation: ease reverse-change-theme-sun .6s forwards;
+        }
+
+        .change-theme__icon.active .icon-sun {
+            animation: ease change-theme-sun .4s forwards;
+        }
+
+        @keyframes reverse-change-theme-sun {
+            0% {transform: rotate(-45deg) scale(.8);
+                opacity: 0;}
+
+            50% {transform: rotate(8deg);}
+
+            100% {transform: rotate(0deg) scale(1);
+                opacity: 1;}}
+
+        @keyframes change-theme-sun {
+            0% {transform: rotate(0deg) scale(1);
+                opacity: 1;}
+
+            100% {transform: rotate(-45deg) scale(.8);
+                opacity: 0;}}
+
+        /* .icon-moon */
+        .icon-moon {
+        animation: ease reverse-change-theme-moon .4s forwards;
+        }
+
+        .change-theme__icon.active .icon-moon {
+        animation: change-theme-moon .6s forwards;
+        }
+
+        @keyframes change-theme-moon {
+        0% {transform: rotate(-45deg) scale(.8);
+            opacity: 0;}
+        50% {transform: rotate(8deg);}
+        100% {transform: rotate(0deg) scale(1);
+            opacity: 1;}}
+
+        @keyframes reverse-change-theme-moon {
+        0% {transform: rotate(0deg) scale(1);
+            opacity: 1;}
+
+        100% {transform: rotate(-45deg) scale(.8);
+            opacity: 0;}}
+
+        .search {
+            display: inline-block;
+            width: auto;
+            position: relative;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .search input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search button[type="submit"] {
+            background-color: #4e99e9;
+            border: none;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            right: 0;
+            transition: .9s ease;
+        }
+
+        .search button[type="submit"]:hover {
+            transform: scale(1.1);
+            color: rgb(255, 255, 255);
+            background-color: blue;
+        }
+
+        footer {
+            margin-top: 30px;
+            width: 100%;
+            background-color: #1e1f21;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .footer-content .socials a,
+        .footer-content .legal a {
+            margin-right: 15px;
+            color: #ebebeb;
+            text-decoration: none;
+        }
+
+        .footer-content .copyright {
+            margin-top: 10px;
+            color: #b5bbc1;
+        }
+
     </style>
 </head>
 <header id="sticky-header">
@@ -188,7 +363,11 @@
                         </svg>
                     </div>
                 </button>
-                <a>pseudo</a>
+                <div class="search">
+                    <input placeholder="Search..." type="text">
+                    <button type="submit">Go</button>
+                </div>
+                <a class="pseudo">pseudo</a>
                 <img src="pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
@@ -206,11 +385,13 @@
 
             // Add course cards
             var courses = [
-                { title: 'Course 1', description: 'Description 1' },
-                { title: 'Course 2', description: 'Description 2' },
-                { title: 'Course 3', description: 'Description 3' },
-                { title: 'Course 4', description: 'Description 4' },
-                { title: 'Course 5', description: 'Description 5' },
+                { title: 'Course 1', description: 'Description 1', link: '#'},
+                { title: 'Course 2', description: 'Description 2', link: '#'},
+                { title: 'Course 3', description: 'Description 3', link: '#'},
+                { title: 'Course 4', description: 'Description 4', link: '#'},
+                { title: 'Course 5', description: 'Description 5', link: '#'},
+                { title: 'Course 6', description: 'Description 6', link: '#'},
+                { title: 'Course 7', description: 'Description 7', link: '#'},
                 // Add more courses as needed
             ];
 
@@ -228,6 +409,11 @@
 
             var cardBody = document.createElement('div');
             cardBody.className = 'card-body';
+
+            var cardLink = document.createElement('a');
+            cardLink.href = course.link; // Assurez-vous que chaque objet de cours a une propriété 'link'
+            cardLink.className = 'btn btn-primary';
+            cardLink.textContent = 'Go somewhere'; // Remplacez par le texte du lien
 
             var cardTitle = document.createElement('h5');
             cardTitle.className = 'card-title';
@@ -251,6 +437,46 @@
 
             coursesElement.appendChild(card);
         });
+
+        document.querySelector('.change-theme__icon').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        document.querySelector('.search input[type="text"]').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                document.querySelector('.search button[type="submit"]').click();
+            }
+        });
+
+        document.querySelector('.search button[type="submit"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            var searchText = document.querySelector('.search input[type="text"]').value.toLowerCase();
+            var courses = document.querySelectorAll('.card');
+            for (var i = 0; i < courses.length; i++) {
+                var course = courses[i];
+                var title = course.querySelector('.card-title').textContent.toLowerCase();
+                var description = course.querySelector('.card-text').textContent.toLowerCase();
+                if (title.includes(searchText) || description.includes(searchText)) {
+                    course.scrollIntoView({ behavior: 'smooth' });
+                    break;
+                }
+            }
+        });
     </script>
 </body>
 </html>
+<footer>
+    <div class="footer-content">
+        <div class="socials">
+            <a href="https://www.facebook.com/yourpage">Facebook</a>
+            <a href="https://www.twitter.com/yourpage">Twitter</a>
+            <a href="https://www.instagram.com/yourpage">Instagram</a>
+        </div>
+        <div class="legal">
+            <a href="mentions_legales.html">Mentions légales</a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Studypwn. All rights reserved.
+        </div>
+    </div>
+</footer>
