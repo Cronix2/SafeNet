@@ -1,119 +1,334 @@
+:root {
+    --light-background: #fefdf9;
+    --light-text: #000000;
+    --dark-background: #3b3b3bd3;
+    --dark-text: #ffffff;
+    --light-card-background: #f0f0f0; 
+    --dark-card-background: #3f3f3f66;
+    --light-nav-background: #f0f0f0;
+    --dark-nav-background: #4a4a4a;
+}
 
-        /* <reset-style> ============================ */
-        button {
-            border: none;
-            background: none;
-            padding: 0;
-            margin: 0;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        /* ============================ */
-        /* <style for bg> ======== */
-        .background {
-            border-radius: 16px;
-            border: 1px solid #1a1a1a;
-            background: rgba(74, 74, 74, 0.39);
-            mix-blend-mode: luminosity;
-            box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.20);
-            backdrop-filter: blur(15px);
-            width: 65px;
-            height: 65px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+body {
+    /*background-image: url('pexels-photo-1072179.jpeg');*/
+    background-color: var(--light-background);
+    /*background-repeat: no-repeat;
+    background-size: cover;*/
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    --text-color: var(--light-text);
+    --card-background: var(--light-card-background);
+    --border-color: var(--dark-card-background);
+    --nav-background: var(--light-nav-background);
 
-        /* <style for change-theme__icon> ======== */
-        .change-theme__icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
+}
 
-        .icon-sun,
-        .icon-moon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            margin-left: auto;
-        }
+body.dark {
+    background-color: var(--dark-background);
+    color: var(--dark-text); 
+    --text-color: var(--dark-text);
+    --card-background: var(--dark-card-background);
+    --border-color: var(--light-card-background);
+    --nav-background: var(--dark-nav-background);
+}
 
-        /* .icon-sun */
-        .icon-sun {
-            animation: ease reverse-change-theme-sun .6s forwards;
-        }
 
-        .change-theme__icon:hover .icon-sun {
-            animation: ease change-theme-sun .4s forwards;
-        }
+#sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+}
 
-        @keyframes reverse-change-theme-sun {
-            0% {
-                transform: rotate(-45deg) scale(.8);
-                opacity: 0;
-            }
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-            50% {
-                transform: rotate(8deg);
-            }
+.navbar {
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--nav-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-            100% {
-                transform: rotate(0deg) scale(1);
-                opacity: 1;
-            }
-        }
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 
-        @keyframes change-theme-sun {
-            0% {
-                transform: rotate(0deg) scale(1);
-                opacity: 1;
-            }
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
+}
 
-            100% {
-                transform: rotate(-45deg) scale(.8);
-                opacity: 0;
-            }
-            }
+.pseudo {
+    margin-right: 10px;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
 
-        /* .icon-moon */
-        .icon-moon {
-        animation: ease reverse-change-theme-moon .4s forwards;
-        }
 
-        .change-theme__icon:hover .icon-moon {
-        animation: change-theme-moon .6s forwards;
-        }
+.avatar {
+    width: 50px; /* Ajustez cette valeur pour changer la taille */
+    height: 50px; /* Assurez-vous que la hauteur est la même que la largeur pour un cercle parfait */
+    border-radius: 50%; /* Pour rendre l'image ronde */
+    border: 3px solid var(--border-color); /* Ajoute une bordure */
+    
+}
 
-        @keyframes change-theme-moon {
-        0% {
-            transform: rotate(-45deg) scale(.8);
-            opacity: 0;
-        }
 
-        50% {
-            transform: rotate(8deg);
-        }
 
-        100% {
-            transform: rotate(0deg) scale(1);
-            opacity: 1;
-        }
-        }
+#courses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 
-        @keyframes reverse-change-theme-moon {
-        0% {
-            transform: rotate(0deg) scale(1);
-            opacity: 1;
-        }
+/* For screens smaller than 600px, cards take full width */
+@media (max-width: 600px) {
+    .card {
+        flex: 0 0 100%;
+    }
+}
 
-        100% {
-            transform: rotate(-45deg) scale(.8);
-            opacity: 0;
-        }
-        }
+/* For screens between 600px and 900px, cards take half the width */
+@media (min-width: 600px) and (max-width: 900px) {
+    .card {
+        flex: 0 0 50%;
+    }
+}
+
+/* For screens larger than 900px, cards take one third of the width */
+@media (min-width: 900px) {
+    .card {
+        flex: 0 0 33%;
+    }
+}
+
+.card {
+    background-color: var(--card-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    flex: 0 0 30%;
+    margin: 1%;
+    margin-left: 2%;
+    border-radius: 30px;
+    border: 2px solid black;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+body.dark .card {
+    border-color: white;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.container {
+    padding: 2px 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    display: block;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    text-align: center;
+    border-radius: 0;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* <reset-style> ============================ */
+    button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+/* <style for change-theme__icon> ======== */
+.change-theme__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-sun,
+.icon-moon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: auto;
+}
+
+/* .icon-sun */
+.icon-sun {
+    animation: ease reverse-change-theme-sun .6s forwards;
+}
+
+.change-theme__icon.active .icon-sun {
+    animation: ease change-theme-sun .4s forwards;
+}
+
+@keyframes reverse-change-theme-sun {
+    0% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}
+
+    50% {transform: rotate(8deg);}
+
+    100% {transform: rotate(0deg) scale(1);
+        opacity: 1;}}
+
+@keyframes change-theme-sun {
+    0% {transform: rotate(0deg) scale(1);
+        opacity: 1;}
+
+    100% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}}
+
+/* .icon-moon */
+.icon-moon {
+animation: ease reverse-change-theme-moon .4s forwards;
+}
+
+.change-theme__icon.active .icon-moon {
+animation: change-theme-moon .6s forwards;
+}
+
+@keyframes change-theme-moon {
+0% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}
+50% {transform: rotate(8deg);}
+100% {transform: rotate(0deg) scale(1);
+    opacity: 1;}}
+
+@keyframes reverse-change-theme-moon {
+0% {transform: rotate(0deg) scale(1);
+    opacity: 1;}
+
+100% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}}
+
+.search {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search button[type="submit"] {
+    background-color: #4e99e9;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: .9s ease;
+}
+
+.search button[type="submit"]:hover {
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+    background-color: blue;
+}
+
+footer {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #1e1f21;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.footer-content .socials a,
+.footer-content .legal a {
+    margin-right: 15px;
+    color: #ebebeb;
+    text-decoration: none;
+}
+
+.footer-content .copyright {
+    margin-top: 10px;
+    color: #b5bbc1;
+}
