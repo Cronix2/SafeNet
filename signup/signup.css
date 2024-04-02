@@ -1,0 +1,411 @@
+:root {
+    --light-background: #fefdf9;
+    --light-text: #000000;
+    --dark-background: #3b3b3bd3;
+    --dark-text: #ffffff;
+    --light-card-background: #f0f0f0; 
+    --dark-card-background: #3f3f3f66;
+    --light-nav-background: #f0f0f0;
+    --dark-nav-background: #4a4a4a;
+    --light-login-color: #1a1a1a5e; /* Couleur de bordure pour le thème clair */
+    --dark-login-color: #ffffff66; /* Couleur de bordure pour le thème sombre */
+}
+
+body {
+    background-color: var(--light-background);
+    color: var(--light-text);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    --text-color: var(--light-text);
+    --card-background: var(--light-card-background);
+    --border-color: var(--dark-card-background);
+    --nav-background: var(--light-nav-background);
+    --login-color: var(--light-login-color);
+}
+
+body.dark {
+    background-color: var(--dark-background);
+    color: var(--dark-text); 
+    --text-color: var(--dark-text);
+    --card-background: var(--dark-card-background);
+    --border-color: var(--light-card-background);
+    --nav-background: var(--dark-nav-background);
+    --login-color: var(--dark-login-color);
+}
+
+#toggle-theme {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+}
+    
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+/* <style for change-theme__icon> ======== */
+.change-theme__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-sun,
+.icon-moon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: auto;
+}
+
+/* .icon-sun */
+.icon-sun {
+    animation: ease reverse-change-theme-sun .6s forwards;
+}
+
+.change-theme__icon.active .icon-sun {
+    animation: ease change-theme-sun .4s forwards;
+}
+
+@keyframes reverse-change-theme-sun {
+    0% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}
+
+    50% {transform: rotate(8deg);}
+
+    100% {transform: rotate(0deg) scale(1);
+        opacity: 1;}}
+
+@keyframes change-theme-sun {
+    0% {transform: rotate(0deg) scale(1);
+        opacity: 1;}
+
+    100% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}}
+
+/* .icon-moon */
+.icon-moon {
+animation: ease reverse-change-theme-moon .4s forwards;
+}
+
+.change-theme__icon.active .icon-moon {
+animation: change-theme-moon .6s forwards;
+}
+
+@keyframes change-theme-moon {
+0% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}
+50% {transform: rotate(8deg);}
+100% {transform: rotate(0deg) scale(1);
+    opacity: 1;}}
+
+@keyframes reverse-change-theme-moon {
+0% {transform: rotate(0deg) scale(1);
+    opacity: 1;}
+
+100% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}}
+
+
+
+form {
+    width: 50%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+
+input {
+    border: 1px solid #a2a2a2; /* Changez la couleur de la bordure selon vos préférences */
+    border-radius: 5px; /* Ajustez le rayon de la bordure arrondie selon vos préférences */
+}
+
+.error {
+    color: red;
+    font-size: 10px;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: #1e1f21;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-content .legal a {
+    margin-right: 15px;
+    color: #ebebeb;
+    text-decoration: none;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-content .copyright {
+    margin-top: 10px;
+    color: #b5bbc1;
+}
+
+
+.form {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 30px;
+    width: 450px;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form button {
+    align-self: flex-end;
+}
+
+.flex-column > label {
+    color: #151717;
+    font-weight: 600;
+}
+
+.inputForm {
+    border: 1.5px solid #ecedec;
+    border-radius: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+.inputForm.error {
+    border: 1.5px solid red;
+    box-shadow: 0 0 5px red;
+}
+
+.input {
+    margin-left: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 85%;
+    height: 95%;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.inputForm:focus-within {
+    border: 1.5px solid #2d79f3;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.flex-row > div > label {
+    font-size: 14px;
+    color: black;
+    font-weight: 400;
+}
+
+.span {
+    font-size: 14px;
+    margin-left: 5px;
+    color: #2d79f3;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button-submit {
+    margin: 20px 0 10px 0;
+    background-color: #32d929;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.button-submit:hover {
+    background-color: #252727;
+}
+
+.p {
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    gap: 10px;
+    border: 1px solid #ededef;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+    border: 1px solid #2d79f3;
+}
+
+/*------ Settings ------*/
+.container {
+--color: #85858f;
+--size: 18px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+cursor: pointer;
+font-size: var(--size);
+user-select: none;
+fill: var(--color);
+}
+
+.container .eye {
+position: absolute;
+animation: keyframes-fill .5s;
+}
+
+.container .eye-slash {
+position: absolute;
+animation: keyframes-fill .5s;
+display: none;
+}
+
+/* ------ On check event ------ */
+.container input:checked ~ .eye {
+display: none;
+}
+
+.container input:checked ~ .eye-slash {
+display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.container input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+0% {
+    transform: scale(0);
+    opacity: 0;
+}
+
+50% {
+    transform: scale(1.2);
+}
+}
+
+.animated-button {
+position: absolute;
+top : 2%;
+right: 1%;
+display: inline-block;
+padding: 12px 24px;
+border: none;
+font-size: 16px;
+background-color: inherit;
+border-radius: 100px;
+font-weight: 600;
+color: var(--login-color);
+box-shadow: 0 0 0 2px var(--login-color);
+/*  
+color: #ffffff40;
+box-shadow: 0 0 0 2px #ffffff20;
+*/
+cursor: pointer;
+overflow: hidden;
+transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:last-child {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 20px;
+height: 20px;
+background-color: #2196F3;
+border-radius: 50%;
+opacity: 0;
+transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.animated-button span:first-child {
+position: relative;
+z-index: 1;
+}
+
+.animated-button:hover {
+box-shadow: 0 0 0 5px #2195f360;
+color: #ffffff;
+}
+
+.animated-button:active {
+scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+width: 150px;
+height: 150px;
+opacity: 1;
+}
+
+.valid {
+    color: green;
+}
