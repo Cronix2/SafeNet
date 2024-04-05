@@ -334,20 +334,8 @@
             justify-content: center;
         }
 
-        .otp-field input {
-            height: 45px;
-            width: 42px;
-            border-radius: 6px;
-            outline: none;
-            font-size: 1.125rem;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-        .otp-field input:focus {
-            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-        }
-        .otp-field input::-webkit-inner-spin-button,
-        .otp-field input::-webkit-outer-spin-button {
+        .form input::-webkit-inner-spin-button,
+        .form input::-webkit-outer-spin-button {
             display: none;
         }
 
@@ -370,7 +358,8 @@
             text-decoration: none;
         }
         .rectangle {
-            margin-top: 20%;
+            color: black;
+            margin-top: 12%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -392,7 +381,7 @@
             border-bottom-right-radius: 20px;
             border-bottom-left-radius: 20px;
             height: 50px;
-            width: 50%;
+            width: 68%;
             cursor: pointer;
         }
 
@@ -404,6 +393,30 @@
             background-color: #000000;
         }
 
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form {
+            margin-top: 10px
+        }
+
+        .form input {
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid #d2d2d2;
+            margin: 0 10px;
+        }
+
+        .form input:focus {
+            border-bottom: 2px solid royalblue;
+            outline: none;
+        }
 
     </style>
 </head>
@@ -430,11 +443,11 @@
     <div name="rectangle" class="rectangle">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px;">
-                <div class="card bg-white mb-5 mt-5 border-0" style="box-shadow: 0 12px 15px rgba(0, 0, 0, 0.02);">
+                <div class="card bg-white mb-5 mt-5 border-0">
                     <div class="card-body">
                         <h4>Verify</h4>
                         <p>Your code was sent to you via email</p>
-                        <div class="otp-field mb-4">
+                        <div class="form">
                             <input type="number" />
                             <input type="number" disabled />
                             <input type="number" disabled />
@@ -446,7 +459,7 @@
                             Verify
                         </button>
                         <p class="resend text-muted mb-0">
-                            Didn't receive code? <a href="">Request again</a>
+                            Didn't receive code ? <a href="">Request again</a>
                         </p>
                     </div>
                 </div>
