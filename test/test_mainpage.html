@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Courses</title>
     <style>
+        /*
         :root {
             --light-background: #fefdf9;
             --light-text: #000000;
@@ -13,7 +14,19 @@
             --light-card-background: #f0f0f0; 
             --dark-card-background: #3f3f3f66;
             --light-nav-background: #f0f0f0;
-            --dark-nav-background: #4a4a4a;
+            --dark-nav-background: #1D2033;
+        }
+        */
+
+        :root {
+            --light-background: #fefdf9;
+            --light-text: #000000;
+            --dark-background: #191c3a;
+            --dark-text: #ffffff;
+            --light-card-background: #f0f0f0; 
+            --dark-card-background: #151623;
+            --light-nav-background: #f0f0f0;
+            --dark-nav-background: #1D2033;
         }
 
         body {
@@ -52,7 +65,6 @@
             z-index: 1000;
             width: 100%;
             display: flex;
-            padding: 10px;
         }
 
         .container-fluid {
@@ -64,6 +76,7 @@
 
         .navbar {
             margin-top: 0;
+            top: 0;
             width: 100%;
             display: flex;
             align-items: center;
@@ -191,8 +204,8 @@
 
         .btn-primary {
             display: block;
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: #32d929;
+            border-color: #32d929;
             color: #fff;
             text-align: center;
             border-radius: 0;
@@ -201,6 +214,14 @@
             border-bottom-right-radius: 10px;
             text-decoration: none;
             display: inline-block;
+        }
+        .btn-primary:hover {
+            background-color: #2ccf24;
+            color: white;
+        }
+        .btn-primary:active {
+            background-color: #000000;
+            color: white;
         }
         
         /* <reset-style> ============================ */
@@ -441,9 +462,8 @@
         <div class="container-fluid">            
             <div class="nav">
                 <a class="navbar-brand">
-                    <img src="../img/pexels-photo-1072179.jpeg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    <img src="../img/SafeNet_Logo_2_light.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
-                Safenet
                 <button class="change-theme__icon" id="toggle-theme">
                     <div class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
@@ -501,6 +521,7 @@
             { title: 'Course 20', description: 'Description 20', link: '#'},
             // Add more courses as needed
         ];
+
 
         var coursesElement = document.getElementById('courses');
 
