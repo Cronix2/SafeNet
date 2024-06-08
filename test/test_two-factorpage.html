@@ -359,7 +359,8 @@
         }
         .rectangle {
             color: black;
-            margin-top: 12%;
+            margin-top: auto;
+            margin-bottom: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -402,7 +403,7 @@
         }
 
         .form {
-            margin-top: 10px
+            margin-top: 5px
         }
 
         .form input {
@@ -417,6 +418,13 @@
         .form input:focus {
             border-bottom: 2px solid royalblue;
             outline: none;
+        }
+
+        mark {
+            background: none;
+            color: black;
+            font-weight: bold;
+            margin-bottom: 20px;
         }
 
     </style>
@@ -446,8 +454,10 @@
             <div class="col-12 col-md-6 col-lg-4" style="min-width: 500px;">
                 <div class="card bg-white mb-5 mt-5 border-0">
                     <div class="card-body">
+                        <img src="../img/mail.gif" width="90" alt="Mail Image">
                         <h4>Verify</h4>
-                        <p>Your code was sent to you via email</p>
+                        <p>Enter the 6-digit security code we sent to </p>
+                        <mark>li*********t@esiea.fr</mark>
                         <div class="form">
                             <input type="number" />
                             <input type="number" disabled />

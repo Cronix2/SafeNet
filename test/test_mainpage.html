@@ -17,7 +17,7 @@
             --dark-nav-background: #1D2033;
         }
         */
-
+        
         /* SALOME CHANGE MOI CA, JE TROUVE CA IMMENSEMENT MOCHE */
 
         :root {
@@ -501,26 +501,26 @@
 
         // Add course cards
         var courses = [
-            { title: 'Course 1', description: 'Description 1', link: '#'},
-            { title: 'Course 2', description: 'Description 2', link: '#'},
-            { title: 'Course 3', description: 'Description 3', link: '#'},
-            { title: 'Course 4', description: 'Description 4', link: '#'},
-            { title: 'Course 5', description: 'Description 5', link: '#'},
-            { title: 'Course 6', description: 'Description 6', link: '#'},
-            { title: 'Course 7', description: 'Description 7', link: '#'},
-            { title: 'Course 8', description: 'Description 8', link: '#'},
-            { title: 'Course 9', description: 'Description 9', link: '#'},
-            { title: 'Course 10', description: 'Description 10', link: '#'},
-            { title: 'Course 11', description: 'Description 11', link: '#'},
-            { title: 'Course 12', description: 'Description 12', link: '#'},
-            { title: 'Course 13', description: 'Description 13', link: '#'},
-            { title: 'Course 14', description: 'Description 14', link: '#'},
-            { title: 'Course 15', description: 'Description 15', link: '#'},
-            { title: 'Course 16', description: 'Description 16', link: '#'},
-            { title: 'Course 17', description: 'Description 17', link: '#'},
-            { title: 'Course 18', description: 'Description 18', link: '#'},
-            { title: 'Course 19', description: 'Description 19', link: '#'},
-            { title: 'Course 20', description: 'Description 20', link: '#'},
+            { cover: '../img/module/module-1/Cover.jpeg', title: 'Comprendre les Attaques par Déni de Service (DoS et DDoS)', description: 'Dans ce cours, nous explorerons les mécanismes des attaques par déni de service (DoS) et déni de service distribué (DDoS), deux des menaces les plus courantes et perturbatrices dans le monde de la cybersécurité. Vous découvrirez comment ces attaques fonctionnent, leurs impacts potentiels sur les systèmes informatiques, et les mesures de protection efficaces pour vous en prémunir. À travers des exemples concrets et des explications détaillées, vous serez mieux préparé à reconnaître et à contrer ces cybermenaces.', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 2', description: 'Description 2', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 3', description: 'Description 3', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 4', description: 'Description 4', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 5', description: 'Description 5', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 6', description: 'Description 6', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 7', description: 'Description 7', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 8', description: 'Description 8', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 9', description: 'Description 9', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 10', description: 'Description 10', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 11', description: 'Description 11', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 12', description: 'Description 12', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 13', description: 'Description 13', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 14', description: 'Description 14', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 15', description: 'Description 15', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 16', description: 'Description 16', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 17', description: 'Description 17', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 18', description: 'Description 18', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 19', description: 'Description 19', link: '#'},
+            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 20', description: 'Description 20', link: '#'},
             // Add more courses as needed
         ];
 
@@ -534,7 +534,7 @@
 
             var img = document.createElement('img');
             img.className = 'card-img-top';
-            img.src = '../img/pexels-photo-1072179.jpeg'; // Remplacez par le chemin de l'image du cours
+            img.src = course.cover ; // Remplacez par le chemin de l'image du cours
             img.alt = ''; // Remplacez par une description de l'image
 
             var cardBody = document.createElement('div');
