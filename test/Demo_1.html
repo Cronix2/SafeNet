@@ -489,108 +489,20 @@
         </div>
     </nav>
 </header>
-<body id="body">
-    <section id="courses">
-        <!-- Course cards will be added here -->
-        
-    </section>
+
+<body>
+    <div id = "chapter one">
+        <!-- create a square white with a border on left in red in this square there is a text a lorem ipsum   -->
+        <!-- I want this square take every larger with a little padding of each border -->
+        <!-- I want this sqare open it only if we click on an another square nammed chapter -->
+        <!-- The square chapter is gray with a text which can change of color (red or green)-->
+        <!-- The square chapter is a little bit larger than the square white -->
+    </div>
     <script>
-        document.getElementById('toggle-theme').addEventListener('click', function() {
-            document.body.classList.toggle('dark');
-        });
-
-        // Add course cards
-        var courses = [
-            { cover: '../img/module/module-1/Cover.jpeg', title: 'Comprendre les Attaques par Déni de Service (DoS et DDoS)', description: 'Dans ce cours, nous explorerons les mécanismes des attaques par déni de service (DoS) et déni de service distribué (DDoS), deux des menaces les plus courantes et perturbatrices dans le monde de la cybersécurité. Vous découvrirez comment ces attaques fonctionnent, leurs impacts potentiels sur les systèmes informatiques, et les mesures de protection efficaces pour vous en prémunir. À travers des exemples concrets et des explications détaillées, vous serez mieux préparé à reconnaître et à contrer ces cybermenaces.', link: 'Demo_1.html'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 2', description: 'Description 2', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 3', description: 'Description 3', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 4', description: 'Description 4', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 5', description: 'Description 5', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 6', description: 'Description 6', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 7', description: 'Description 7', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 8', description: 'Description 8', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 9', description: 'Description 9', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 10', description: 'Description 10', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 11', description: 'Description 11', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 12', description: 'Description 12', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 13', description: 'Description 13', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 14', description: 'Description 14', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 15', description: 'Description 15', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 16', description: 'Description 16', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 17', description: 'Description 17', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 18', description: 'Description 18', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 19', description: 'Description 19', link: '#'},
-            { cover: '../img/pexels-photo-1072179.jpeg', title: 'Course 20', description: 'Description 20', link: '#'},
-            // Add more courses as needed
-        ];
-
-
-        var coursesElement = document.getElementById('courses');
-
-        courses.forEach(function(course) {
-            var card = document.createElement('div');
-            card.className = 'card';
-            card.style.width = '18rem';
-
-            var img = document.createElement('img');
-            img.className = 'card-img-top';
-            img.src = course.cover ; // Remplacez par le chemin de l'image du cours
-            img.alt = ''; // Remplacez par une description de l'image
-
-            var cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
-
-            var cardLink = document.createElement('a');
-            cardLink.href = course.link; // Assurez-vous que chaque objet de cours a une propriété 'link'
-            cardLink.className = 'btn btn-primary';
-            cardLink.textContent = 'Commencer'; // Remplacez par le texte du lien
-
-            var cardTitle = document.createElement('h5');
-            cardTitle.className = 'card-title';
-            cardTitle.textContent = course.title;
-
-            var cardText = document.createElement('p');
-            cardText.className = 'card-text';
-            cardText.textContent = course.description;
-
-            var cardLink = document.createElement('a');
-            cardLink.href = course.link ; // Remplacez par le lien du cours
-            cardLink.className = 'btn btn-primary';
-            cardLink.textContent = 'Commencer'; // Remplacez par le texte du lien
-
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
-            cardBody.appendChild(cardLink);
-
-            card.appendChild(img);
-            card.appendChild(cardBody);
-
-            coursesElement.appendChild(card);
-        });
-
-        document.querySelector('.change-theme__icon').addEventListener('click', function() {
-            this.classList.toggle('active');
-        });
-
-        document.querySelector('.search input[type="text"]').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                document.querySelector('.search button[type="submit"]').click();
-            }
-        });
-
-        document.querySelector('.search button[type="submit"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            var searchText = document.querySelector('.search input[type="text"]').value.toLowerCase();
-            var courses = document.querySelectorAll('.card');
-            for (var i = 0; i < courses.length; i++) {
-                var course = courses[i];
-                var title = course.querySelector('.card-title').textContent.toLowerCase();
-                var description = course.querySelector('.card-text').textContent.toLowerCase();
-                if (title.includes(searchText) || description.includes(searchText)) {
-                    course.scrollIntoView({ behavior: 'smooth' });
-                    break;
-                }
-            }
+        const toggleTheme = document.getElementById('toggle-theme');
+        const body = document.querySelector('body');
+        toggleTheme.addEventListener('click', () => {
+            body.classList.toggle('dark');
         });
     </script>
 </body>
