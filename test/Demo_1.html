@@ -440,6 +440,7 @@
         }
 
         .open .task-content {
+            line-height: 1.5;
             border-bottom-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
             border-bottom-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
         }
@@ -449,17 +450,15 @@
             color: var(--task-color_2);
         }
 
-        .task-header .task-dot {
-            height: 10px;
-            width: 10px;
-            background-color: var(--task-color_2);
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
         .task-header .task-name {
             flex-grow: 1;
+            margin-left: 10px;
         }
+
+        .task-header .task-dot{
+            margin:auto;
+        }
+
 
         .task-header .task-arrow {
             margin-left: auto;
@@ -602,6 +601,16 @@
             fill: #c13584;
         }
 
+        svg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg circle {
+            margin: auto;
+
+        }
+
         button.read-and-understood {
             background-color: white;
             border: 2px solid rgb(3, 196, 3);
@@ -656,7 +665,11 @@
     <div class="task">
         <div class="task-header">
             <span class="task-number"></span>
-            <div class="task-dot"></div>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
             <span class="task-name">Introduction</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -666,6 +679,13 @@
         </div>
         <div class="task-content" style="display: none">
             <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
+    
+            <p>Ces attaques exploitent des vulnérabilités dans les infrastructures en ligne pour submerger les serveurs de trafic, empêchant ainsi les utilisateurs légitimes d'accéder aux services qu'ils recherchent.</p>
+    
+            <p>Les attaques DoS sont généralement lancées à partir d'une seule machine, tandis que les attaques DDoS impliquent plusieurs machines réparties dans le monde entier, souvent contrôlées à distance par des botnets. Les conséquences de ces attaques peuvent être graves, allant de l'interruption temporaire des services à des pertes financières significatives et à des dommages à la réputation.</p>
+    
+            <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
+    
             <button class="read-and-understood">J'ai lu et compris</button>
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
@@ -674,7 +694,11 @@
     <div class="task">
         <div class="task-header">
             <span class="task-number"></span>
-            <div class="task-dot"></div>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
             <span class="task-name">Fonctionnement simplifié</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -683,7 +707,19 @@
             </div>                        
         </div>
         <div class="task-content" style="display: none">
-            <p>Les attaques DoS et DDoS fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer. Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients.</p>
+            <p>Les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer.</p>
+            
+            <p>Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients. Ces ordinateurs sont souvent infectés par des logiciels malveillants qui les transforment en "zombies", participant à l'attaque à l'insu de leur propriétaire.</p>
+    
+            <p>Les attaques peuvent avoir des conséquences graves, notamment :</p>
+            <ul>
+                <li><strong>Interruption de service :</strong> Les utilisateurs légitimes ne peuvent plus accéder au service ou au site web ciblé.</li>
+                <li><strong>Perte financière :</strong> Les entreprises peuvent perdre des revenus en raison de l'indisponibilité de leurs services.</li>
+                <li><strong>Atteinte à la réputation :</strong> La confiance des clients et des utilisateurs peut être affectée négativement.</li>
+            </ul>
+    
+            <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
+    
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
@@ -691,7 +727,11 @@
     <div class="task">
         <div class="task-header">
             <span class="task-number"></span>
-            <div class="task-dot"></div>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
             <span class="task-name">Sensibilisation et Protection</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -700,24 +740,28 @@
             </div> 
         </div>
         <div class="task-content" style="display: none">
-            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :
-
-                Utiliser un pare-feu : Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.
-                
-                Mettre à jour régulièrement ses systèmes : Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.
-                
-                Souscrire à des services de protection DDoS : Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.
-                
-                Sensibiliser et former : Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.
-
-                Utiliser des CAPTCHA : Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</p>
+            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :</p>
+            
+            <ul>
+                <li><strong>Utiliser un pare-feu :</strong> Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.</li>
+                <li><strong>Mettre à jour régulièrement ses systèmes :</strong> Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.</li>
+                <li><strong>Souscrire à des services de protection DDoS :</strong> Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.</li>
+                <li><strong>Sensibiliser et former :</strong> Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.</li>
+                <li><strong>Utiliser des CAPTCHA :</strong> Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</li>
+            </ul>
+    
+            <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
         </div>
     </div>
 
     <div class="task">
         <div class="task-header">
             <span class="task-number"></span>
-            <div class="task-dot"></div>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
             <span class="task-name">Conclusion</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -726,7 +770,19 @@
             </div>                        
         </div>
         <div class="task-content" style="display: none">
-            <p>En résumé, les attaques DoS et DDoS sont comme une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles. Heureusement, en adoptant des mesures simples comme l'utilisation de pare-feux, la mise à jour régulière des systèmes, et en utilisant des services spécialisés, il est possible de se protéger efficacement contre ces menaces. La sensibilisation et la formation jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. </p>
+            <p>En résumé, les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) sont comparables à une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles.</p>
+            
+            <p>Ces attaques peuvent causer des interruptions significatives, nuire à la réputation des entreprises, et entraîner des pertes financières importantes. Pour se protéger efficacement contre ces menaces, il est crucial d'adopter plusieurs mesures préventives.</p>
+            
+            <ul>
+                <li><strong>Utilisation de pare-feux :</strong> Les pare-feux peuvent filtrer le trafic malveillant et bloquer les attaques avant qu'elles n'atteignent les systèmes cibles.</li>
+                <li><strong>Mise à jour régulière des systèmes :</strong> Maintenir les logiciels et les systèmes à jour avec les derniers correctifs de sécurité permet de combler les vulnérabilités exploitées par les attaquants.</li>
+                <li><strong>Utilisation de services spécialisés :</strong> Des services de protection contre les DDoS, offerts par des fournisseurs spécialisés, peuvent détecter et atténuer les attaques en temps réel.</li>
+            </ul>
+    
+            <p>La <strong>sensibilisation et la formation</strong> jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. En formant les employés aux bonnes pratiques de sécurité et en les sensibilisant aux menaces potentielles, les entreprises peuvent réduire considérablement les risques d'attaques réussies.</p>
+            
+            <p>En conclusion, bien que les attaques DoS et DDoS représentent une menace sérieuse pour les infrastructures numériques, des mesures proactives et une vigilance constante permettent de renforcer la sécurité et de garantir la disponibilité des services en ligne.</p>
         </div>
     </div>
 
@@ -736,7 +792,7 @@
         const body = document.querySelector('body');
         toggleTheme.addEventListener('click', () => {
             body.classList.toggle('dark');
-        });
+        });        
         
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
@@ -776,15 +832,15 @@
 
         // Sélectionnez tous les boutons
         var buttons = document.querySelectorAll('button');
-
         // Parcourez chaque bouton
         buttons.forEach(function(button) {
+            // Si l'ID du bouton n'est pas 'toggle-theme'
             // Ajoutez un écouteur d'événements 'click'
             button.addEventListener('click', function() {
-                // Ajoutez la classe 'clicked' au bouton cliqué
-                this.classList.add('clicked');
-                // Désactivez le bouton cliqué
-                this.disabled = true;
+                if (button.id !== 'toggle-theme') {
+                    // Ajoutez la classe 'clicked' au bouton cliqué
+                    this.classList.add('clicked');
+                }
             });
         });
 
@@ -817,19 +873,24 @@
 
                     // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
                     if (allClicked) {
-                        var taskDot = task.querySelector('.task-dot');
                         var taskNumber = task.querySelector('.task-number');
                         var taskContent = task.querySelector('.task-content');
                         var taskHeader = task.querySelector('.task-header');
-                        taskDot.style.backgroundColor = 'rgb(8, 241, 8)';
+                        var taskDot = task.querySelector('.task-dot');
                         taskNumber.style.color = 'rgb(8, 241, 8)';
                         taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
                         taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskDot.innerHTML = `
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        `;
                     }
                 });
             });
         });
-                
+
     </script>
 
 </body>
