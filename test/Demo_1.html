@@ -1,26 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
-    <style>
-        /*
-        :root {
-            --light-background: #fefdf9;
-            --light-text: #000000;
-            --dark-background: #3b3b3bd3;
-            --dark-text: #ffffff;
-            --light-card-background: #f0f0f0; 
-            --dark-card-background: #3f3f3f66;
-            --light-nav-background: #f0f0f0;
-            --dark-nav-background: #1D2033;
-        }
-        */
-        
-        /* SALOME CHANGE MOI CA, JE TROUVE CA IMMENSEMENT MOCHE */
+    <title>SafeNet</title>
+    <link rel="icon" href="../img/SafeNet_Logo_1.png" type="image/png">
+<style>
+    body {
+    font-family: sans-serif;
+    background-color: #222;
+    color: #eee;
+    }
 
-        :root {
+    .task {
+        width: 90%; /* Prend 90% de la largeur de la page */
+        margin: 0 auto;
+        background-color: #333;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .task-icon {
+    margin-right: 10px;
+    }
+
+    .task-title {
+    font-weight: bold;
+    }
+
+    .task-arrow {
+    margin-left: auto;
+    }
+
+    .content {
+    padding: 20px;
+    }
+
+    .content-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    }
+
+    .content-text {
+    line-height: 1.5;
+    }
+    :root {
             --light-background: #fefdf9;
             --light-text: #000000;
             --dark-background: #191c3a;
@@ -29,6 +55,7 @@
             --dark-card-background: #151623;
             --light-nav-background: #f0f0f0;
             --dark-nav-background: #1D2033;
+            --task-color_1: rgb(8, 241, 8);
         }
 
         body {
@@ -39,6 +66,7 @@
             color: var(--light-text);
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             align-items: center;
             margin: 0;
             padding: 0;
@@ -343,7 +371,7 @@
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: auto;
             width: 100%;
             background-color: #1e1f21;
             padding: 20px;
@@ -368,6 +396,95 @@
         .footer-content .copyright {
             margin-top: 10px;
             color: #b5bbc1;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .task {
+            margin: 5px;
+            display: block;
+            height: auto;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--background-color); /* Ajout de cette ligne */
+
+        }
+
+        .task-header {
+            border-left: 5px solid var(--task-color_1);
+            border-top-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+            border-top-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+            width: 100%;
+            background-color: #303030; /* Gris anthracite */
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: #fff; /* Texte blanc */
+        }
+
+        .task .task-header {
+            border-radius: 10px; /* Ajustez la valeur selon vos préférences */
+        }
+
+
+        .task.open .task-header {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .open .task-content {
+            border-bottom-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+            border-bottom-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+        }
+
+        .task-header .task-number {
+            margin-right: 10px;
+            color: var(--task-color_1);
+        }
+
+        .task-header .task-dot {
+            height: 10px;
+            width: 10px;
+            background-color: var(--task-color_1);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .task-header .task-name {
+            flex-grow: 1;
+        }
+
+        .task-header .task-arrow {
+            margin-left: auto;
+            cursor: pointer;
+        }
+        
+        .task-content {
+            display: none;
+            background-color: #f9f9f9; /* Fond blanc */
+            border-left: 5px solid var(--task-color_1); /* Bordure rouge à gauche */
+            padding: 10px;
+            clear: both; /* Assure que le contenu de la tâche s'affiche sous l'en-tête de la tâche */
+            width: 100%; /* Ajout de cette ligne */
+            color: #000000;
+        }
+
+        .task-header h3 {
+            margin-bottom: 5px;
+        }
+
+        .task-header p {
+            display: none;
+        }
+
+        .task.expanded .task-header p {
+            display: block;
         }
         
 
@@ -432,6 +549,34 @@
             fill: #333;
         }
 
+
+        .menu {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+        .task-header h3 {
+            margin-bottom: 5px;
+        }
+
+        .task-header p {
+            display: none;
+        }
+
+        .task.expanded.task-header p {
+            display: block;
+        }
+
         .linkedin {
             background-color: #0077b5;
         }
@@ -455,8 +600,6 @@
         .instagram:hover svg {
             fill: #c13584;
         }
-
-
     </style>
 </head>
 <header id="sticky-header">
@@ -489,22 +632,127 @@
         </div>
     </nav>
 </header>
-
 <body>
-    <div id = "chapter one">
-        <!-- create a square white with a border on left in red in this square there is a text a lorem ipsum   -->
-        <!-- I want this square take every larger with a little padding of each border -->
-        <!-- I want this sqare open it only if we click on an another square nammed chapter -->
-        <!-- The square chapter is gray with a text which can change of color (red or green)-->
-        <!-- The square chapter is a little bit larger than the square white -->
+    
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number">Tache 1</span>
+            <div class="task-dot"></div>
+            <span class="task-name">Introduction</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+        </div>
+        <div class="task-content" style="display: none">
+            <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
+        </div>
     </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number">Tache 2</span>
+            <div class="task-dot"></div>
+            <span class="task-name">Fonctionnement simplifié</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+        </div>
+        <div class="task-content" style="display: none">
+            <p>Les attaques DoS et DDoS fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer. Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients.</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number">Tache 3</span>
+            <div class="task-dot"></div>
+            <span class="task-name">Sensibilisation et Protection</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+        </div>
+        <div class="task-content" style="display: none">
+            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :
+
+                Utiliser un pare-feu : Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.
+                
+                Mettre à jour régulièrement ses systèmes : Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.
+                
+                Souscrire à des services de protection DDoS : Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.
+                
+                Sensibiliser et former : Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.
+
+                Utiliser des CAPTCHA : Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</p>
+        </div>
+    </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number">Tache 4</span>
+            <div class="task-dot"></div>
+            <span class="task-name">Conclusion</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+        </div>
+        <div class="task-content" style="display: none">
+            <p>En résumé, les attaques DoS et DDoS sont comme une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles. Heureusement, en adoptant des mesures simples comme l'utilisation de pare-feux, la mise à jour régulière des systèmes, et en utilisant des services spécialisés, il est possible de se protéger efficacement contre ces menaces. La sensibilisation et la formation jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. </p>
+        </div>
+    </div>
+
+
     <script>
         const toggleTheme = document.getElementById('toggle-theme');
         const body = document.querySelector('body');
         toggleTheme.addEventListener('click', () => {
             body.classList.toggle('dark');
         });
+        
+        document.querySelector('.change-theme__icon').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.task').forEach(task => {
+            task.querySelector('.task-header').addEventListener('click', () => {
+                const content = task.querySelector('.task-content');
+                if (content.style.display === 'none') {
+                    task.classList.add('open');
+                    content.style.display = 'block';
+                } else {
+                    task.classList.remove('open');
+                    content.style.display = 'none';
+                }
+            });
+        });
+
+        document.querySelectorAll('.task').forEach(task => {
+            task.addEventListener('click', () => {
+                const arrowDiv = task.querySelector('.task-arrow');
+                if (task.classList.contains('open')) {
+                    arrowDiv.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    `;
+                } else {
+                    arrowDiv.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    `;
+                }
+            });
+        });
     </script>
+
 </body>
 <footer>
     <div class="footer-content">

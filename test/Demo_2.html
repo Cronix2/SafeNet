@@ -656,6 +656,10 @@
             body.classList.toggle('dark');
         });
 
+        document.querySelector('.change-theme__icon').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
         document.querySelectorAll('.task').forEach(task => {
             task.querySelector('.task-header').addEventListener('click', () => {
                 const content = task.querySelector('.task-content');
