@@ -632,6 +632,32 @@
             color: white;
         }
 
+        .responseFormat {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #a2a2a2;
+        }
+
+        .question {
+            margin: 10px;
+            display: flex;
+        }
+
+        .question input,
+        .question button {
+            height: auto;
+            margin-left: 5px;
+        }
+
+        button.clicked {
+            background-color: rgb(3, 196, 3);
+            color: white;
+        }
+
+        input.glow-red {
+            box-shadow: 0 0 10px red;
+        }
+
     </style>
 </head>
 <header id="sticky-header">
@@ -687,7 +713,6 @@
             <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
     
             <button class="read-and-understood">J'ai lu et compris</button>
-            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
@@ -728,7 +753,16 @@
             </ul>
     
             <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
-    
+            <p> question 1</p>
+            <div class="question">
+                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="1" type="need-response" class="read-and-understood">Envoyer</button>
+            </div>
+            <p> question 2</p>
+            <div class="question">
+                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="2" type="need-response" class="read-and-understood">Envoyer</button>
+            </div>
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
@@ -760,6 +794,17 @@
             </ul>
     
             <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
+            <p> question 3</p>
+            <div class="question">
+                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="3" type="need-response" class="read-and-understood">Envoyer</button>
+            </div>
+            <p> question 4</p>
+            <div class="question">
+                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="4" type="need-response" class="read-and-understood">Envoyer</button>
+            </div>
+            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
@@ -792,6 +837,7 @@
             <p>La <strong>sensibilisation et la formation</strong> jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. En formant les employés aux bonnes pratiques de sécurité et en les sensibilisant aux menaces potentielles, les entreprises peuvent réduire considérablement les risques d'attaques réussies.</p>
             
             <p>En conclusion, bien que les attaques DoS et DDoS représentent une menace sérieuse pour les infrastructures numériques, des mesures proactives et une vigilance constante permettent de renforcer la sécurité et de garantir la disponibilité des services en ligne.</p>
+            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
@@ -843,10 +889,8 @@
         var buttons = document.querySelectorAll('button');
         // Parcourez chaque bouton
         buttons.forEach(function(button) {
-            // Si l'ID du bouton n'est pas 'toggle-theme'
-            // Ajoutez un écouteur d'événements 'click'
             button.addEventListener('click', function() {
-                if (button.id !== 'toggle-theme') {
+                if (button.id !== 'toggle-theme' && button.type !== 'need-response') {
                     // Ajoutez la classe 'clicked' au bouton cliqué
                     this.classList.add('clicked');
                 }
@@ -872,34 +916,52 @@
             buttons.forEach(function(button) {
                 // Ajoutez un écouteur d'événements 'click'
                 button.addEventListener('click', function() {
-                    // Ajoutez la classe 'clicked' au bouton cliqué
-                    this.classList.add('clicked');
+                    if(button.type !== 'need-response'){
+                        // Ajoutez la classe 'clicked' au bouton cliqué
+                        this.classList.add('clicked');
 
-                    // Vérifiez si tous les boutons ont été cliqués
-                    var allClicked = Array.from(buttons).every(function(button) {
-                        return button.classList.contains('clicked');
-                    });
+                        // Vérifiez si tous les boutons ont été cliqués
+                        var allClicked = Array.from(buttons).every(function(button) {
+                            return button.classList.contains('clicked');
+                        });
 
-                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                    if (allClicked) {
-                        var taskNumber = task.querySelector('.task-number');
-                        var taskContent = task.querySelector('.task-content');
-                        var taskHeader = task.querySelector('.task-header');
-                        var taskDot = task.querySelector('.task-dot');
-                        taskNumber.style.color = 'rgb(8, 241, 8)';
-                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskDot.innerHTML = `
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
+                        // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
+                        if (allClicked) {
+                            var taskNumber = task.querySelector('.task-number');
+                            var taskContent = task.querySelector('.task-content');
+                            var taskHeader = task.querySelector('.task-header');
+                            var taskDot = task.querySelector('.task-dot');
+                            taskNumber.style.color = 'rgb(8, 241, 8)';
+                            taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                            taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                            taskDot.innerHTML = `
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            `;
+                        }
                     }
                 });
             });
         });
 
+
+        var buttons = document.querySelectorAll('button[type="need-response"]');
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // Obtenez l'ID du bouton
+                var buttonId = button.id;
+                // Utilisez cet ID pour trouver l'input associé
+                var associatedInput = document.getElementById(buttonId);
+
+                // Vérifiez la valeur de l'input
+                if (associatedInput.value === 'ok') { // Remplacez 'la réponse correcte' par la réponse correcte
+                    // Si la réponse est correcte, ajoutez les classes 'read-and-understood' et 'clicked' au bouton
+                    button.classList.add('read-and-understood', 'clicked');
+                }
+            });
+        });
     </script>
 
 </body>
