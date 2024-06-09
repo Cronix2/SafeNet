@@ -56,6 +56,7 @@
             --light-nav-background: #f0f0f0;
             --dark-nav-background: #1D2033;
             --task-color_1: rgb(8, 241, 8);
+            --task-color_2: red;
         }
 
         body {
@@ -417,7 +418,7 @@
         }
 
         .task-header {
-            border-left: 5px solid var(--task-color_1);
+            border-left: 5px solid var(--task-color_2);
             border-top-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
             border-top-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
             width: 100%;
@@ -445,13 +446,13 @@
 
         .task-header .task-number {
             margin-right: 10px;
-            color: var(--task-color_1);
+            color: var(--task-color_2);
         }
 
         .task-header .task-dot {
             height: 10px;
             width: 10px;
-            background-color: var(--task-color_1);
+            background-color: var(--task-color_2);
             border-radius: 50%;
             margin-right: 10px;
         }
@@ -468,7 +469,7 @@
         .task-content {
             display: none;
             background-color: #f9f9f9; /* Fond blanc */
-            border-left: 5px solid var(--task-color_1); /* Bordure rouge à gauche */
+            border-left: 5px solid var(--task-color_2); /* Bordure rouge à gauche */
             padding: 10px;
             clear: both; /* Assure que le contenu de la tâche s'affiche sous l'en-tête de la tâche */
             width: 100%; /* Ajout de cette ligne */
@@ -600,6 +601,28 @@
         .instagram:hover svg {
             fill: #c13584;
         }
+
+        button.read-and-understood {
+            background-color: white;
+            border: 2px solid rgb(3, 196, 3);
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .read-and-understood:hover {
+            background-color: rgb(0, 255, 0);
+            border: 2px solid rgb(0, 255, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        .read-and-understood.clicked {
+            background-color: rgb(3, 196, 3);
+            color: white;
+        }
+
     </style>
 </head>
 <header id="sticky-header">
@@ -622,10 +645,6 @@
                         </svg>
                     </div>
                 </button>
-                <div class="search">
-                    <input placeholder="Search..." type="text">
-                    <button type="submit">Go</button>
-                </div>
                 <a class="pseudo">pseudo</a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
@@ -636,46 +655,49 @@
     
     <div class="task">
         <div class="task-header">
-            <span class="task-number">Tache 1</span>
+            <span class="task-number"></span>
             <div class="task-dot"></div>
             <span class="task-name">Introduction</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+            </div>                         
         </div>
         <div class="task-content" style="display: none">
             <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
+            <button class="read-and-understood">J'ai lu et compris</button>
+            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
     <div class="task">
         <div class="task-header">
-            <span class="task-number">Tache 2</span>
+            <span class="task-number"></span>
             <div class="task-dot"></div>
             <span class="task-name">Fonctionnement simplifié</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+            </div>                        
         </div>
         <div class="task-content" style="display: none">
             <p>Les attaques DoS et DDoS fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer. Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients.</p>
+            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
     <div class="task">
         <div class="task-header">
-            <span class="task-number">Tache 3</span>
+            <span class="task-number"></span>
             <div class="task-dot"></div>
             <span class="task-name">Sensibilisation et Protection</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+            </div> 
         </div>
         <div class="task-content" style="display: none">
             <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :
@@ -694,14 +716,14 @@
 
     <div class="task">
         <div class="task-header">
-            <span class="task-number">Tache 4</span>
+            <span class="task-number"></span>
             <div class="task-dot"></div>
             <span class="task-name">Conclusion</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-            </div>                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+            </div>                        
         </div>
         <div class="task-content" style="display: none">
             <p>En résumé, les attaques DoS et DDoS sont comme une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles. Heureusement, en adoptant des mesures simples comme l'utilisation de pare-feux, la mise à jour régulière des systèmes, et en utilisant des services spécialisés, il est possible de se protéger efficacement contre ces menaces. La sensibilisation et la formation jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. </p>
@@ -751,6 +773,63 @@
                 }
             });
         });
+
+        // Sélectionnez tous les boutons
+        var buttons = document.querySelectorAll('button');
+
+        // Parcourez chaque bouton
+        buttons.forEach(function(button) {
+            // Ajoutez un écouteur d'événements 'click'
+            button.addEventListener('click', function() {
+                // Ajoutez la classe 'clicked' au bouton cliqué
+                this.classList.add('clicked');
+                // Désactivez le bouton cliqué
+                this.disabled = true;
+            });
+        });
+
+        window.onload = function() {
+            var tasks = document.querySelectorAll('.task-number');
+            for (var i = 0; i < tasks.length; i++) {
+                tasks[i].textContent = 'Tâche ' + (i + 1);
+            }
+        }
+        
+        // Sélectionnez toutes les tâches
+        var tasks = document.querySelectorAll('.task');
+
+        // Parcourez chaque tâche
+        tasks.forEach(function(task) {
+            // Sélectionnez tous les boutons dans la tâche actuelle
+            var buttons = task.querySelectorAll('button');
+
+            // Parcourez chaque bouton
+            buttons.forEach(function(button) {
+                // Ajoutez un écouteur d'événements 'click'
+                button.addEventListener('click', function() {
+                    // Ajoutez la classe 'clicked' au bouton cliqué
+                    this.classList.add('clicked');
+
+                    // Vérifiez si tous les boutons ont été cliqués
+                    var allClicked = Array.from(buttons).every(function(button) {
+                        return button.classList.contains('clicked');
+                    });
+
+                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
+                    if (allClicked) {
+                        var taskDot = task.querySelector('.task-dot');
+                        var taskNumber = task.querySelector('.task-number');
+                        var taskContent = task.querySelector('.task-content');
+                        var taskHeader = task.querySelector('.task-header');
+                        taskDot.style.backgroundColor = 'rgb(8, 241, 8)';
+                        taskNumber.style.color = 'rgb(8, 241, 8)';
+                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                    }
+                });
+            });
+        });
+                
     </script>
 
 </body>
