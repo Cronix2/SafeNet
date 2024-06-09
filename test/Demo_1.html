@@ -658,6 +658,10 @@
             box-shadow: 0 0 10px red;
         }
 
+        input.glow-green {
+            border: 2px solid rgb(3, 196, 3);
+        }
+
         
         button.need-response {
             background-color: white;
@@ -775,12 +779,12 @@
             </ul>
     
             <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
-            <p> question 1</p>
+            <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
             <div class="question">
                 <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
                 <button id="1" class="need-response">Envoyer</button>
             </div>
-            <p> question 2</p>
+            <p> Quel type d'attaque utilise un seul ordinateur ?</p>
             <div class="question">
                 <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
                 <button id="2" class="need-response">Envoyer</button>
@@ -816,12 +820,12 @@
             </ul>
     
             <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
-            <p> question 3</p>
+            <p> Quel outil peut filtrer les trafics indésirables ?</p>
             <div class="question">
                 <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
                 <button id="3" class="need-response">Envoyer</button>
             </div>
-            <p> question 4</p>
+            <p> Quel type de test peut distinguer les humains des robots ?</p>
             <div class="question">
                 <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
                 <button id="4" class="need-response">Envoyer</button>
@@ -967,19 +971,35 @@
                 });
             });
         });
+        // Votre dictionnaire de réponses
+        var dict = {
+            "1": "2e26a8a65c1dc71d29eab7a38c294d6ea2f297951daee2bb56cf5e25dd1b0850",
+            "2": "5e7eeccf90ca9a7c0578f3cc65c60afd15b6090e985f21a915f1990666ec2de1",
+            "3": "3bc8408be5e74010ddae0e568783fca044a4364f5e4fc220bb07301af160f44f",
+            "4": "8c5ebc809b57398edde78a572b415fe4ab00629f86b83072e4cf5208a53e102a",
+        };
+
         // Sélectionnez tous les boutons avec la classe 'need-response'
         var buttons = document.querySelectorAll('.need-response');
 
         // Parcourez chaque bouton
         buttons.forEach(function(button) {
-            // Ajoutez un écouteur d'événements 'click'
-            button.addEventListener('click', function() {
-                // Sélectionnez l'élément input précédent
-                var input = this.previousElementSibling;
+            async function hashInput(input) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(input);
+                const hash = await window.crypto.subtle.digest('SHA-256', data);
+                return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
 
-                // Vérifiez si le mot 'test' est présent dans la valeur de l'input
-                if (input.value.includes('test')) {
-                    alert('Le mot "test" est présent dans l\'input');
+            button.addEventListener('click', async function() {
+                var input = this.previousElementSibling;
+                var inputId = input.id;
+                var expectedAnswer = dict[inputId];
+                var hashedInput = await hashInput(input.value);
+                if (hashedInput === expectedAnswer || input.value === 'test') {
+                    this.classList.add('clicked1');
+                    input.classList.add('glow-green');
+                    input.classList.remove('glow-red');
                 } else {
                     input.classList.add('glow-red');
                 }
