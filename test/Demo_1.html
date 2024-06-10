@@ -971,7 +971,6 @@
                 });
             });
         });
-        // Votre dictionnaire de réponses
         var dict = {
             "1": "2e26a8a65c1dc71d29eab7a38c294d6ea2f297951daee2bb56cf5e25dd1b0850",
             "2": "5e7eeccf90ca9a7c0578f3cc65c60afd15b6090e985f21a915f1990666ec2de1",
@@ -979,10 +978,10 @@
             "4": "8c5ebc809b57398edde78a572b415fe4ab00629f86b83072e4cf5208a53e102a",
         };
 
-        // Sélectionnez tous les boutons avec la classe 'need-response'
+
         var buttons = document.querySelectorAll('.need-response');
 
-        // Parcourez chaque bouton
+
         buttons.forEach(function(button) {
             async function hashInput(input) {
                 const encoder = new TextEncoder();
