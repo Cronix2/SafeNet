@@ -691,7 +691,7 @@
         <div class="container-fluid">            
             <div class="nav">
                 <a class="navbar-brand" href="../index.html">
-                    <img src="../img/SafeNet_Logo_2_light.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
+                    <img src="../img/SafeNet_Logo_2_dark.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon" id="toggle-theme">
                     <div class="icon-sun">
@@ -869,11 +869,24 @@
 
 
     <script>
+
+        document.getElementById('toggle-theme').addEventListener('click', function() {
+            document.body.classList.toggle('dark');
+            var logo = document.querySelector('img[alt="Logo"]');
+            var theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+            if (theme === 'dark') {
+                logo.src = "../img/SafeNet_Logo_2_light.png";
+            } else {
+                logo.src = "../img/SafeNet_Logo_2_dark.png";
+            }
+        });
+        /*
         const toggleTheme = document.getElementById('toggle-theme');
         const body = document.querySelector('body');
         toggleTheme.addEventListener('click', () => {
             body.classList.toggle('dark');
-        });        
+        });    
+        */    
         
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
