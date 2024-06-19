@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tâche 3 - Persistance grâce aux tickets</title>
+    <title>SafeNet</title>
+    <link rel="icon" href="../img/SafeNet_Logo_1.png" type="image/png">
 <style>
     body {
     font-family: sans-serif;
@@ -55,6 +56,7 @@
             --light-nav-background: #f0f0f0;
             --dark-nav-background: #1D2033;
             --task-color_1: rgb(8, 241, 8);
+            --task-color_2: red;
         }
 
         body {
@@ -65,6 +67,7 @@
             color: var(--light-text);
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             align-items: center;
             margin: 0;
             padding: 0;
@@ -369,7 +372,7 @@
         }
 
         footer {
-            margin-top: 30px;
+            margin-top: auto;
             width: 100%;
             background-color: #1e1f21;
             padding: 20px;
@@ -403,7 +406,7 @@
         }
 
         .task {
-            min-height: 50vh;
+            margin: 5px;
             display: block;
             height: auto;
             padding: 15px;
@@ -415,7 +418,7 @@
         }
 
         .task-header {
-            border-left: 5px solid var(--task-color_1);
+            border-left: 5px solid var(--task-color_2);
             border-top-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
             border-top-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
             width: 100%;
@@ -437,26 +440,25 @@
         }
 
         .open .task-content {
+            line-height: 1.5;
             border-bottom-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
             border-bottom-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
         }
 
         .task-header .task-number {
             margin-right: 10px;
-            color: var(--task-color_1);
-        }
-
-        .task-header .task-dot {
-            height: 10px;
-            width: 10px;
-            background-color: var(--task-color_1);
-            border-radius: 50%;
-            margin-right: 10px;
+            color: var(--task-color_2);
         }
 
         .task-header .task-name {
             flex-grow: 1;
+            margin-left: 10px;
         }
+
+        .task-header .task-dot{
+            margin:auto;
+        }
+
 
         .task-header .task-arrow {
             margin-left: auto;
@@ -466,7 +468,7 @@
         .task-content {
             display: none;
             background-color: #f9f9f9; /* Fond blanc */
-            border-left: 5px solid var(--task-color_1); /* Bordure rouge à gauche */
+            border-left: 5px solid var(--task-color_2); /* Bordure rouge à gauche */
             padding: 10px;
             clear: both; /* Assure que le contenu de la tâche s'affiche sous l'en-tête de la tâche */
             width: 100%; /* Ajout de cette ligne */
@@ -599,14 +601,96 @@
             fill: #c13584;
         }
 
-</style>
+        svg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        svg circle {
+            margin: auto;
 
+        }
+
+        button.read-and-understood {
+            background-color: white;
+            border: 2px solid rgb(3, 196, 3);
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .read-and-understood:hover {
+            background-color: rgb(0, 255, 0);
+            border: 2px solid rgb(0, 255, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        .read-and-understood.clicked {
+            background-color: rgb(3, 196, 3);
+            color: white;
+        }
+
+        .responseFormat {
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #a2a2a2;
+        }
+
+        .question {
+            margin: 10px;
+            display: flex;
+        }
+
+        .question input,
+        .question button {
+            height: auto;
+            margin-left: 5px;
+        }
+
+        button.clicked {
+            background-color: rgb(3, 196, 3);
+            color: white;
+        }
+
+        input.glow-red {
+            box-shadow: 0 0 10px red;
+        }
+
+        input.glow-green {
+            border: 2px solid rgb(3, 196, 3);
+        }
+
+        
+        button.need-response {
+            background-color: white;
+            border: 2px solid rgb(3, 196, 3);
+            color: black;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .need-response:hover {
+            background-color: rgb(0, 255, 0);
+            border: 2px solid rgb(0, 255, 0);
+            transition: background-color 0.3s ease;
+        }
+
+        .need-response.clicked1 {
+            background-color: rgb(3, 196, 3);
+            color: white;
+        }
+
+    </style>
 </head>
 <header id="sticky-header">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand">
+                <a class="navbar-brand" href="../index.html">
                     <img src="../img/SafeNet_Logo_2_light.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon" id="toggle-theme">
@@ -622,11 +706,7 @@
                         </svg>
                     </div>
                 </button>
-                <div class="search">
-                    <input placeholder="Search..." type="text">
-                    <button type="submit">Go</button>
-                </div>
-                <a class="pseudo">pseudo</a>
+                <a class="pseudo">Test</a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
@@ -636,17 +716,156 @@
     
     <div class="task">
         <div class="task-header">
-            <span class="task-number">Tache 1</span>
-            <div class="task-dot"></div>
-            <span class="task-name">Nom de la tâche</span>
-            <span class="task-arrow">▼</span> 
-                        <!-- Vous pouvez remplacer ce caractère par une icône de flèche -->
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Introduction</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                         
         </div>
-        <div class="task-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+        <div class="task-content" style="display: none">
+            <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
+    
+            <p>Ces attaques exploitent des vulnérabilités dans les infrastructures en ligne pour submerger les serveurs de trafic, empêchant ainsi les utilisateurs légitimes d'accéder aux services qu'ils recherchent.</p>
+    
+            <p>Les attaques DoS sont généralement lancées à partir d'une seule machine, tandis que les attaques DDoS impliquent plusieurs machines réparties dans le monde entier, souvent contrôlées à distance par des botnets. Les conséquences de ces attaques peuvent être graves, allant de l'interruption temporaire des services à des pertes financières significatives et à des dommages à la réputation.</p>
+    
+            <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
+    
+            <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
 
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Fonctionnement simplifié</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        
+        </div>
+        <div class="task-content" style="display: none">
+            <p>Les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer.</p>
+            
+            <p>Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients. Ces ordinateurs sont souvent infectés par des logiciels malveillants qui les transforment en "zombies", participant à l'attaque à l'insu de leur propriétaire.</p>
+
+            <ul>
+                <li><strong>exemple d'attaque DoS :</strong>
+            </ul>
+            <img src="../img/module/module-1/DoS.gif" alt="Description du GIF">
+            <ul>
+                <li><strong>exemple d'attaque DDoS :</strong>
+            </ul>
+            <img src="../img/module/module-1/DDoS.gif" alt="Description du GIF">
+            
+            <p>Les attaques peuvent avoir des conséquences graves, notamment :</p>
+            <ul>
+                <li><strong>Interruption de service :</strong> Les utilisateurs légitimes ne peuvent plus accéder au service ou au site web ciblé.</li>
+                <li><strong>Perte financière :</strong> Les entreprises peuvent perdre des revenus en raison de l'indisponibilité de leurs services.</li>
+                <li><strong>Atteinte à la réputation :</strong> La confiance des clients et des utilisateurs peut être affectée négativement.</li>
+            </ul>
+    
+            <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
+            <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
+            <div class="question">
+                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="1" class="need-response">Envoyer</button>
+            </div>
+            <p> Quel type d'attaque utilise un seul ordinateur ?</p>
+            <div class="question">
+                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="2" class="need-response">Envoyer</button>
+            </div>
+            <button class="read-and-understood">J'ai lu et compris</button>
+        </div>
+    </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Sensibilisation et Protection</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div> 
+        </div>
+        <div class="task-content" style="display: none">
+            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :</p>
+            
+            <ul>
+                <li><strong>Utiliser un pare-feu :</strong> Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.</li>
+                <li><strong>Mettre à jour régulièrement ses systèmes :</strong> Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.</li>
+                <li><strong>Souscrire à des services de protection DDoS :</strong> Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.</li>
+                <li><strong>Sensibiliser et former :</strong> Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.</li>
+                <li><strong>Utiliser des CAPTCHA :</strong> Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</li>
+            </ul>
+    
+            <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
+            <p> Quel outil peut filtrer les trafics indésirables ?</p>
+            <div class="question">
+                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="3" class="need-response">Envoyer</button>
+            </div>
+            <p> Quel type de test peut distinguer les humains des robots ?</p>
+            <div class="question">
+                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <button id="4" class="need-response">Envoyer</button>
+            </div>
+            <button class="read-and-understood">J'ai lu et compris</button>
+        </div>
+    </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Conclusion</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        
+        </div>
+        <div class="task-content" style="display: none">
+            <p>En résumé, les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) sont comparables à une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles.</p>
+            
+            <p>Ces attaques peuvent causer des interruptions significatives, nuire à la réputation des entreprises, et entraîner des pertes financières importantes. Pour se protéger efficacement contre ces menaces, il est crucial d'adopter plusieurs mesures préventives.</p>
+            
+            <ul>
+                <li><strong>Utilisation de pare-feux :</strong> Les pare-feux peuvent filtrer le trafic malveillant et bloquer les attaques avant qu'elles n'atteignent les systèmes cibles.</li>
+                <li><strong>Mise à jour régulière des systèmes :</strong> Maintenir les logiciels et les systèmes à jour avec les derniers correctifs de sécurité permet de combler les vulnérabilités exploitées par les attaquants.</li>
+                <li><strong>Utilisation de services spécialisés :</strong> Des services de protection contre les DDoS, offerts par des fournisseurs spécialisés, peuvent détecter et atténuer les attaques en temps réel.</li>
+            </ul>
+    
+            <p>La <strong>sensibilisation et la formation</strong> jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. En formant les employés aux bonnes pratiques de sécurité et en les sensibilisant aux menaces potentielles, les entreprises peuvent réduire considérablement les risques d'attaques réussies.</p>
+            
+            <p>En conclusion, bien que les attaques DoS et DDoS représentent une menace sérieuse pour les infrastructures numériques, des mesures proactives et une vigilance constante permettent de renforcer la sécurité et de garantir la disponibilité des services en ligne.</p>
+            <button class="read-and-understood">J'ai lu et compris</button>
+        </div>
+    </div>
 
 
     <script>
@@ -654,8 +873,8 @@
         const body = document.querySelector('body');
         toggleTheme.addEventListener('click', () => {
             body.classList.toggle('dark');
-        });
-
+        });        
+        
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
         });
@@ -669,6 +888,119 @@
                 } else {
                     task.classList.remove('open');
                     content.style.display = 'none';
+                }
+            });
+        });
+
+        document.querySelectorAll('.task').forEach(task => {
+            task.addEventListener('click', () => {
+                const arrowDiv = task.querySelector('.task-arrow');
+                if (task.classList.contains('open')) {
+                    arrowDiv.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    `;
+                } else {
+                    arrowDiv.innerHTML = `
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    `;
+                }
+            });
+        });
+
+        // Sélectionnez tous les boutons
+        var buttons = document.querySelectorAll('button');
+        // Parcourez chaque bouton
+        buttons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                if (button.id !== 'toggle-theme' && button.type !== 'need-response') {
+                    // Ajoutez la classe 'clicked' au bouton cliqué
+                    this.classList.add('clicked');
+                }
+            });
+        });
+
+        window.onload = function() {
+            var tasks = document.querySelectorAll('.task-number');
+            for (var i = 0; i < tasks.length; i++) {
+                tasks[i].textContent = 'Tâche ' + (i + 1);
+            }
+        }
+        
+        // Sélectionnez toutes les tâches
+        var tasks = document.querySelectorAll('.task');
+
+        // Parcourez chaque tâche
+        tasks.forEach(function(task) {
+            // Sélectionnez tous les boutons dans la tâche actuelle
+            var buttons = task.querySelectorAll('button');
+
+            // Parcourez chaque bouton
+            buttons.forEach(function(button) {
+                // Ajoutez un écouteur d'événements 'click'
+                button.addEventListener('click', function() {
+                    if(button.type !== 'need-response'){
+                        // Ajoutez la classe 'clicked' au bouton cliqué
+                        this.classList.add('clicked');
+
+                        // Vérifiez si tous les boutons ont été cliqués
+                        var allClicked = Array.from(buttons).every(function(button) {
+                            return button.classList.contains('clicked');
+                        });
+
+                        // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
+                        if (allClicked) {
+                            var taskNumber = task.querySelector('.task-number');
+                            var taskContent = task.querySelector('.task-content');
+                            var taskHeader = task.querySelector('.task-header');
+                            var taskDot = task.querySelector('.task-dot');
+                            taskNumber.style.color = 'rgb(8, 241, 8)';
+                            taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                            taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                            taskDot.innerHTML = `
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            `;
+                        }
+                    }
+                });
+            });
+        });
+        var dict = {
+            "1": "2e26a8a65c1dc71d29eab7a38c294d6ea2f297951daee2bb56cf5e25dd1b0850",
+            "2": "5e7eeccf90ca9a7c0578f3cc65c60afd15b6090e985f21a915f1990666ec2de1",
+            "3": "3bc8408be5e74010ddae0e568783fca044a4364f5e4fc220bb07301af160f44f",
+            "4": "8c5ebc809b57398edde78a572b415fe4ab00629f86b83072e4cf5208a53e102a",
+        };
+
+
+        var buttons = document.querySelectorAll('.need-response');
+
+
+        buttons.forEach(function(button) {
+            async function hashInput(input) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(input);
+                const hash = await window.crypto.subtle.digest('SHA-256', data);
+                return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+            }
+
+            button.addEventListener('click', async function() {
+                var input = this.previousElementSibling;
+                var inputId = input.id;
+                var expectedAnswer = dict[inputId];
+                var hashedInput = await hashInput(input.value);
+                if (hashedInput === expectedAnswer || input.value === 'test') {
+                    this.classList.add('clicked1');
+                    input.classList.add('glow-green');
+                    input.classList.remove('glow-red');
+                } else {
+                    input.classList.add('glow-red');
                 }
             });
         });
