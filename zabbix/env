@@ -1,0 +1,15 @@
+POSTGRES_DB=zabbix
+POSTGRES_USER=zabbix
+POSTGRES_PASSWORD=zabbix
+POSTGRES_INITDB_ARGS=--encoding=UTF8
+DB_SERVER_HOST=postgres-server
+POSTGRES_DB=zabbix
+POSTGRES_USER=zabbix
+POSTGRES_PASSWORD=zabbix
+ZBX_JAVAGATEWAY=zabbix-java-gateway
+DB_SERVER_HOST=postgres-server
+POSTGRES_DB=zabbix
+POSTGRES_USER=zabbix
+POSTGRES_PASSWORD=zabbix
+ZBX_SERVER_HOST=zabbix-server-pgsql
+ZBX_SERVER_HOST=zabbix-server-pgsql

@@ -1,0 +1,85 @@
+version: '3.8'
+
+name: pi
+services:
+  postgres-server:
+    image: postgres:latest
+    container_name: postgres-server
+    env_file:
+      - .env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - zabbix-net
+
+  zabbix-java-gateway:
+    image: zabbix/zabbix-java-gateway:latest
+    container_name: zabbix-java-gateway
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - zabbix-net
+
+  zabbix-server-pgsql:
+    image: zabbix/zabbix-server-pgsql:latest
+    container_name: zabbix-server-pgsql
+    env_file:
+      - .env
+    ports:
+      - "10051:10051"
+    depends_on:
+      - postgres-server
+      - zabbix-java-gateway
+    restart: unless-stopped
+    networks:
+      - zabbix-net
+
+  zabbix-web-nginx-pgsql:
+    image: zabbix/zabbix-web-nginx-pgsql:latest
+    container_name: zabbix-web-nginx-pgsql
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-server
+      - zabbix-server-pgsql
+    restart: unless-stopped
+    networks:
+      - zabbix-net
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent:latest
+    container_name: zabbix-agent
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - zabbix-server-pgsql
+    networks:
+      - zabbix-net
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /:/host_root:ro
+
+  zabbix-snmptrap:
+    image: zabbix/zabbix-snmptraps:latest
+    container_name: zabbix-snmptrap
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - zabbix-server-pgsql
+    networks:
+      - zabbix-net
+
+networks:
+  zabbix-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
+
