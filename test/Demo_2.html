@@ -660,6 +660,9 @@
 
         input.glow-green {
             border: 2px solid rgb(3, 196, 3);
+            background-color: #e3e3e3;
+            color: rgb(103, 103, 103);
+            pointer-events: none;
         }
 
         
@@ -682,6 +685,7 @@
         .need-response.clicked1 {
             background-color: rgb(3, 196, 3);
             color: white;
+            pointer-events: none;
         }
 
     </style>
@@ -1012,8 +1016,26 @@
                     this.classList.add('clicked1');
                     input.classList.add('glow-green');
                     input.classList.remove('glow-red');
+                    input.blur();
                 } else {
                     input.classList.add('glow-red');
+                }
+            });
+        });
+
+        // Sélectionnez tous les champs d'entrée
+        var inputs = document.querySelectorAll('input');
+
+        // Parcourez chaque champ d'entrée
+        inputs.forEach(function(input, index) {
+            // Ajoutez un écouteur d'événements 'keydown'
+            input.addEventListener('keydown', function(event) {
+                // Si la touche 'Enter' est pressée
+                if (event.key === 'Enter') {
+                    // Sélectionnez le bouton correspondant  
+                    var button = this.nextElementSibling;
+                    // Déclenchez un clic sur le bouton
+                    button.click();
                 }
             });
         });
