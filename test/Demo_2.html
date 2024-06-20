@@ -682,7 +682,7 @@
             transition: background-color 0.3s ease;
         }
 
-        .need-response.clicked1 {
+        .need-response.clicked {
             background-color: rgb(3, 196, 3);
             color: white;
             pointer-events: none;
@@ -883,14 +883,7 @@
             } else {
                 logo.src = "../img/SafeNet_Logo_2_dark.png";
             }
-        });
-        /*
-        const toggleTheme = document.getElementById('toggle-theme');
-        const body = document.querySelector('body');
-        toggleTheme.addEventListener('click', () => {
-            body.classList.toggle('dark');
-        });    
-        */    
+        });  
         
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
@@ -928,6 +921,7 @@
             });
         });
 
+        /*
         // Sélectionnez tous les boutons
         var buttons = document.querySelectorAll('button');
         // Parcourez chaque bouton
@@ -939,6 +933,7 @@
                 }
             });
         });
+        */
 
         window.onload = function() {
             var tasks = document.querySelectorAll('.task-number');
@@ -959,31 +954,31 @@
             buttons.forEach(function(button) {
                 // Ajoutez un écouteur d'événements 'click'
                 button.addEventListener('click', function() {
-                    if(button.type !== 'need-response'){
-                        // Ajoutez la classe 'clicked' au bouton cliqué
+                    if (!button.classList.contains('need-response')) {
                         this.classList.add('clicked');
+                    }                
 
-                        // Vérifiez si tous les boutons ont été cliqués
-                        var allClicked = Array.from(buttons).every(function(button) {
-                            return button.classList.contains('clicked');
-                        });
+                    // Vérifiez si tous les boutons ont été cliqués
+                    var allClicked = Array.from(buttons).every(function(button) {
+                        return button.classList.contains('clicked');
+                    });
 
-                        // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                        if (allClicked) {
-                            var taskNumber = task.querySelector('.task-number');
-                            var taskContent = task.querySelector('.task-content');
-                            var taskHeader = task.querySelector('.task-header');
-                            var taskDot = task.querySelector('.task-dot');
-                            taskNumber.style.color = 'rgb(8, 241, 8)';
-                            taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                            taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                            taskDot.innerHTML = `
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            `;
-                        }
+                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
+                    if (allClicked) {
+                        var taskNumber = task.querySelector('.task-number');
+                        var taskContent = task.querySelector('.task-content');
+                        var taskHeader = task.querySelector('.task-header');
+                        var taskDot = task.querySelector('.task-dot');
+                        taskNumber.style.color = 'rgb(8, 241, 8)';
+                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskDot.innerHTML = `
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        `;
+                        task.setAttribute('type', 'finish');
                     }
                 });
             });
@@ -1013,7 +1008,7 @@
                 var expectedAnswer = dict[inputId];
                 var hashedInput = await hashInput(input.value);
                 if (hashedInput === expectedAnswer || input.value === 'test') {
-                    this.classList.add('clicked1');
+                    this.classList.add('clicked');
                     input.classList.add('glow-green');
                     input.classList.remove('glow-red');
                     input.blur();
@@ -1037,6 +1032,45 @@
                     // Déclenchez un clic sur le bouton
                     button.click();
                 }
+            });
+        });
+
+        // Sélectionnez toutes les tâches
+        var tasks = document.querySelectorAll('.task');
+        // Parcourez chaque tâche
+        tasks.forEach(function(task) {
+            // Sélectionnez tous les boutons dans la tâche actuelle
+            var buttons = task.querySelectorAll('button');
+            // Parcourez chaque bouton
+            buttons.forEach(function(button) {
+                // Ajoutez un écouteur d'événements 'click'
+                button.addEventListener('click', function() {
+                    // Si le bouton est de type 'need-response', ajoutez la classe 'clicked'
+                    if (button.classList.contains('need-response')) {
+                        this.classList.add('clicked');
+                    }
+                    // Vérifiez si tous les boutons ont été cliqués
+                    var allClicked = Array.from(buttons).every(function(button) {
+                        return button.classList.contains('clicked');
+                    });
+                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
+                    if (allClicked) {
+                        var taskNumber = task.querySelector('.task-number');
+                        var taskContent = task.querySelector('.task-content');
+                        var taskHeader = task.querySelector('.task-header');
+                        var taskDot = task.querySelector('.task-dot');
+                        taskNumber.style.color = 'rgb(8, 241, 8)';
+                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                        taskDot.innerHTML = `
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        `;
+                        task.setAttribute('type', 'finish');
+                    }
+                });
             });
         });
     </script>
