@@ -432,13 +432,13 @@
             </svg>
         </div>
     </button>
-    <button class="animated-button" onclick="signup_button()">
-        <span>Sign up</span>
+    <button class="animated-button" onclick="login_button()">
+        <span>Login</span>
         <span></span>
     </button>
 </header>
 <body>
-    <form class="form" action="test_mainpage.html" method="post" name="registerForm" onsubmit="return validateForm()">
+    <form class="form" action="test_mainpage.php" method="post" name="registerForm" onsubmit="return validateForm()">
         <div class="flex-column">
             <label>Email </label>
         </div>
@@ -461,14 +461,27 @@
             </label>
         </div>
         <span id="forcedPassword" class="verification"></span>
+        <div class="flex-column">
+            <label>Confirm Password </label>
+        </div>
+        <span id="confirmPasswordError" class="error"></span>
+        <div class="inputForm" name="confirmPassword">
+            <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path></svg>        
+            <input type="password" id="confirm-password-field" name="CONFIRMPASSWORD" class="input" placeholder="Confirm your Password">
+
+            <label class="container" name="eye-confirm">
+                <input type="checkbox" checked="checked" onclick="toggleConfirmPasswordVisibility()">
+                <svg class="eye" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"></path></svg>
+                <svg class="eye-slash" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c8.4-19.3 10.6-41.4 4.8-63.3c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zM373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5L373 389.9z"></path></svg>
+            </label>
+        </div>
         <div class="flex-row">
             <div>
                 <input type="checkbox" id="remember-me">
                 <label for="remember-me">Remember me </label>
             </div>
-            <span class="span">Forgot password ?</span>
         </div>
-        <button class="button-submit">Log In</button>
+        <button class="button-submit">Sign In</button>
     </form>
 </body>
 <footer>
@@ -506,11 +519,17 @@
                 }
             }
             
+        // changement de page
+        function login_button() {
+            window.location.href = "test_loginpage.php";
+        }
+
         // Fonction de validation du formulaire
         function validateForm() {
             // Récupérer les valeurs des champs email, password et confirmPassword
             var email = document.querySelector('input[name="EMAIL"]').value;
             var password = document.querySelector('input[name="PASSWORD"]').value;
+            var confirmPassword = document.querySelector('input[name="CONFIRMPASSWORD"]').value;
             var regexemail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             var upperCase = new RegExp('[A-Z]');
             var lowerCase = new RegExp('[a-z]');
@@ -520,15 +539,18 @@
             // Initialiser les messages d'erreur à vide
             document.getElementById('emailError').textContent = '';
             document.getElementById('passwordError').textContent = '';
+            document.getElementById('confirmPasswordError').textContent = '';
 
             // Retirer la classe error des champs email, password et confirmPassword
             document.querySelector('input[name="EMAIL"]').parentElement.classList.remove('error');
             document.querySelector('input[name="PASSWORD"]').parentElement.classList.remove('error');
+            document.querySelector('input[name="CONFIRMPASSWORD"]').parentElement.classList.remove('error');
 
 
             // Initialiser les variables de validation à true
             var emailValid = true;
             var passwordValid = true;
+            var confirmPasswordValid = true;
 
             // Valider l'email
             if (email === '') {
@@ -548,13 +570,48 @@
                 passwordValid = false;
             }
 
+            //Valider que le mot de passe est assez fort
+            if (password.length < 8) {
+                document.getElementById('passwordError').textContent = 'Password must be at least 8 characters';
+                document.querySelector('input[name="PASSWORD"]').parentElement.classList.add('error');
+                passwordValid = false;
+            }
+            if (!upperCase.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must contain at least one uppercase letter';
+                document.querySelector('input[name="PASSWORD"]').parentElement.classList.add('error');
+                passwordValid = false;
+            }
+            if (!lowerCase.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must contain at least one lowercase letter';
+                document.querySelector('input[name="PASSWORD"]').parentElement.classList.add('error');
+                passwordValid = false;
+            }
+            if (!numbers.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must contain at least one number';
+                document.querySelector('input[name="PASSWORD"]').parentElement.classList.add('error');
+                passwordValid = false;
+            }
+            if (!specialchars.test(password)) {
+                document.getElementById('passwordError').textContent = 'Password must contain at least one special character';
+                document.querySelector('input[name="PASSWORD"]').parentElement.classList.add('error');
+                passwordValid = false;
+            }
+
+            // Valider la confirmation du mot de passe
+            if (confirmPassword === '') {
+                document.getElementById('confirmPasswordError').textContent = 'Confirm Password is required';
+                document.querySelector('input[name="CONFIRMPASSWORD"]').parentElement.classList.add('error');
+                confirmPasswordValid = false;
+            } else if (confirmPassword !== password) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                document.querySelector('input[name="CONFIRMPASSWORD"]').parentElement.classList.add('error');
+                confirmPasswordValid = false;
+            }
+
             // Retourner true si tous les champs sont valides, sinon false
-            return emailValid && passwordValid;
+            return emailValid && passwordValid && confirmPasswordValid;
         }
-        
-        function signup_button() {
-            window.location.href = "test_signuppage.html";
-        }
+
 
         // Appeler la fonction validateForm lors de la soumission du formulaire
         document.querySelector('form').addEventListener('submit', function(event) {
