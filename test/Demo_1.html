@@ -921,19 +921,29 @@
             });
         });
 
-        /*
-        // Sélectionnez tous les boutons
-        var buttons = document.querySelectorAll('button');
-        // Parcourez chaque bouton
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                if (button.id !== 'toggle-theme' && button.type !== 'need-response') {
-                    // Ajoutez la classe 'clicked' au bouton cliqué
-                    this.classList.add('clicked');
-                }
+        function updateTaskStatus(task) {
+            // alert("hi");
+            var buttons = task.querySelectorAll('button');
+            var allClicked = Array.from(buttons).every(function(button) {
+                return button.classList.contains('clicked');
             });
-        });
-        */
+            if (allClicked) {
+                var taskNumber = task.querySelector('.task-number');
+                var taskContent = task.querySelector('.task-content');
+                var taskHeader = task.querySelector('.task-header');
+                var taskDot = task.querySelector('.task-dot');
+                taskNumber.style.color = 'rgb(8, 241, 8)';
+                taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                taskDot.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                `;
+                task.setAttribute('type', 'finish');
+            }
+        }
 
         window.onload = function() {
             var tasks = document.querySelectorAll('.task-number');
@@ -941,54 +951,17 @@
                 tasks[i].textContent = 'Tâche ' + (i + 1);
             }
         }
-        
-        // Sélectionnez toutes les tâches
-        var tasks = document.querySelectorAll('.task');
 
-        // Parcourez chaque tâche
-        tasks.forEach(function(task) {
-            // Sélectionnez tous les boutons dans la tâche actuelle
-            var buttons = task.querySelectorAll('button');
-
-            // Parcourez chaque bouton
-            buttons.forEach(function(button) {
-                // Ajoutez un écouteur d'événements 'click'
-                button.addEventListener('click', function() {
-                    if (!button.classList.contains('need-response')) {
-                        this.classList.add('clicked');
-                    }                
-
-                    // Vérifiez si tous les boutons ont été cliqués
-                    var allClicked = Array.from(buttons).every(function(button) {
-                        return button.classList.contains('clicked');
-                    });
-
-                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                    if (allClicked) {
-                        var taskNumber = task.querySelector('.task-number');
-                        var taskContent = task.querySelector('.task-content');
-                        var taskHeader = task.querySelector('.task-header');
-                        var taskDot = task.querySelector('.task-dot');
-                        taskNumber.style.color = 'rgb(8, 241, 8)';
-                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskDot.innerHTML = `
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
-                        task.setAttribute('type', 'finish');
-                    }
-                });
-            });
-        });
         var dict = {
-            "1": "2e26a8a65c1dc71d29eab7a38c294d6ea2f297951daee2bb56cf5e25dd1b0850",
-            "2": "5e7eeccf90ca9a7c0578f3cc65c60afd15b6090e985f21a915f1990666ec2de1",
-            "3": "3bc8408be5e74010ddae0e568783fca044a4364f5e4fc220bb07301af160f44f",
-            "4": "8c5ebc809b57398edde78a572b415fe4ab00629f86b83072e4cf5208a53e102a",
+            "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
+            "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
+            "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
+            "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
         };
+
+        var dict2 = {
+            "3":"a3863c5d7ce546d24186581bcba0b0a157db9d318d9174d46d0db3f3f38cc1a6"
+        }
 
 
         var buttons = document.querySelectorAll('.need-response');
@@ -997,7 +970,7 @@
         buttons.forEach(function(button) {
             async function hashInput(input) {
                 const encoder = new TextEncoder();
-                const data = encoder.encode(input);
+                const data = encoder.encode(input.toLowerCase());
                 const hash = await window.crypto.subtle.digest('SHA-256', data);
                 return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
             }
@@ -1006,73 +979,57 @@
                 var input = this.previousElementSibling;
                 var inputId = input.id;
                 var expectedAnswer = dict[inputId];
+                var alternativeAnswer = dict2[inputId];
                 var hashedInput = await hashInput(input.value);
-                if (hashedInput === expectedAnswer || input.value === 'test') {
+                if (hashedInput === expectedAnswer || hashedInput === alternativeAnswer || input.value === 'test') {
                     this.classList.add('clicked');
                     input.classList.add('glow-green');
                     input.classList.remove('glow-red');
                     input.blur();
+                    updateTaskStatus(task)
                 } else {
                     input.classList.add('glow-red');
                 }
             });
         });
 
-        // Sélectionnez tous les champs d'entrée
         var inputs = document.querySelectorAll('input');
-
-        // Parcourez chaque champ d'entrée
+        var tasks = document.querySelectorAll('.task');
         inputs.forEach(function(input, index) {
-            // Ajoutez un écouteur d'événements 'keydown'
             input.addEventListener('keydown', function(event) {
-                // Si la touche 'Enter' est pressée
                 if (event.key === 'Enter') {
-                    // Sélectionnez le bouton correspondant  
                     var button = this.nextElementSibling;
-                    // Déclenchez un clic sur le bouton
                     button.click();
+                    /*
+                    tasks.forEach(function(task) {
+                        button.addEventListener('click', function() {
+                            var allClicked = Array.from(buttons).every(function(button) {
+                                return button.classList.contains('clicked');
+                            });
+                            updateTaskStatus(task);
+                        });
+                    })
+                        */
                 }
             });
         });
 
-        // Sélectionnez toutes les tâches
         var tasks = document.querySelectorAll('.task');
-        // Parcourez chaque tâche
         tasks.forEach(function(task) {
-            // Sélectionnez tous les boutons dans la tâche actuelle
             var buttons = task.querySelectorAll('button');
-            // Parcourez chaque bouton
             buttons.forEach(function(button) {
-                // Ajoutez un écouteur d'événements 'click'
                 button.addEventListener('click', function() {
-                    // Si le bouton est de type 'need-response', ajoutez la classe 'clicked'
-                    if (button.classList.contains('need-response')) {
+                    if (!button.classList.contains('need-response')) {
                         this.classList.add('clicked');
                     }
-                    // Vérifiez si tous les boutons ont été cliqués
                     var allClicked = Array.from(buttons).every(function(button) {
                         return button.classList.contains('clicked');
                     });
-                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                    if (allClicked) {
-                        var taskNumber = task.querySelector('.task-number');
-                        var taskContent = task.querySelector('.task-content');
-                        var taskHeader = task.querySelector('.task-header');
-                        var taskDot = task.querySelector('.task-dot');
-                        taskNumber.style.color = 'rgb(8, 241, 8)';
-                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskDot.innerHTML = `
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
-                        task.setAttribute('type', 'finish');
-                    }
+                    updateTaskStatus(task);
                 });
             });
         });
+
     </script>
 
 </body>
