@@ -1,3 +1,7 @@
+<?php
+    $pseudo = "Cronix";
+    //$pseudo = $_POST['pseudo'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -710,7 +714,7 @@
                         </svg>
                     </div>
                 </button>
-                <a class="pseudo">Test</a>
+                <a class="pseudo"><?= $pseudo; ?></a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
