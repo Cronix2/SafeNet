@@ -438,7 +438,7 @@
     </button>
 </header>
 <body>
-    <form class="form" action="test_mainpage.php" method="post" name="registerForm" onsubmit="return validateForm()">
+    <form class="form" method="post" name="registerForm" onsubmit="return validateForm()">
         <div class="flex-column">
             <label>Email </label>
         </div>
@@ -465,7 +465,7 @@
             <label>Confirm Password </label>
         </div>
         <span id="confirmPasswordError" class="error"></span>
-        <div class="inputForm" name="confirmPassword">
+        <div class="inputForm" name="confirmPassword" name="confirmPassword">
             <svg height="20" viewBox="-64 0 512 512" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path><path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path></svg>        
             <input type="password" id="confirm-password-field" name="CONFIRMPASSWORD" class="input" placeholder="Confirm your Password">
 
@@ -477,13 +477,65 @@
         </div>
         <div class="flex-row">
             <div>
-                <input type="checkbox" id="remember-me">
+                <input type="checkbox" id="remember-me" name="remember-me">
                 <label for="remember-me">Remember me </label>
             </div>
         </div>
-        <button class="button-submit">Sign In</button>
+        <input type='submit' class="button-submit" name="formsend" >
     </form>
+
+    <?php
+
+        if (isset($_POST["formsend"])){
+
+            extract($_POST);
+
+            if(!empty($EMAIL) && !empty($PASSWORD) && !empty($CONFIRMPASSWORD)){
+                if($PASSWORD == $CONFIRMPASSWORD){
+
+                    
+
+                    $emailParts = explode('@', $EMAIL);
+                    $PSEUDO = $emailParts[0];
+
+                    $options = [
+                        'cost' => 12,
+                    ];
+                    $hashpass = password_hash($PASSWORD, PASSWORD_BCRYPT, $options);
+
+                    include '../database.php';
+                    global $db;
+                    
+                    $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
+                    $c->execute(['EMAIL' => $EMAIL]);
+
+                    $result = $c->rowCount();
+
+                    if($result == 0){
+
+                        $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd) VALUES (:PSEUDO, :EMAIL,  :PASSWORD)");
+                        $q->execute([
+                            'PSEUDO' => $PSEUDO,
+                            'EMAIL' => $EMAIL,
+                            'PASSWORD' => $hashpass
+                        ]);
+                    }
+                    else{
+                        echo "Cet email est déjà utilisé";
+                    }
+                }
+                else{
+                    echo "Les mots de passe ne correspondent pas";
+                }
+            }
+            else{
+                echo "case vide";
+            }
+        }
+    ?>
+
 </body>
+<!--
 <footer>
     <div class="footer-content">
         <div class="legal">
@@ -637,5 +689,7 @@
         });
         */
     </script>
+
 </footer>
+-->
 </html>
