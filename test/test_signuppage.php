@@ -489,25 +489,25 @@
         if (isset($_POST["formsend"])){
 
             extract($_POST);
+            $email = htmlspecialchars($EMAIL);
+            $password = htmlspecialchars($PASSWORD);
+            $confirmPassword = htmlspecialchars($CONFIRMPASSWORD);
 
-            if(!empty($EMAIL) && !empty($PASSWORD) && !empty($CONFIRMPASSWORD)){
-                if($PASSWORD == $CONFIRMPASSWORD){
-
-                    
-
-                    $emailParts = explode('@', $EMAIL);
+            if(!empty($email) && !empty($password) && !empty($confirmPassword)){
+                if($password == $confirmPassword){
+                    $emailParts = explode('@', $email);
                     $PSEUDO = $emailParts[0];
 
                     $options = [
                         'cost' => 12,
                     ];
-                    $hashpass = password_hash($PASSWORD, PASSWORD_BCRYPT, $options);
+                    $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
 
                     include '../database.php';
                     global $db;
                     
                     $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
-                    $c->execute(['EMAIL' => $EMAIL]);
+                    $c->execute(['EMAIL' => $email]);
 
                     $result = $c->rowCount();
 
@@ -516,7 +516,7 @@
                         $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd) VALUES (:PSEUDO, :EMAIL,  :PASSWORD)");
                         $q->execute([
                             'PSEUDO' => $PSEUDO,
-                            'EMAIL' => $EMAIL,
+                            'EMAIL' => $email,
                             'PASSWORD' => $hashpass
                         ]);
                     }
@@ -535,7 +535,6 @@
     ?>
 
 </body>
-<!--
 <footer>
     <div class="footer-content">
         <div class="legal">
@@ -554,6 +553,8 @@
             this.classList.toggle('active');
         });
 
+        
+
         function togglePasswordVisibility() {
                 var passwordField = document.getElementById('password-field');
                 if (passwordField.type === "password") {
@@ -571,11 +572,13 @@
                 }
             }
             
+
         // changement de page
         function login_button() {
             window.location.href = "test_loginpage.php";
         }
-
+        
+        /*
         // Fonction de validation du formulaire
         function validateForm() {
             // Récupérer les valeurs des champs email, password et confirmPassword
@@ -670,6 +673,7 @@
             event.preventDefault();
             validateForm();
         });
+        */
         
         /*
         // Sélectionnez l'élément de mot de passe
@@ -691,5 +695,5 @@
     </script>
 
 </footer>
--->
+
 </html>

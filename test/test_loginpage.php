@@ -1,3 +1,38 @@
+<?php
+session_start();
+include '../database.php';
+if (isset($_POST['formsend'])) {
+    extract($_POST);
+    $email = htmlspecialchars($email);
+    $password = htmlspecialchars($password);
+    if (!empty($email) && !empty($password)) {
+        $q = $db->prepare("SELECT * FROM users WHERE email = :EMAIL and psswrd = :PASSWORD");
+        $q->execute([
+            'EMAIL' => $email,
+            'PASSWORD' => $password
+        ]);
+        $result = $q->fetch();
+        if ($result == true) {
+            $options = [
+                'cost' => 12,
+            ];
+            $_SESSION['Test'] = 'tesT2';
+            if (password_verify($password, $result['psswrd'])) {
+                $_SESSION['EMAIL'] = 'coucou les loulous';
+                $_SESSION['PSEUDO'] = 'coucou les loulous';
+                header('Location: test_mainpage.php');
+            } else {
+                echo '<p class="p">Email or password is incorrect</p>';
+            }
+        } else {
+            echo '<p class="p">Email or password is incorrect</p>';
+        }
+    } else {
+        echo '<p class="p">Please fill in all fields</p>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -468,8 +503,9 @@
             </div>
             <span class="span">Forgot password ?</span>
         </div>
-        <button class="button-submit">Log In</button>
+        <input type='submit' class="button-submit" name="formsend">
     </form>
+
 </body>
 <footer>
     <div class="footer-content">
@@ -505,6 +541,8 @@
                     passwordField.type = "password";
                 }
             }
+
+        /*
             
         // Fonction de validation du formulaire
         function validateForm() {
@@ -517,7 +555,7 @@
             var numbers = new RegExp('[0-9]');
             var specialchars = new RegExp('([!,%,&,@,#,$,^,*,?,_,~])');
 
-            // Initialiser les messages d'erreur à vide
+            // Initialiser les messages d'_SESSIONur à vide
             document.getElementById('emailError').textContent = '';
             document.getElementById('passwordError').textContent = '';
 
@@ -551,16 +589,19 @@
             // Retourner true si tous les champs sont valides, sinon false
             return emailValid && passwordValid;
         }
+        */
+        
         
         function signup_button() {
             window.location.href = "test_signuppage.php";
         }
-
+        /*
         // Appeler la fonction validateForm lors de la soumission du formulaire
         document.querySelector('form').addEventListener('submit', function(event) {
             event.preventDefault();
             validateForm();
         });
+        */
         
         /*
         // Sélectionnez l'élément de mot de passe
