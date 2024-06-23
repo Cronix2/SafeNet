@@ -1,3 +1,7 @@
+<?php
+session_start();
+include '../database.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>

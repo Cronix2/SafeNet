@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo $_SESSION['Test'];
 include '../database.php';
 ?>
 <!DOCTYPE html>
@@ -490,7 +489,7 @@ include '../database.php';
                     <input placeholder="Search..." type="text">
                     <button type="submit">Go</button>
                 </div>
-                <a class="pseudo">TEST</a>
+                <a class="pseudo"><?= $_SESSION['pseudo']?></a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>

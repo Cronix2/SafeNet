@@ -1,38 +1,7 @@
 <?php
 session_start();
 include '../database.php';
-if (isset($_POST['formsend'])) {
-    extract($_POST);
-    $email = htmlspecialchars($email);
-    $password = htmlspecialchars($password);
-    if (!empty($email) && !empty($password)) {
-        $q = $db->prepare("SELECT * FROM users WHERE email = :EMAIL and psswrd = :PASSWORD");
-        $q->execute([
-            'EMAIL' => $email,
-            'PASSWORD' => $password
-        ]);
-        $result = $q->fetch();
-        if ($result == true) {
-            $options = [
-                'cost' => 12,
-            ];
-            $_SESSION['Test'] = 'tesT2';
-            if (password_verify($password, $result['psswrd'])) {
-                $_SESSION['EMAIL'] = 'coucou les loulous';
-                $_SESSION['PSEUDO'] = 'coucou les loulous';
-                header('Location: test_mainpage.php');
-            } else {
-                echo '<p class="p">Email or password is incorrect</p>';
-            }
-        } else {
-            echo '<p class="p">Email or password is incorrect</p>';
-        }
-    } else {
-        echo '<p class="p">Please fill in all fields</p>';
-    }
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -473,7 +442,7 @@ if (isset($_POST['formsend'])) {
     </button>
 </header>
 <body>
-    <form class="form" action="test_mainpage.php" method="post" name="registerForm" onsubmit="return validateForm()">
+    <form class="form" method="post" name="registerForm" onsubmit="return validateForm()">
         <div class="flex-column">
             <label>Email </label>
         </div>
@@ -503,9 +472,37 @@ if (isset($_POST['formsend'])) {
             </div>
             <span class="span">Forgot password ?</span>
         </div>
-        <input type='submit' class="button-submit" name="formsend">
+        <input type='submit' class="button-submit" name="formsend1">
     </form>
-
+    <?php
+    if (isset($_POST['formsend1'])) {
+        echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
+        extract($_POST);
+        $email = htmlspecialchars($EMAIL);
+        $password = htmlspecialchars($PASSWORD);
+        if (!empty($email) && !empty($password)) {
+            $q = $db->prepare("SELECT * FROM users WHERE email = :EMAIL");
+            $q->execute([
+                'EMAIL' => $email,
+            ]);
+            $result = $q->fetch();
+            if ($result == true) {
+                if (password_verify($password, $result['psswrd'])) {
+                    $_SESSION['email'] = $email;
+                    $_SESSION['pseudo'] = $result['pseudo'];
+                    $_SESSION['id'] = $result['id'];
+                    echo "<meta http-equiv='refresh' content='0; url=test_mainpage.php'>";
+                } else {
+                    //echo '<p class="p">Email or password is incorrect</p>';
+                }
+            } else {
+                //echo '<p class="p">Email or password is incorrect</p>';
+            }
+        } else {
+            //echo '<p class="p">Please fill in all fields</p>';
+        }
+    }
+    ?>
 </body>
 <footer>
     <div class="footer-content">
@@ -542,7 +539,7 @@ if (isset($_POST['formsend'])) {
                 }
             }
 
-        /*
+        
             
         // Fonction de validation du formulaire
         function validateForm() {
@@ -589,7 +586,7 @@ if (isset($_POST['formsend'])) {
             // Retourner true si tous les champs sont valides, sinon false
             return emailValid && passwordValid;
         }
-        */
+        
         
         
         function signup_button() {
@@ -620,6 +617,7 @@ if (isset($_POST['formsend'])) {
         
         });
         */
+        
     </script>
 </footer>
 </html>

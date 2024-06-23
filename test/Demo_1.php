@@ -1,6 +1,6 @@
 <?php
-    $pseudo = "Cronix";
-    //$pseudo = $_POST['pseudo'];
+session_start();
+include '../database.php';
 ?>
 <!DOCTYPE html>
 <html>
