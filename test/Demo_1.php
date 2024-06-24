@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../database.php';
+include '../include/database.php';
 if (!isset($_SESSION['pseudo'])){
     header('Location: ../../index.php');
     exit();
@@ -709,7 +709,7 @@ if ($_SESSION['theme'] == 'light'){
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../index.php">
+                <a class="navbar-brand" href="../include/index.php">
                     <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
@@ -891,7 +891,7 @@ if ($_SESSION['theme'] == 'light'){
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../update_theme.php', true);
+            xhr.open('POST', '../include/update_theme.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function() {
                 if (this.status == 200) {

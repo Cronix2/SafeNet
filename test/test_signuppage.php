@@ -505,7 +505,7 @@
                     ];
                     $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
 
-                    include '../database.php';
+                    include '../include/database.php';
                     global $db;
                     
                     $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
