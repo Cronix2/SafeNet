@@ -488,6 +488,8 @@
 
         if (isset($_POST["formsend"])){
 
+            echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
+            
             extract($_POST);
             $email = htmlspecialchars($EMAIL);
             $password = htmlspecialchars($PASSWORD);
@@ -578,7 +580,7 @@
             window.location.href = "test_loginpage.php";
         }
         
-        /*
+        
         // Fonction de validation du formulaire
         function validateForm() {
             // Récupérer les valeurs des champs email, password et confirmPassword
@@ -667,7 +669,7 @@
             return emailValid && passwordValid && confirmPasswordValid;
         }
 
-
+        /*
         // Appeler la fonction validateForm lors de la soumission du formulaire
         document.querySelector('form').addEventListener('submit', function(event) {
             event.preventDefault();

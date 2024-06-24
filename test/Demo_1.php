@@ -1,6 +1,17 @@
 <?php
 session_start();
 include '../database.php';
+if (!isset($_SESSION['pseudo'])){
+    header('Location: ../../index.php');
+    exit();
+}
+if ($_SESSION['theme'] == 'light'){
+    $button_theme = 'disactive';
+    $logo = '../img/SafeNet_Logo_2_dark.png';
+} else {
+    $button_theme =  'active';
+    $logo = '../img/SafeNet_Logo_2_light.png';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -698,10 +709,10 @@ include '../database.php';
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../img/SafeNet_Logo_2_dark.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
+                <a class="navbar-brand" href="../index.php">
+                    <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
-                <button class="change-theme__icon" id="toggle-theme">
+                <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
                     <div class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
                             <path fill="#1c1c1e" d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" clip-rule="evenodd" fill-rule="evenodd"></path>
@@ -714,13 +725,13 @@ include '../database.php';
                         </svg>
                     </div>
                 </button>
-                <a class="pseudo"><?= $pseudo; ?></a>
+                <a class="pseudo"><?= $_SESSION['pseudo']; ?></a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
     </nav>
 </header>
-<body>
+<body class = "<?= $_SESSION['theme']?>">
     
     <div class="task">
         <div class="task-header">
@@ -879,19 +890,30 @@ include '../database.php';
     <script>
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
-            document.body.classList.toggle('dark');
-            var logo = document.querySelector('img[alt="Logo"]');
-            var theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-            if (theme === 'dark') {
-                logo.src = "../img/SafeNet_Logo_2_light.png";
-            } else {
-                logo.src = "../img/SafeNet_Logo_2_dark.png";
-            }
-        });  
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../update_theme.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var newTheme = this.responseText; // La réponse attendue est le nouveau thème ('light' ou 'dark')
+                    document.body.classList.remove('light', 'dark');
+                    document.body.classList.add(newTheme);
+
+                    var logo = document.querySelector('img[alt="Logo"]');
+                    if (newTheme === 'dark') {
+                        logo.src = "../img/SafeNet_Logo_2_light.png";
+                    } else {
+                        logo.src = "../img/SafeNet_Logo_2_dark.png";
+                    }
+                }
+            };
+            xhr.send('toggle=true'); // Envoie une requête pour basculer le thème
+        });
         
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
         });
+        
 
         document.querySelectorAll('.task').forEach(task => {
             task.querySelector('.task-header').addEventListener('click', () => {

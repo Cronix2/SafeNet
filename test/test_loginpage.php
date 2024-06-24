@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../database.php';
+$_SESSION['theme']='light';
 ?>
 <!DOCTYPE html>
 <html lang="en">

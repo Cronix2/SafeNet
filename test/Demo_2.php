@@ -1,6 +1,10 @@
 <?php
 session_start();
 include '../database.php';
+if (!isset($_SESSION['pseudo'])){
+    header('Location: ../../index.php');
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -698,7 +702,7 @@ include '../database.php';
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../index.php">
                     <img src="../img/SafeNet_Logo_2_dark.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon" id="toggle-theme">
@@ -714,7 +718,7 @@ include '../database.php';
                         </svg>
                     </div>
                 </button>
-                <a class="pseudo">Test</a>
+                <a class="pseudo"><?= $_SESSION['pseudo']; ?></a>
                 <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>

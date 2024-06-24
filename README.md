@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/SafeNet_Logo_1.svg" width="100" />
+    <img src="img/SafeNet_Logo_1.svg" width="100" />
 </p>
 <p align="center">
     <h1 align="center">SAFENET</h1>
