@@ -2,6 +2,34 @@
 session_start();
 include '../include/database.php';
 $_SESSION['theme']='light';
+
+if (isset($_POST['formsend1'])) {
+    echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
+    extract($_POST);
+    $email = htmlspecialchars($EMAIL);
+    $password = htmlspecialchars($PASSWORD);
+    if (!empty($email) && !empty($password)) {
+        $q = $db->prepare("SELECT * FROM users WHERE email = :EMAIL");
+        $q->execute([
+            'EMAIL' => $email,
+        ]);
+        $result = $q->fetch();
+        if ($result == true) {
+            if (password_verify($password, $result['psswrd'])) {
+                $_SESSION['email'] = $email;
+                $_SESSION['pseudo'] = $result['pseudo'];
+                $_SESSION['id'] = $result['id'];
+                echo "<meta http-equiv='refresh' content='0; url=test_mainpage.php'>";
+            } else {
+                $_SESSION['connect'] = 'error';
+            }
+        } else {
+            $_SESSION['connect'] = 'error';
+        }
+    } else {
+        //echo '<p class="p">Please fill in all fields</p>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -421,6 +449,49 @@ $_SESSION['theme']='light';
             color: green;
         }
 
+        
+        .alert_information_red {
+            margin-top: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 320px;
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            background: #EF665B;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px -3px #111;
+        }
+
+        .error__icon {
+            width: 20px;
+            height: 20px;
+            transform: translateY(-2px);
+            margin-right: 8px;
+        }
+
+        .error__icon path {
+            fill: #fff;
+        }
+
+        .error__title {
+            font-weight: 500;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .error__close {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .error__close path {
+            fill: #fff;
+        }
+
     </style>
 </head>
 <header>
@@ -437,6 +508,18 @@ $_SESSION['theme']='light';
             </svg>
         </div>
     </button>
+    <?php
+        if (isset($_SESSION['connect'])){
+            if ($_SESSION['connect'] == "error"){
+                echo '<div class="alert_information_red">
+                <div class="error__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+                </div>
+                <div class="error__title">Votre mot de passe ou votre email est incorrect</div>
+                </div>';
+            }
+        }
+    ?>
     <button class="animated-button" onclick="signup_button()">
         <span>Sign up</span>
         <span></span>
@@ -475,35 +558,6 @@ $_SESSION['theme']='light';
         </div>
         <input type='submit' class="button-submit" name="formsend1">
     </form>
-    <?php
-    if (isset($_POST['formsend1'])) {
-        echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
-        extract($_POST);
-        $email = htmlspecialchars($EMAIL);
-        $password = htmlspecialchars($PASSWORD);
-        if (!empty($email) && !empty($password)) {
-            $q = $db->prepare("SELECT * FROM users WHERE email = :EMAIL");
-            $q->execute([
-                'EMAIL' => $email,
-            ]);
-            $result = $q->fetch();
-            if ($result == true) {
-                if (password_verify($password, $result['psswrd'])) {
-                    $_SESSION['email'] = $email;
-                    $_SESSION['pseudo'] = $result['pseudo'];
-                    $_SESSION['id'] = $result['id'];
-                    echo "<meta http-equiv='refresh' content='0; url=test_mainpage.php'>";
-                } else {
-                    //echo '<p class="p">Email or password is incorrect</p>';
-                }
-            } else {
-                //echo '<p class="p">Email or password is incorrect</p>';
-            }
-        } else {
-            //echo '<p class="p">Please fill in all fields</p>';
-        }
-    }
-    ?>
 </body>
 <footer>
     <div class="footer-content">

@@ -1,9 +1,16 @@
 <?php
 session_start();
-include '../database.php';
+include '../include/database.php';
 if (!isset($_SESSION['pseudo'])){
     header('Location: ../../index.php');
     exit();
+}
+if ($_SESSION['theme'] == 'light'){
+    $button_theme = 'disactive';
+    $logo = '../img/SafeNet_Logo_2_dark.png';
+} else {
+    $button_theme =  'active';
+    $logo = '../img/SafeNet_Logo_2_light.png';
 }
 ?>
 <!DOCTYPE html>
@@ -702,10 +709,10 @@ if (!isset($_SESSION['pseudo'])){
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../index.php">
-                    <img src="../img/SafeNet_Logo_2_dark.png" alt="Logo" width="150" class="d-inline-block-align-text-top">
+                <a class="navbar-brand" href="../include/index.php">
+                    <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
-                <button class="change-theme__icon" id="toggle-theme">
+                <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
                     <div class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
                             <path fill="#1c1c1e" d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" clip-rule="evenodd" fill-rule="evenodd"></path>
@@ -724,7 +731,7 @@ if (!isset($_SESSION['pseudo'])){
         </div>
     </nav>
 </header>
-<body>
+<body class = "<?= $_SESSION['theme']?>">
     
     <div class="task">
         <div class="task-header">
@@ -742,9 +749,13 @@ if (!isset($_SESSION['pseudo'])){
             </div>                         
         </div>
         <div class="task-content" style="display: none">
-            <p>Dans ce cours, nous allons explorer deux types d'attaques couramment utilisées par les cybercriminels pour compromettre la sécurité des systèmes informatiques : les attaques par force brute et les attaques par dictionnaire.</p>
+            <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
     
-            <p>Comprendre ces méthodes est essentiel pour se protéger efficacement contre ces menaces.</p>
+            <p>Ces attaques exploitent des vulnérabilités dans les infrastructures en ligne pour submerger les serveurs de trafic, empêchant ainsi les utilisateurs légitimes d'accéder aux services qu'ils recherchent.</p>
+    
+            <p>Les attaques DoS sont généralement lancées à partir d'une seule machine, tandis que les attaques DDoS impliquent plusieurs machines réparties dans le monde entier, souvent contrôlées à distance par des botnets. Les conséquences de ces attaques peuvent être graves, allant de l'interruption temporaire des services à des pertes financières significatives et à des dommages à la réputation.</p>
+    
+            <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
     
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
@@ -789,12 +800,12 @@ if (!isset($_SESSION['pseudo'])){
             <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
             <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
             <div class="question">
-                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="1" class="need-response">Envoyer</button>
             </div>
             <p> Quel type d'attaque utilise un seul ordinateur ?</p>
             <div class="question">
-                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="2" class="need-response">Envoyer</button>
             </div>
             <button class="read-and-understood">J'ai lu et compris</button>
@@ -830,12 +841,12 @@ if (!isset($_SESSION['pseudo'])){
             <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
             <p> Quel outil peut filtrer les trafics indésirables ?</p>
             <div class="question">
-                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="3" class="need-response">Envoyer</button>
             </div>
             <p> Quel type de test peut distinguer les humains des robots ?</p>
             <div class="question">
-                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="4" class="need-response">Envoyer</button>
             </div>
             <button class="read-and-understood">J'ai lu et compris</button>
@@ -879,19 +890,30 @@ if (!isset($_SESSION['pseudo'])){
     <script>
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
-            document.body.classList.toggle('dark');
-            var logo = document.querySelector('img[alt="Logo"]');
-            var theme = document.body.classList.contains('dark') ? 'dark' : 'light';
-            if (theme === 'dark') {
-                logo.src = "../img/SafeNet_Logo_2_light.png";
-            } else {
-                logo.src = "../img/SafeNet_Logo_2_dark.png";
-            }
-        });  
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../include/update_theme.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var newTheme = this.responseText; // La réponse attendue est le nouveau thème ('light' ou 'dark')
+                    document.body.classList.remove('light', 'dark');
+                    document.body.classList.add(newTheme);
+
+                    var logo = document.querySelector('img[alt="Logo"]');
+                    if (newTheme === 'dark') {
+                        logo.src = "../img/SafeNet_Logo_2_light.png";
+                    } else {
+                        logo.src = "../img/SafeNet_Logo_2_dark.png";
+                    }
+                }
+            };
+            xhr.send('toggle=true'); // Envoie une requête pour basculer le thème
+        });
         
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
         });
+        
 
         document.querySelectorAll('.task').forEach(task => {
             task.querySelector('.task-header').addEventListener('click', () => {
@@ -925,19 +947,29 @@ if (!isset($_SESSION['pseudo'])){
             });
         });
 
-        /*
-        // Sélectionnez tous les boutons
-        var buttons = document.querySelectorAll('button');
-        // Parcourez chaque bouton
-        buttons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                if (button.id !== 'toggle-theme' && button.type !== 'need-response') {
-                    // Ajoutez la classe 'clicked' au bouton cliqué
-                    this.classList.add('clicked');
-                }
+        function updateTaskStatus(task) {
+            // alert("hi");
+            var buttons = task.querySelectorAll('button');
+            var allClicked = Array.from(buttons).every(function(button) {
+                return button.classList.contains('clicked');
             });
-        });
-        */
+            if (allClicked) {
+                var taskNumber = task.querySelector('.task-number');
+                var taskContent = task.querySelector('.task-content');
+                var taskHeader = task.querySelector('.task-header');
+                var taskDot = task.querySelector('.task-dot');
+                taskNumber.style.color = 'rgb(8, 241, 8)';
+                taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
+                taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
+                taskDot.innerHTML = `
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                `;
+                task.setAttribute('type', 'finish');
+            }
+        }
 
         window.onload = function() {
             var tasks = document.querySelectorAll('.task-number');
@@ -945,54 +977,17 @@ if (!isset($_SESSION['pseudo'])){
                 tasks[i].textContent = 'Tâche ' + (i + 1);
             }
         }
-        
-        // Sélectionnez toutes les tâches
-        var tasks = document.querySelectorAll('.task');
 
-        // Parcourez chaque tâche
-        tasks.forEach(function(task) {
-            // Sélectionnez tous les boutons dans la tâche actuelle
-            var buttons = task.querySelectorAll('button');
-
-            // Parcourez chaque bouton
-            buttons.forEach(function(button) {
-                // Ajoutez un écouteur d'événements 'click'
-                button.addEventListener('click', function() {
-                    if (!button.classList.contains('need-response')) {
-                        this.classList.add('clicked');
-                    }                
-
-                    // Vérifiez si tous les boutons ont été cliqués
-                    var allClicked = Array.from(buttons).every(function(button) {
-                        return button.classList.contains('clicked');
-                    });
-
-                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                    if (allClicked) {
-                        var taskNumber = task.querySelector('.task-number');
-                        var taskContent = task.querySelector('.task-content');
-                        var taskHeader = task.querySelector('.task-header');
-                        var taskDot = task.querySelector('.task-dot');
-                        taskNumber.style.color = 'rgb(8, 241, 8)';
-                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskDot.innerHTML = `
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
-                        task.setAttribute('type', 'finish');
-                    }
-                });
-            });
-        });
         var dict = {
-            "1": "2e26a8a65c1dc71d29eab7a38c294d6ea2f297951daee2bb56cf5e25dd1b0850",
-            "2": "5e7eeccf90ca9a7c0578f3cc65c60afd15b6090e985f21a915f1990666ec2de1",
-            "3": "3bc8408be5e74010ddae0e568783fca044a4364f5e4fc220bb07301af160f44f",
-            "4": "8c5ebc809b57398edde78a572b415fe4ab00629f86b83072e4cf5208a53e102a",
+            "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
+            "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
+            "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
+            "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
         };
+
+        var dict2 = {
+            "3":"a3863c5d7ce546d24186581bcba0b0a157db9d318d9174d46d0db3f3f38cc1a6"
+        }
 
 
         var buttons = document.querySelectorAll('.need-response');
@@ -1001,7 +996,7 @@ if (!isset($_SESSION['pseudo'])){
         buttons.forEach(function(button) {
             async function hashInput(input) {
                 const encoder = new TextEncoder();
-                const data = encoder.encode(input);
+                const data = encoder.encode(input.toLowerCase());
                 const hash = await window.crypto.subtle.digest('SHA-256', data);
                 return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
             }
@@ -1010,73 +1005,57 @@ if (!isset($_SESSION['pseudo'])){
                 var input = this.previousElementSibling;
                 var inputId = input.id;
                 var expectedAnswer = dict[inputId];
+                var alternativeAnswer = dict2[inputId];
                 var hashedInput = await hashInput(input.value);
-                if (hashedInput === expectedAnswer || input.value === 'test') {
+                if (hashedInput === expectedAnswer || hashedInput === alternativeAnswer || input.value === 'test') {
                     this.classList.add('clicked');
                     input.classList.add('glow-green');
                     input.classList.remove('glow-red');
                     input.blur();
+                    updateTaskStatus(task)
                 } else {
                     input.classList.add('glow-red');
                 }
             });
         });
 
-        // Sélectionnez tous les champs d'entrée
         var inputs = document.querySelectorAll('input');
-
-        // Parcourez chaque champ d'entrée
+        var tasks = document.querySelectorAll('.task');
         inputs.forEach(function(input, index) {
-            // Ajoutez un écouteur d'événements 'keydown'
             input.addEventListener('keydown', function(event) {
-                // Si la touche 'Enter' est pressée
                 if (event.key === 'Enter') {
-                    // Sélectionnez le bouton correspondant  
                     var button = this.nextElementSibling;
-                    // Déclenchez un clic sur le bouton
                     button.click();
+                    /*
+                    tasks.forEach(function(task) {
+                        button.addEventListener('click', function() {
+                            var allClicked = Array.from(buttons).every(function(button) {
+                                return button.classList.contains('clicked');
+                            });
+                            updateTaskStatus(task);
+                        });
+                    })
+                        */
                 }
             });
         });
 
-        // Sélectionnez toutes les tâches
         var tasks = document.querySelectorAll('.task');
-        // Parcourez chaque tâche
         tasks.forEach(function(task) {
-            // Sélectionnez tous les boutons dans la tâche actuelle
             var buttons = task.querySelectorAll('button');
-            // Parcourez chaque bouton
             buttons.forEach(function(button) {
-                // Ajoutez un écouteur d'événements 'click'
                 button.addEventListener('click', function() {
-                    // Si le bouton est de type 'need-response', ajoutez la classe 'clicked'
-                    if (button.classList.contains('need-response')) {
+                    if (!button.classList.contains('need-response')) {
                         this.classList.add('clicked');
                     }
-                    // Vérifiez si tous les boutons ont été cliqués
                     var allClicked = Array.from(buttons).every(function(button) {
                         return button.classList.contains('clicked');
                     });
-                    // Si tous les boutons ont été cliqués, changez la couleur du 'task-dot' en vert
-                    if (allClicked) {
-                        var taskNumber = task.querySelector('.task-number');
-                        var taskContent = task.querySelector('.task-content');
-                        var taskHeader = task.querySelector('.task-header');
-                        var taskDot = task.querySelector('.task-dot');
-                        taskNumber.style.color = 'rgb(8, 241, 8)';
-                        taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                        taskDot.innerHTML = `
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                            </svg>
-                        `;
-                        task.setAttribute('type', 'finish');
-                    }
+                    updateTaskStatus(task);
                 });
             });
         });
+
     </script>
 
 </body>
