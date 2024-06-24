@@ -800,12 +800,12 @@ if ($_SESSION['theme'] == 'light'){
             <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
             <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
             <div class="question">
-                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="1" class="need-response">Envoyer</button>
             </div>
             <p> Quel type d'attaque utilise un seul ordinateur ?</p>
             <div class="question">
-                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="2" class="need-response">Envoyer</button>
             </div>
             <button class="read-and-understood">J'ai lu et compris</button>
@@ -841,12 +841,12 @@ if ($_SESSION['theme'] == 'light'){
             <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
             <p> Quel outil peut filtrer les trafics indésirables ?</p>
             <div class="question">
-                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="3" class="need-response">Envoyer</button>
             </div>
             <p> Quel type de test peut distinguer les humains des robots ?</p>
             <div class="question">
-                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** ">
+                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="4" class="need-response">Envoyer</button>
             </div>
             <button class="read-and-understood">J'ai lu et compris</button>

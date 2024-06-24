@@ -1,3 +1,56 @@
+<?php
+    session_start();
+    if (isset($_POST["formsend"])){
+
+        echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
+        
+        extract($_POST);
+        $email = htmlspecialchars($EMAIL);
+        $password = htmlspecialchars($PASSWORD);
+        $confirmPassword = htmlspecialchars($CONFIRMPASSWORD);
+
+        if(!empty($email) && !empty($password) && !empty($confirmPassword)){
+            if($password == $confirmPassword){
+                $emailParts = explode('@', $email);
+                $PSEUDO = $emailParts[0];
+
+                $options = [
+                    'cost' => 12,
+                ];
+                $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
+
+                include '../include/database.php';
+                global $db;
+                
+                $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
+                $c->execute(['EMAIL' => $email]);
+
+                $result = $c->rowCount();
+
+                if($result == 0){
+
+                    $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd) VALUES (:PSEUDO, :EMAIL,  :PASSWORD)");
+                    $q->execute([
+                        'PSEUDO' => $PSEUDO,
+                        'EMAIL' => $email,
+                        'PASSWORD' => $hashpass
+                    ]);
+                    $_SESSION['create'] = 'good';
+                }
+                else{
+                    $_SESSION['create'] = 'use email';
+                }
+            }
+            else{
+                //echo "Les mots de passe ne correspondent pas";
+            }
+        }
+        else{
+            //echo "case vide";
+        }
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -416,6 +469,62 @@
             color: green;
         }
 
+        .alert_information_red {
+            margin-top: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 320px;
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            background: #EF665B;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px -3px #111;
+        }
+
+        .alert_information_green {
+            margin-top: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 320px;
+            padding: 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: start;
+            background: #65ef5b;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px -3px #111;
+        }
+
+        .error__icon {
+            width: 20px;
+            height: 20px;
+            transform: translateY(-2px);
+            margin-right: 8px;
+        }
+
+        .error__icon path {
+            fill: #fff;
+        }
+
+        .error__title {
+            font-weight: 500;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .error__close {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .error__close path {
+            fill: #fff;
+        }
+
     </style>
 </head>
 <header>
@@ -432,6 +541,35 @@
             </svg>
         </div>
     </button>
+
+    <?php
+        if (isset($_SESSION['create'])){
+            if ($_SESSION['create'] == "good"){
+                echo '<div class="alert_information_green">
+                <div class="error__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+                </div>
+                <div class="error__title">Votre compte a été créé</div>
+                </div>';
+            }
+            else if ($_SESSION['create'] == "use email"){
+                echo '<div class="alert_information_red">
+                <div class="error__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+                </div>
+                <div class="error__title">Cette email est deja utilisé</div>
+                </div>';
+            }
+            else{
+                echo '<div class="alert_information_red">
+                <div class="error__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none"><path fill="#393a37" d="m13 13h-2v-6h2zm0 4h-2v-2h2zm-1-15c-1.3132 0-2.61358.25866-3.82683.7612-1.21326.50255-2.31565 1.23915-3.24424 2.16773-1.87536 1.87537-2.92893 4.41891-2.92893 7.07107 0 2.6522 1.05357 5.1957 2.92893 7.0711.92859.9286 2.03098 1.6651 3.24424 2.1677 1.21325.5025 2.51363.7612 3.82683.7612 2.6522 0 5.1957-1.0536 7.0711-2.9289 1.8753-1.8754 2.9289-4.4189 2.9289-7.0711 0-1.3132-.2587-2.61358-.7612-3.82683-.5026-1.21326-1.2391-2.31565-2.1677-3.24424-.9286-.92858-2.031-1.66518-3.2443-2.16773-1.2132-.50254-2.5136-.7612-3.8268-.7612z"></path></svg>
+                </div>
+                <div class="error__title">Erreur</div>
+                </div>';
+            }
+        }
+    ?>
     <button class="animated-button" onclick="login_button()">
         <span>Login</span>
         <span></span>
@@ -484,57 +622,7 @@
         <input type='submit' class="button-submit" name="formsend" >
     </form>
 
-    <?php
-
-        if (isset($_POST["formsend"])){
-
-            echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
-            
-            extract($_POST);
-            $email = htmlspecialchars($EMAIL);
-            $password = htmlspecialchars($PASSWORD);
-            $confirmPassword = htmlspecialchars($CONFIRMPASSWORD);
-
-            if(!empty($email) && !empty($password) && !empty($confirmPassword)){
-                if($password == $confirmPassword){
-                    $emailParts = explode('@', $email);
-                    $PSEUDO = $emailParts[0];
-
-                    $options = [
-                        'cost' => 12,
-                    ];
-                    $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
-
-                    include '../include/database.php';
-                    global $db;
-                    
-                    $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
-                    $c->execute(['EMAIL' => $email]);
-
-                    $result = $c->rowCount();
-
-                    if($result == 0){
-
-                        $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd) VALUES (:PSEUDO, :EMAIL,  :PASSWORD)");
-                        $q->execute([
-                            'PSEUDO' => $PSEUDO,
-                            'EMAIL' => $email,
-                            'PASSWORD' => $hashpass
-                        ]);
-                    }
-                    else{
-                        echo "Cet email est déjà utilisé";
-                    }
-                }
-                else{
-                    echo "Les mots de passe ne correspondent pas";
-                }
-            }
-            else{
-                echo "case vide";
-            }
-        }
-    ?>
+    
 
 </body>
 <footer>
@@ -588,6 +676,7 @@
             var password = document.querySelector('input[name="PASSWORD"]').value;
             var confirmPassword = document.querySelector('input[name="CONFIRMPASSWORD"]').value;
             var regexemail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            var formemail = /^[a-zA-Z0-9._-]+@(esiea|et.esiea)\.fr$/;
             var upperCase = new RegExp('[A-Z]');
             var lowerCase = new RegExp('[a-z]');
             var numbers = new RegExp('[0-9]');
@@ -620,6 +709,13 @@
                 document.querySelector('input[name="EMAIL"]').parentElement.classList.add('error');
                 emailValid = false;
             }
+
+            if (!formemail.test(email)) {
+                document.getElementById('emailError').textContent = 'Email must be an esiea email';
+                document.querySelector('input[name="EMAIL"]').parentElement.classList.add('error');
+                emailValid = false;
+            }
+
             // Valider le mot de passe
             if (password === '') {
                 document.getElementById('passwordError').textContent = 'Password is required';
@@ -668,6 +764,7 @@
             // Retourner true si tous les champs sont valides, sinon false
             return emailValid && passwordValid && confirmPasswordValid;
         }
+
 
         /*
         // Appeler la fonction validateForm lors de la soumission du formulaire
