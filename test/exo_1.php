@@ -12,6 +12,12 @@ if ($_SESSION['theme'] == 'light'){
     $button_theme =  'active';
     $logo = '../img/SafeNet_Logo_2_light.png';
 }
+
+if (!isset($_SESSION['cours1'])){
+    header('Location: Demo_1.php');
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -721,7 +727,7 @@ if ($_SESSION['theme'] == 'light'){
             font-weight: bold;
             color: #000000;
             background-color: #fefefe;
-            margin: 5% auto auto auto;
+            margin: 15% auto auto auto;
             padding: 20px;
             border: 1px solid #888;
             width: 60%;
@@ -743,16 +749,6 @@ if ($_SESSION['theme'] == 'light'){
         .close-btn:focus {
             color: black;
             text-decoration: none;
-            cursor: pointer;
-        }
-
-        .go-exercice{
-            display:none; 
-            background-color: green;
-            color: white;
-            padding: 10px 20px;
-            border: none; 
-            border-radius: 5px; 
             cursor: pointer;
         }
 
@@ -799,166 +795,16 @@ if ($_SESSION['theme'] == 'light'){
 
 </header>
 <body class = "<?= $_SESSION['theme']?>">
-    
-    <div class="task">
-        <div class="task-header">
-            <span class="task-number"></span>
-            <div class="task-dot">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
-                    <circle cx="12" cy="12" r="10"></circle>
-                </svg>
-            </div>
-            <span class="task-name">Introduction</span>
-            <div class="task-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>                         
+    <div class="content">
+        <div class="content-title">
+            <h1>Exercice 1</h1>
         </div>
-        <div class="task-content" style="display: none">
-            <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
-    
-            <p>Ces attaques exploitent des vulnérabilités dans les infrastructures en ligne pour submerger les serveurs de trafic, empêchant ainsi les utilisateurs légitimes d'accéder aux services qu'ils recherchent.</p>
-    
-            <p>Les attaques DoS sont généralement lancées à partir d'une seule machine, tandis que les attaques DDoS impliquent plusieurs machines réparties dans le monde entier, souvent contrôlées à distance par des botnets. Les conséquences de ces attaques peuvent être graves, allant de l'interruption temporaire des services à des pertes financières significatives et à des dommages à la réputation.</p>
-    
-            <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
-    
-            <button class="read-and-understood">J'ai lu et compris</button>
+        <div class="content-text">
+            <p>Vous avez terminé le cours avec succès.</p>
+            <p>Vous pouvez maintenant passer à l'exercice pour tester vos connaissances.</p>
         </div>
     </div>
-
-    <div class="task">
-        <div class="task-header">
-            <span class="task-number"></span>
-            <div class="task-dot">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
-                    <circle cx="12" cy="12" r="10"></circle>
-                </svg>
-            </div>
-            <span class="task-name">Fonctionnement simplifié</span>
-            <div class="task-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>                        
-        </div>
-        <div class="task-content" style="display: none">
-            <p>Les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer.</p>
-            
-            <p>Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients. Ces ordinateurs sont souvent infectés par des logiciels malveillants qui les transforment en "zombies", participant à l'attaque à l'insu de leur propriétaire.</p>
-
-            <ul>
-                <li><strong>exemple d'attaque DoS :</strong>
-            </ul>
-            <img src="../img/module/module-1/DoS.gif" alt="Description du GIF">
-            <ul>
-                <li><strong>exemple d'attaque DDoS :</strong>
-            </ul>
-            <img src="../img/module/module-1/DDoS.gif" alt="Description du GIF">
-            
-            <p>Les attaques peuvent avoir des conséquences graves, notamment :</p>
-            <ul>
-                <li><strong>Interruption de service :</strong> Les utilisateurs légitimes ne peuvent plus accéder au service ou au site web ciblé.</li>
-                <li><strong>Perte financière :</strong> Les entreprises peuvent perdre des revenus en raison de l'indisponibilité de leurs services.</li>
-                <li><strong>Atteinte à la réputation :</strong> La confiance des clients et des utilisateurs peut être affectée négativement.</li>
-            </ul>
-    
-            <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
-            <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
-            <div class="question">
-                <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
-                <button id="1" class="need-response">Envoyer</button>
-            </div>
-            <p> Quel type d'attaque utilise un seul ordinateur ?</p>
-            <div class="question">
-                <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
-                <button id="2" class="need-response">Envoyer</button>
-            </div>
-            <button class="read-and-understood">J'ai lu et compris</button>
-        </div>
-    </div>
-
-    <div class="task">
-        <div class="task-header">
-            <span class="task-number"></span>
-            <div class="task-dot">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
-                    <circle cx="12" cy="12" r="10"></circle>
-                </svg>
-            </div>
-            <span class="task-name">Sensibilisation et Protection</span>
-            <div class="task-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div> 
-        </div>
-        <div class="task-content" style="display: none">
-            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :</p>
-            
-            <ul>
-                <li><strong>Utiliser un pare-feu :</strong> Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.</li>
-                <li><strong>Mettre à jour régulièrement ses systèmes :</strong> Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.</li>
-                <li><strong>Souscrire à des services de protection DDoS :</strong> Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.</li>
-                <li><strong>Sensibiliser et former :</strong> Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.</li>
-                <li><strong>Utiliser des CAPTCHA :</strong> Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</li>
-            </ul>
-    
-            <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
-            <p> Quel outil peut filtrer les trafics indésirables ?</p>
-            <div class="question">
-                <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
-                <button id="3" class="need-response">Envoyer</button>
-            </div>
-            <p> Quel type de test peut distinguer les humains des robots ?</p>
-            <div class="question">
-                <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
-                <button id="4" class="need-response">Envoyer</button>
-            </div>
-            <button class="read-and-understood">J'ai lu et compris</button>
-        </div>
-    </div>
-
-    <div class="task">
-        <div class="task-header">
-            <span class="task-number"></span>
-            <div class="task-dot">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
-                    <circle cx="12" cy="12" r="10"></circle>
-                </svg>
-            </div>
-            <span class="task-name">Conclusion</span>
-            <div class="task-arrow">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>                        
-        </div>
-        <div class="task-content" style="display: none">
-            <p>En résumé, les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) sont comparables à une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles.</p>
-            
-            <p>Ces attaques peuvent causer des interruptions significatives, nuire à la réputation des entreprises, et entraîner des pertes financières importantes. Pour se protéger efficacement contre ces menaces, il est crucial d'adopter plusieurs mesures préventives.</p>
-            
-            <ul>
-                <li><strong>Utilisation de pare-feux :</strong> Les pare-feux peuvent filtrer le trafic malveillant et bloquer les attaques avant qu'elles n'atteignent les systèmes cibles.</li>
-                <li><strong>Mise à jour régulière des systèmes :</strong> Maintenir les logiciels et les systèmes à jour avec les derniers correctifs de sécurité permet de combler les vulnérabilités exploitées par les attaquants.</li>
-                <li><strong>Utilisation de services spécialisés :</strong> Des services de protection contre les DDoS, offerts par des fournisseurs spécialisés, peuvent détecter et atténuer les attaques en temps réel.</li>
-            </ul>
-    
-            <p>La <strong>sensibilisation et la formation</strong> jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. En formant les employés aux bonnes pratiques de sécurité et en les sensibilisant aux menaces potentielles, les entreprises peuvent réduire considérablement les risques d'attaques réussies.</p>
-            
-            <p>En conclusion, bien que les attaques DoS et DDoS représentent une menace sérieuse pour les infrastructures numériques, des mesures proactives et une vigilance constante permettent de renforcer la sécurité et de garantir la disponibilité des services en ligne.</p>
-            <button class="read-and-understood">J'ai lu et compris</button>
-        </div>
-    </div>
-
-    <button id="goToExercise1" class="go-exercice" onclick="go_exercice()">
-        Aller à l'exercice
-    </button>
-
     <script>
-
         document.getElementById('toggle-theme').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '../include/update_theme.php', true);
@@ -983,188 +829,7 @@ if ($_SESSION['theme'] == 'light'){
         document.querySelector('.change-theme__icon').addEventListener('click', function() {
             this.classList.toggle('active');
         });
-        
-
-        document.querySelectorAll('.task').forEach(task => {
-            task.querySelector('.task-header').addEventListener('click', () => {
-                const content = task.querySelector('.task-content');
-                if (content.style.display === 'none') {
-                    task.classList.add('open');
-                    content.style.display = 'block';
-                } else {
-                    task.classList.remove('open');
-                    content.style.display = 'none';
-                }
-            });
-        });
-
-        document.querySelectorAll('.task').forEach(task => {
-            task.addEventListener('click', () => {
-                const arrowDiv = task.querySelector('.task-arrow');
-                if (task.classList.contains('open')) {
-                    arrowDiv.innerHTML = `
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
-                            <polyline points="18 15 12 9 6 15"></polyline>
-                        </svg>
-                    `;
-                } else {
-                    arrowDiv.innerHTML = `
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    `;
-                }
-            });
-        });
-
-        function updateTaskStatus(task) {
-            var buttons = task.querySelectorAll('button');
-            var allClicked = Array.from(buttons).every(function(button) {
-                return button.classList.contains('clicked');
-            });
-            if (allClicked) {
-                var taskNumber = task.querySelector('.task-number');
-                var taskContent = task.querySelector('.task-content');
-                var taskHeader = task.querySelector('.task-header');
-                var taskDot = task.querySelector('.task-dot');
-                taskNumber.style.color = 'rgb(8, 241, 8)';
-                taskContent.style.borderLeftColor = 'rgb(8, 241, 8)';
-                taskHeader.style.borderLeftColor = 'rgb(8, 241, 8)';
-                taskDot.innerHTML = `
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgb(8, 241, 8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                `;
-                task.setAttribute('type', 'finish');
-                task.classList.add('finished');
-                task.setAttribute('data-type', 'finish');
-            }
-        }
-
-        window.onload = function() {
-            var tasks = document.querySelectorAll('.task-number');
-            for (var i = 0; i < tasks.length; i++) {
-                tasks[i].textContent = 'Tâche ' + (i + 1);
-            }
-        }
-
-        var dict = {
-            "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
-            "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
-            "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
-            "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
-        };
-
-        var dict2 = {
-            "3":"a3863c5d7ce546d24186581bcba0b0a157db9d318d9174d46d0db3f3f38cc1a6"
-        }
-
-
-        var buttons = document.querySelectorAll('.need-response');
-
-
-        buttons.forEach(function(button) {
-            async function hashInput(input) {
-                const encoder = new TextEncoder();
-                const data = encoder.encode(input.toLowerCase());
-                const hash = await window.crypto.subtle.digest('SHA-256', data);
-                return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
-            }
-
-            button.addEventListener('click', async function() {
-                var input = this.previousElementSibling;
-                var tasks = document.querySelectorAll('.task');
-                var inputId = input.id;
-                var expectedAnswer = dict[inputId];
-                var alternativeAnswer = dict2[inputId];
-                var hashedInput = await hashInput(input.value);
-                if (hashedInput === expectedAnswer || hashedInput === alternativeAnswer || input.value === 'test') {
-                    this.classList.add('clicked');
-                    input.classList.add('glow-green');
-                    input.classList.remove('glow-red');
-                    input.blur();
-                    tasks.forEach(function(task) {
-                        var allClicked = Array.from(buttons).every(function(button) {
-                            return button.classList.contains('clicked');
-                        });
-                        updateTaskStatus(task);
-                    });
-                } else {
-                    input.classList.add('glow-red');
-                }
-            });
-        });
-
-        var inputs = document.querySelectorAll('input');
-        var tasks = document.querySelectorAll('.task');
-        inputs.forEach(function(input, index) {
-            input.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    var button = this.nextElementSibling;
-                    button.click();
-                }
-            });
-        });
-
-        var tasks = document.querySelectorAll('.task');
-        tasks.forEach(function(task) {
-            var buttons = task.querySelectorAll('button');
-            buttons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    if (!button.classList.contains('need-response')) {
-                        this.classList.add('clicked');
-                    }
-                    var allClicked = Array.from(buttons).every(function(button) {
-                        return button.classList.contains('clicked');
-                    });
-                    updateTaskStatus(task);
-                });
-            });
-        });
-
-        var popup = document.getElementById("popup");
-        var closeBtn = document.getElementsByClassName("close-btn")[0];
-        closeBtn.onclick = function() {
-            popup.style.display = "none";
-        }
-
-        function openPopup() {
-            popup.style.display = "block";
-        }
-
-
-        var buttons = document.querySelectorAll('button');
-        buttons.forEach(function(button) {
-            button.addEventListener('click', async function() {
-                const allTasksFinished = Array.from(document.querySelectorAll('.task')).every(task => task.getAttribute('data-type') === 'finish');
-                if (allTasksFinished) {
-                    document.getElementById('goToExercise1').style.display = 'block';
-                    document.getElementById('goToExercise2').style.display = 'block';
-                    document.querySelector('.popup').style.display = 'block';
-                    openPopup();
-                    <?php $_SESSION['cours1'] = 'check'?>
-                }
-            });
-        });
-
-        function go_exercice() {
-            window.location.href = "exo_1.php";
-        }
-
-        // var buttons = document.querySelectorAll('.need-response');
-        // buttons.forEach(function(button) {
-        //     button.addEventListener('click', function() {
-        //         const allTasksFinished = Array.from(document.querySelectorAll('.task')).every(task => task.getAttribute('data-type') === 'finish');
-        //         if (allTasksFinished) {
-        //             document.querySelector('.popup').style.display = 'block';
-        //             openPopup();
-        //         }
-        //     });
-        // });
-
     </script>
-
 </body>
 <footer>
     <div class="footer-content">

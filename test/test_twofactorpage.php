@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['email'])) {
-        header('Location: ../index.php');
+        header('Location: ../include/index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -559,6 +559,10 @@
                 }
             });
         });
+
+        function signup_button() {
+            window.location.href = "test_signuppage.php";
+        }
 
     </script>
 </footer>
