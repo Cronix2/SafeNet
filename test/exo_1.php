@@ -735,6 +735,65 @@ if (!isset($_SESSION['cours1'])){
             position: relative;
         }
 
+        .exercice {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: auto;
+        }
+
+        .exercice-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Ubuntu, sans-serif;
+            font-weight: bold;
+            color: #000000;
+            background-color: #fefefe;
+            margin: 20px auto 20px auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 60%;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .titre_exo {
+            display: flex;
+            flex-direction: column;
+            font-family: Ubuntu, sans-serif;
+            font-weight: bold;
+            color: #ffffff;
+            background-color: #000000;
+            margin: auto;
+            padding: auto;
+            width: 80%;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            position: relative;
+        }
+
+        .texte_exo {
+            display: flex;
+            flex-direction: column;
+            font-family: Ubuntu, sans-serif;
+            font-weight: bold;
+            color: #000000;
+            background-color: #ebebeb;
+            margin: auto;
+            padding: auto;
+            width: 80%;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            position: relative;
+        }
+
         .close-btn {
             color: #aaa;
             position: absolute;
@@ -750,6 +809,92 @@ if (!isset($_SESSION['cours1'])){
             color: black;
             text-decoration: none;
             cursor: pointer;
+        }
+
+        .numero_exo {
+            position: relative;
+            height: 50px; /* Ajustez la hauteur si nécessaire */
+        }
+
+        .numero_exo .round {
+            width: 10px; /* Taille du rond */
+            height: 10px; /* Taille du rond */
+            border-radius: 50%; /* Rend le div rond */
+            background-color: grey; /* Couleur du rond */
+            position: absolute;
+            bottom: 10px; /* Position en bas du div */
+            right: 10px; /* Position à droite du div */
+        }
+
+        .attack{
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+
+        .attack:hover{
+            background-color: darkgreen;
+        }
+        
+        .exo1-content {
+            display: flex;
+            align-items: center; /* Pour aligner verticalement les éléments au centre */
+            justify-content: space-around; /* Pour répartir l'espace autour des éléments */
+        }
+
+        .table {
+            width: 15%;
+            height: 50%;
+        }
+
+        .request {
+            /* border: 2px solid #000000; */
+            border-collapse: collapse;
+        }
+
+        .request th:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .head_table {
+            background-color: #000000;
+            color: #ffffff;
+            border: 2px solid #000000;
+            margin: 10%;
+        }
+
+        .pair {
+            background-color: #d5d5d5;
+            border: 2px solid #000000;
+        }
+
+        .impair {
+            background-color: #f2f2f2;
+            border: 2px solid #000000;
+        }
+
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .green-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: green;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .text_table{
+            padding: 1px 10px 1px 10px;
+            min-height: 20px;
+            display: block;
         }
 
     </style>
@@ -779,6 +924,7 @@ if (!isset($_SESSION['cours1'])){
             </div>
         </div>
     </nav>
+    <!--
     <div id="popup" class="popup">
         <div class="popup-content">
             <span class="close-btn">&times;</span>
@@ -787,24 +933,138 @@ if (!isset($_SESSION['cours1'])){
             <h3>Vous avez terminé le cours</h3>
             <p>Vous avez terminé le cours avec succès.</p>
             <p>Vous pouvez maintenant passer à l'exercice pour tester vos connaissances.</p>
-            <button id="goToExercise2" class="go-exercice" onclick="go_exercice()">
-                Aller à l'exercice
-            </button>
         </div>
     </div>
-
+    --> 
 </header>
 <body class = "<?= $_SESSION['theme']?>">
-    <div class="content">
-        <div class="content-title">
-            <h1>Exercice 1</h1>
-        </div>
-        <div class="content-text">
-            <p>Vous avez terminé le cours avec succès.</p>
-            <p>Vous pouvez maintenant passer à l'exercice pour tester vos connaissances.</p>
+    <div class="exercice">
+        <div class="exercice-content">
+            <div class="explications">
+                <div class="titre_exo">
+                    <h5 style="margin-left: 10px;">Exercice 1</h5>
+                </div>
+                <div class="texte_exo">
+                    <p style="margin-left: 10px;">Vous avez appris les bases de la programmation en PHP. Vous avez vu comment afficher du texte, des variables, des tableaux, des boucles et des conditions. Vous avez également vu comment récupérer des données d'un formulaire.</p>
+                    <div class="numero_exo">
+                        <div class="round"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="exo1">
+                <div class="exo1-content">
+                    <div class="image-container" id="desktop-container">
+                        <img src="../img/module/module-1/exo_1_desktop.png" alt="Desktop">
+                    </div>
+                    <div class="image-container" id="server-container">
+                        <img src="../img/module/module-1/exo_1_server1.png" alt="Server">
+                    </div>
+                    <div class="table">
+                        <table class="request">
+                            <tr class="head_table">
+                                <td id="header_table" class="text_table">Requetes</td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne2" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne3" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne4" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne5" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne6" class="text_table"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="attack" id="moveGreenDot">Envoyer une requete</button>
+            </div>
         </div>
     </div>
     <script>
+
+        document.getElementById('moveGreenDot').addEventListener('click', function() {
+            const greenDot = document.createElement('div');
+            greenDot.classList.add('green-dot');
+            const greenDotWidth = 10;
+            const greenDotHeight = 10;
+
+            // Obtenir le conteneur Desktop
+            const desktopContainer = document.getElementById('desktop-container');
+            const desktopRect = desktopContainer.getBoundingClientRect();
+
+            // Calculer le centre du conteneur Desktop
+            const centerXDesktop =  desktopRect.width / 2 ;
+            const centerYDesktop = desktopRect.height / 2;
+
+            // Positionner le rond vert au centre du Desktop
+            greenDot.style.position = 'absolute';
+            greenDot.style.left = `${centerXDesktop}px`; // 5 est la moitié de la largeur du rond vert pour le centrer
+            greenDot.style.top = `${centerYDesktop}px`; // 5 est la moitié de la hauteur du rond vert pour le centrer
+
+            desktopContainer.appendChild(greenDot);
+
+            const serverContainer = document.getElementById('server-container');
+            const serverRect = serverContainer.getBoundingClientRect();
+
+            // Calculer le centre du conteneur Server
+            const centerXServer = serverRect.width * 2;
+            const centerYServer = serverRect.height / 2;
+
+
+            // Déplacer le rond vert du centre du Desktop au centre du Server
+            greenDot.animate([
+                { transform: `translate(0px, 0px)` },
+                { transform: `translate(${centerXServer - centerXDesktop}px, ${centerYServer - centerYDesktop}px)` }
+            ], {
+                duration: 1000,
+                fill: 'forwards'
+            }).onfinish = function() {
+                greenDot.remove();
+                var lignesVides = document.querySelectorAll('.text_table:empty');
+                if (lignesVides.length > 0) {
+                    lignesVides[0].textContent = 'ok';
+                }
+
+                document.querySelectorAll('.text_table').forEach(textTable => {
+                    setTimeout(() => {
+                        var ligneAsupprimer = document.getElementById('ligne2');
+                        ligneAsupprimer.textContent = ''; // Vide le contenu
+                    }, 1000); 
+                    document.getElementById('ligne2').textContent = document.getElementById('ligne3').textContent
+                    document.getElementById('ligne3').textContent = document.getElementById('ligne4').textContent;
+                    document.getElementById('ligne4').textContent = document.getElementById('ligne5').textContent;
+                    document.getElementById('ligne5').textContent = document.getElementById('ligne6').textContent;
+                    document.getElementById('ligne6').textContent = 'a';
+                });
+            };
+        });
+
+        // while (document.querySelectorAll('.text_table').length > 0) {
+        //     document.querySelectorAll('.text_table').forEach(textTable => {
+        //         textTable.textContent = '';
+        //     });
+        // }
+        document.querySelectorAll('.text_table').forEach(textTable => {
+            setTimeout(() => {
+                var ligneAsupprimer = document.getElementById('ligne2');
+                ligneAsupprimer.textContent = ''; // Vide le contenu
+            }, 1000); 
+        });
+        document.getElementById('ligne2').textContent = document.getElementById('ligne3').textContent;
+        document.getElementById('ligne3').textContent = document.getElementById('ligne4').textContent;
+        document.getElementById('ligne4').textContent = document.getElementById('ligne5').textContent;
+        document.getElementById('ligne5').textContent = document.getElementById('ligne6').textContent;
+        document.getElementById('ligne6').textContent = '';
+                
+
+
+
         document.getElementById('toggle-theme').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '../include/update_theme.php', true);
