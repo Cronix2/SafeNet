@@ -930,6 +930,11 @@ if (!isset($_SESSION['cours1'])){
             background-color: darkgreen;
         }
 
+        .zombie-image {
+            width: 120px; /* Ajustez la largeur selon vos préférences */
+            height: auto; /* Garde le ratio d'aspect */
+        }
+
     </style>
 </head>
 <header id="sticky-header">
@@ -962,9 +967,10 @@ if (!isset($_SESSION['cours1'])){
             <span class="close-btn">&times;</span>
             <img src="../img/award.png" alt="Award" style="width: 100px; height: 100px;">
             <h2>Bravo</h2>
-            <p>Vous avez compris le fonctionnement d'une attaque DoS. Maintenant passons a quelque chose de plus compliqué.</p>
-            <p>Cliquez sur le bouton pour passer à l'exercice suivant</p>
-            <button class="change_exo" id="changer_d'exo_popup">Passez à l'exercice 2</button>
+            <p>Vous avez triomphé !</p>
+            <p>Votre apprentissage dans ce domaine est terminé.</p>
+            <p>Vous pouvez commencer un nouveau cours depuis la page principale desormais.</p>
+            <button class="change_exo" id="changer_d'exo_popup">Retour au menu</button>
         </div>
     </div>
 </header>
@@ -973,21 +979,28 @@ if (!isset($_SESSION['cours1'])){
         <div class="exercice-content">
             <div class="explications">
                 <div class="titre_exo">
-                    <h5 style="margin-left: 10px">Exercice 1</h5>
+                    <h5 style="margin-left: 10px;">Exercice 2</h5>
                 </div>
                 <div class="texte_exo">
-                    <p style="margin-left: 10px;">Bien, désormais mettons en pratique ce que vous avez appris. Ci-dessous vous avez d'un coté votre machine, et de l'autre le serveur cible.</p>
-                    <p style="margin-left: 10px;">Ce serveur est assez lent et assez faible, nous allons donc profiter de cela pour le surcharger. On sait qu'il traite une requète en 1 seconde, notre but sera donc de le surcharger.</p>
-                    <p style="margin-left: 10px;">Pour cette exercice nous utiliserons notre machine à nous, nous alons donc procéder à une attaque DoS. Cliquer sur le boutton et essayer de faire surcharger le serveur.</p>
+                    <p style="margin-left: 10px;">Passons à quelque chose de plus complexe.</p>
+                    <p style="margin-left: 10px;">Dans cet exercice le serveur est plus rapide pour traiter les requêtes et à une meilleur capacité, une simple attaque DoS ne fonctionnerais pas.</p>
+                    <p style="margin-left: 10px;">Nous allons donc utiliser une attaques DDoS. Cliquer sur le premier boutton pour faire apparaitre des machines zombies avant de lancer votre attaque. Maintenant essayer de faire surcharger le serveur.</p>
                     <div class="numero_exo">
                         <div class="round"></div>
                     </div>
                 </div>
             </div>
             <div class="exo1">
-                <div class="exo1-content">
+                <div class="exo1-content" id="testt">
                     <div class="image-container" id="desktop-container">
                         <img class="desktop-image" src="../img/module/module-1/exo_1_desktop.png" alt="Desktop">
+                    </div>
+                    <div class="image-zombie-container" id="zombie-container" style="display: flex; flex-direction: column; align-items: center;">
+                        <img class="zombie-image" src="../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
                     </div>
                     <div class="image-container" id="server-container">
                         <img id="serverImage" src="../img/module/module-1/exo_1_server.png" alt="Server">
@@ -1012,49 +1025,66 @@ if (!isset($_SESSION['cours1'])){
                             <tr class="pair">
                                 <td id="ligne6" class="text_table"></td>
                             </tr>
+                            <tr class="impair">
+                                <td id="ligne7" class="text_table"></td>
+                            </tr>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne8" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne9" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne10" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne11" class="text_table"></td>
+                            </tr>
                         </table>
                     </div>
                 </div>
+                <button class="attack" id="createZombie">Invoquer un nouvel attaquant</button>
                 <button class="attack" id="moveGreenDot">Envoyer une requete</button>
             </div>
         </div>
     </div>
-    <button class="change_exo" id="changer_d'exo" style="display: none;">Passez à l'exercice 2</button>
+    <button class="change_exo" id="changer_d'exo" style="display: none;">Retour au menu</button>
     <script>
 
-        document.getElementById('moveGreenDot').addEventListener('click', function() {
-            const greenDot = document.createElement('div');
-            greenDot.classList.add('green-dot');
-            const greenDotWidth = 10;
-            const greenDotHeight = 10;
+    document.getElementById('moveGreenDot').addEventListener('click', function() {
+        // Supposons que vous avez déjà une référence à l'image de zombie sélectionnée, par exemple :
+        var selectedZombieImage = document.querySelectorAll('.zombie-image:not([style*="display: none"])');
 
-            // Obtenir le conteneur Desktop
-            const desktopContainer = document.getElementById('desktop-container');
-            const desktopRect = desktopContainer.getBoundingClientRect();
+        const desktopContainer = document.getElementById('zombie-container');
 
-            // Calculer le centre du conteneur Desktop
-            const centerXDesktop =  desktopRect.width / 2 ;
-            const centerYDesktop = desktopRect.height / 2;
+        selectedZombieImage.forEach(zombieImage => {
+            // Calculer le centre de l'image de zombie
+            var centerXZombie = zombieImage.offsetLeft + zombieImage.offsetWidth / 2 - 5;
+            var centerYZombie = zombieImage.offsetTop + zombieImage.offsetHeight / 2 - 5;
 
-            // Positionner le rond vert au centre du Desktop
+            // Calculer le centre de l'image du serveur
+            var serverImage = document.getElementById('serverImage');
+            var centerXServer =  serverImage.offsetLeft + serverImage.offsetWidth / 2;
+            var centerYServer =  serverImage.offsetTop + serverImage.offsetHeight / 1.25;
+
+            // Créer un élément pour représenter le point de départ (si nécessaire)
+            var greenDot = document.createElement('div');
             greenDot.style.position = 'absolute';
-            greenDot.style.left = `${centerXDesktop}px`; // 5 est la moitié de la largeur du rond vert pour le centrer
-            greenDot.style.top = `${centerYDesktop}px`; // 5 est la moitié de la hauteur du rond vert pour le centrer
+            greenDot.style.width = '10px'; // Taille du point
+            greenDot.style.height = '10px';
+            greenDot.style.backgroundColor = 'green';
+            greenDot.style.borderRadius = '50%';
+            desktopContainer.appendChild(greenDot); // Ajouter le point au document
 
-            desktopContainer.appendChild(greenDot);
+            // Positionner le point au centre de l'image de zombie
+            greenDot.style.left = `${centerXZombie - 5}px`; // 5 est la moitié de la largeur du point pour le centrer
+            greenDot.style.top = `${centerYZombie - 5}px`; // 5 est la moitié de la hauteur du point pour le centrer
 
-            const serverContainer = document.getElementById('server-container');
-            const serverRect = serverContainer.getBoundingClientRect();
-
-            // Calculer le centre du conteneur Server
-            const centerXServer = serverRect.width * 2;
-            const centerYServer = serverRect.height / 2;
-
-
-            // Déplacer le rond vert du centre du Desktop au centre du Server
+            //Déplacer le point du centre de l'image de zombie au centre de l'image du serveur
             greenDot.animate([
                 { transform: `translate(0px, 0px)` },
-                { transform: `translate(${centerXServer - centerXDesktop}px, ${centerYServer - centerYDesktop}px)` }
+                { transform: `translate(${(centerXServer + centerXZombie)/2.5}px, ${(centerYServer - centerYZombie)}px)` }
             ], {
                 duration: 1000,
                 fill: 'forwards'
@@ -1083,6 +1113,7 @@ if (!isset($_SESSION['cours1'])){
                 }
             };
         });
+    });
 
         var intervalId = setInterval(() => {
             const lignes = document.querySelectorAll('.text_table');
@@ -1090,14 +1121,26 @@ if (!isset($_SESSION['cours1'])){
                 lignes[i - 1].textContent = lignes[i].textContent; 
             }
             lignes[lignes.length - 1].textContent = ''; 
-        }, 1000);         
-
+        }, 200);         
+        
         document.getElementById('changer_d\'exo').addEventListener('click', function() {
-            window.location.href = 'exo_2.php';
+            window.location.href = 'test_mainpage.php';
         });
 
         document.getElementById('changer_d\'exo_popup').addEventListener('click', function() {
-            window.location.href = 'exo_2.php';
+            window.location.href = 'test_mainpage.php';
+        });
+
+        document.getElementById('createZombie').addEventListener('click', function() {
+            // Trouver toutes les images de zombies
+            var zombies = document.querySelectorAll('.zombie-image');
+            // Trouver la première image de zombie cachée et l'afficher
+            for (var i = 0; i < zombies.length; i++) {
+                if (zombies[i].style.display === 'none') {
+                    zombies[i].style.display = 'block';
+                    break; // Arrêter après avoir affiché le premier zombie caché
+                }
+            }
         });
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
