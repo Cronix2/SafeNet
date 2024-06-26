@@ -846,13 +846,14 @@ if (!isset($_SESSION['cours1'])){
         }
 
         .table {
-            width: 15%;
             height: 50%;
+            width: 50%;
         }
 
         .request {
             /* border: 2px solid #000000; */
             border-collapse: collapse;
+            width: 100%;
         }
 
         .request th:nth-child(even) {
@@ -864,6 +865,7 @@ if (!isset($_SESSION['cours1'])){
             color: #ffffff;
             border: 2px solid #000000;
             margin: 10%;
+            justify-content: center;
         }
 
         .pair {
@@ -894,7 +896,10 @@ if (!isset($_SESSION['cours1'])){
         .text_table{
             padding: 1px 10px 1px 10px;
             min-height: 20px;
-            display: block;
+            min-width: 120px;
+            justify-content: center;
+
+            display: flex;
         }
 
     </style>
@@ -957,7 +962,7 @@ if (!isset($_SESSION['cours1'])){
                         <img src="../img/module/module-1/exo_1_desktop.png" alt="Desktop">
                     </div>
                     <div class="image-container" id="server-container">
-                        <img src="../img/module/module-1/exo_1_server1.png" alt="Server">
+                        <img id="serverImage" src="../img/module/module-1/exo_1_server.png" alt="Server">
                     </div>
                     <div class="table">
                         <table class="request">
@@ -1028,42 +1033,29 @@ if (!isset($_SESSION['cours1'])){
                 greenDot.remove();
                 var lignesVides = document.querySelectorAll('.text_table:empty');
                 if (lignesVides.length > 0) {
-                    lignesVides[0].textContent = 'ok';
+                    lignesVides[0].textContent = 'paquet n°' + Math.floor(Math.random() * 90000 + 10000);
                 }
-
-                document.querySelectorAll('.text_table').forEach(textTable => {
-                    setTimeout(() => {
-                        var ligneAsupprimer = document.getElementById('ligne2');
-                        ligneAsupprimer.textContent = ''; // Vide le contenu
-                    }, 1000); 
-                    document.getElementById('ligne2').textContent = document.getElementById('ligne3').textContent
-                    document.getElementById('ligne3').textContent = document.getElementById('ligne4').textContent;
-                    document.getElementById('ligne4').textContent = document.getElementById('ligne5').textContent;
-                    document.getElementById('ligne5').textContent = document.getElementById('ligne6').textContent;
-                    document.getElementById('ligne6').textContent = 'a';
-                });
+                else{
+                    const sendButton = document.getElementById('moveGreenDot');
+                    const serverImage = document.getElementById('serverImage');
+                    serverImage.src = '../img/module/module-1/exo_1_server_fire.png';
+                    const lignes = document.querySelectorAll('.text_table');
+                    for (let i = 1; i < lignes.length; i++) {
+                        lignes[i].textContent = 'erreur'; 
+                    }
+                    clearInterval(intervalId);
+                    sendButton.disabled = true;
+                }
             };
         });
 
-        // while (document.querySelectorAll('.text_table').length > 0) {
-        //     document.querySelectorAll('.text_table').forEach(textTable => {
-        //         textTable.textContent = '';
-        //     });
-        // }
-        document.querySelectorAll('.text_table').forEach(textTable => {
-            setTimeout(() => {
-                var ligneAsupprimer = document.getElementById('ligne2');
-                ligneAsupprimer.textContent = ''; // Vide le contenu
-            }, 1000); 
-        });
-        document.getElementById('ligne2').textContent = document.getElementById('ligne3').textContent;
-        document.getElementById('ligne3').textContent = document.getElementById('ligne4').textContent;
-        document.getElementById('ligne4').textContent = document.getElementById('ligne5').textContent;
-        document.getElementById('ligne5').textContent = document.getElementById('ligne6').textContent;
-        document.getElementById('ligne6').textContent = '';
-                
-
-
+        var intervalId = setInterval(() => {
+            const lignes = document.querySelectorAll('.text_table');
+            for (let i = 2; i < lignes.length; i++) {
+                lignes[i - 1].textContent = lignes[i].textContent; 
+            }
+            lignes[lignes.length - 1].textContent = ''; 
+        }, 1000);         
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
