@@ -749,14 +749,7 @@ if ($_SESSION['theme'] == 'light'){
             </div>                         
         </div>
         <div class="task-content" style="display: none">
-            <p>Les attaques DoS (Déni de Service) et DDoS (Déni de Service Distribué) sont des moyens utilisés par des cybercriminels pour rendre un site web ou un service en ligne indisponible, causant ainsi des désagréments aux utilisateurs.</p>
-    
-            <p>Ces attaques exploitent des vulnérabilités dans les infrastructures en ligne pour submerger les serveurs de trafic, empêchant ainsi les utilisateurs légitimes d'accéder aux services qu'ils recherchent.</p>
-    
-            <p>Les attaques DoS sont généralement lancées à partir d'une seule machine, tandis que les attaques DDoS impliquent plusieurs machines réparties dans le monde entier, souvent contrôlées à distance par des botnets. Les conséquences de ces attaques peuvent être graves, allant de l'interruption temporaire des services à des pertes financières significatives et à des dommages à la réputation.</p>
-    
-            <p>Il est essentiel de comprendre ces menaces pour mettre en place des stratégies de défense efficaces et protéger les infrastructures numériques contre ces formes d'attaque.</p>
-    
+        <p>Dans ce cours, nous allons explorer deux types d'attaques couramment utilisées par les cybercriminels pour compromettre la sécurité des systèmes informatiques : les attaques par force brute et les attaques par dictionnaire. Comprendre ces méthodes est essentiel pour se protéger efficacement contre ces menaces.</p>
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
@@ -769,7 +762,7 @@ if ($_SESSION['theme'] == 'light'){
                     <circle cx="12" cy="12" r="10"></circle>
                 </svg>
             </div>
-            <span class="task-name">Fonctionnement simplifié</span>
+            <span class="task-name">Qu'est-ce qu'une attaque par Force Brute ?</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -777,33 +770,52 @@ if ($_SESSION['theme'] == 'light'){
             </div>                        
         </div>
         <div class="task-content" style="display: none">
-            <p>Les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) fonctionnent de manière simple : elles inondent un site web ou un service avec un volume énorme de demandes, comme une foule immense bloquant l’entrée d’une boulangerie, empêchant quiconque d'y entrer.</p>
-            
-            <p>Une attaque DoS utilise un seul ordinateur pour envoyer ces demandes, tandis qu'une attaque DDoS en utilise plusieurs à travers le monde, souvent sans que les propriétaires de ces ordinateurs en soient conscients. Ces ordinateurs sont souvent infectés par des logiciels malveillants qui les transforment en "zombies", participant à l'attaque à l'insu de leur propriétaire.</p>
+            <p><strong>Définition</strong><br> Une attaque par force brute est une méthode d'essai-erreur où un attaquant tente de deviner les informations d'authentification (comme les mots de passe) en essayant toutes les combinaisons possibles jusqu'à ce qu'il trouve la bonne.</p>
 
-            <ul>
-                <li><strong>exemple d'attaque DoS :</strong>
-            </ul>
-            <img src="../img/module/module-1/DoS.gif" alt="Description du GIF">
-            <ul>
-                <li><strong>exemple d'attaque DDoS :</strong>
-            </ul>
-            <img src="../img/module/module-1/DDoS.gif" alt="Description du GIF">
-            
-            <p>Les attaques peuvent avoir des conséquences graves, notamment :</p>
-            <ul>
-                <li><strong>Interruption de service :</strong> Les utilisateurs légitimes ne peuvent plus accéder au service ou au site web ciblé.</li>
-                <li><strong>Perte financière :</strong> Les entreprises peuvent perdre des revenus en raison de l'indisponibilité de leurs services.</li>
-                <li><strong>Atteinte à la réputation :</strong> La confiance des clients et des utilisateurs peut être affectée négativement.</li>
-            </ul>
-    
-            <p>Comprendre le fonctionnement de ces attaques est crucial pour pouvoir mettre en place des mesures de protection efficaces et réduire leur impact.</p>
-            <p> Quel type d'attaque utilise plusieurs ordinateurs à travers le monde ?</p>
+            <p><strong>Comment ça marche ?</strong><br>
+            Énumération des combinaisons : L'attaquant utilise un logiciel automatisé pour générer et tester systématiquement chaque combinaison possible de caractères.<br>
+            Temps et ressources : Cette méthode peut être très longue et nécessite beaucoup de puissance de calcul, surtout si les mots de passe sont longs et complexes.<br>
+            Exemple : Si le mot de passe est "abc", l'attaquant commencera par "aaa", "aab", "aac", et ainsi de suite jusqu'à trouver "abc".</p>
+
+            <p><strong>Points forts et faibles</strong><br>
+            Avantages : Peut théoriquement craquer n'importe quel mot de passe donné suffisamment de temps et de ressources.<br>
+            Inconvénients : Très lent et inefficace pour les mots de passe longs et complexes.</p>
+            <p> Est ce qu'une attaque par brutforce peut briser un mot de passe générer aléatoirement ?</p>
             <div class="question">
                 <input id="1" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="1" class="need-response">Envoyer</button>
             </div>
-            <p> Quel type d'attaque utilise un seul ordinateur ?</p>
+            <button class="read-and-understood">J'ai lu et compris</button>
+        </div>
+    </div>
+
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Qu'est-ce qu'une attaque par Dictionnaire ?</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div>                        
+        </div>
+        <div class="task-content" style="display: none">
+            <p><strong>Définition</strong><br> Une attaque par dictionnaire est une technique où l'attaquant utilise une liste prédéfinie de mots de passe probables (appelée dictionnaire) pour deviner le mot de passe.</p>
+
+            <p><strong>Comment ça marche ?</strong><br>
+            Liste de mots communs : Le dictionnaire contient des mots de passe courants, comme "password", "123456", "qwerty", etc.<br>
+            Test des mots de passe : Le logiciel teste chaque mot de la liste jusqu'à ce qu'il trouve une correspondance.<br>
+            Exemple : Si le mot de passe est "password", l'attaquant le trouvera rapidement car "password" est souvent inclus dans le dictionnaire.</p>
+
+            <p><strong>Points forts et faibles</strong><br>
+            Avantages : Plus rapide que la force brute pour les mots de passe courants.<br>
+            Inconvénients : Inefficace contre les mots de passe uniques et complexes non inclus dans le dictionnaire.</p>
+            <p> Est ce qu'une attaque par dictionnaire peut briser un mot de passe générer aléatoirement ?</p>
             <div class="question">
                 <input id="2" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="2" class="need-response">Envoyer</button>
@@ -820,7 +832,7 @@ if ($_SESSION['theme'] == 'light'){
                     <circle cx="12" cy="12" r="10"></circle>
                 </svg>
             </div>
-            <span class="task-name">Sensibilisation et Protection</span>
+            <span class="task-name">Comparaison des deux méthodes</span>
             <div class="task-arrow">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
                     <polyline points="6 9 12 15 18 9"></polyline>
@@ -828,26 +840,89 @@ if ($_SESSION['theme'] == 'light'){
             </div> 
         </div>
         <div class="task-content" style="display: none">
-            <p>Pour se protéger contre ces attaques, il existe quelques solutions simples et pratiques :</p>
-            
-            <ul>
-                <li><strong>Utiliser un pare-feu :</strong> Cela aide à filtrer les trafics indésirables et à bloquer les attaques avant qu'elles n'atteignent le site ou le service.</li>
-                <li><strong>Mettre à jour régulièrement ses systèmes :</strong> Les mises à jour logicielles contiennent souvent des améliorations de sécurité qui aident à protéger contre les nouvelles formes d'attaques.</li>
-                <li><strong>Souscrire à des services de protection DDoS :</strong> Des entreprises spécialisées offrent des services pour détecter et atténuer les attaques DDoS, en assurant la continuité du service même sous attaque.</li>
-                <li><strong>Sensibiliser et former :</strong> Former les employés et les utilisateurs sur les risques et les signes d'une attaque peut aider à détecter et réagir plus rapidement en cas d’incident.</li>
-                <li><strong>Utiliser des CAPTCHA :</strong> Ces tests permettent de distinguer les humains des robots, en demandant aux utilisateurs de réaliser de petites tâches, comme identifier des images ou taper des caractères. Cela peut aider à limiter les demandes automatiques massives des attaques.</li>
-            </ul>
-    
-            <p>En adoptant ces mesures, les entreprises peuvent renforcer leur sécurité et réduire les risques liés aux attaques DoS et DDoS. Une vigilance constante et une sensibilisation accrue sont essentielles pour protéger les infrastructures numériques.</p>
-            <p> Quel outil peut filtrer les trafics indésirables ?</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>Attaque par Force Brute</th>
+                        <th>Attaque par Dictionnaire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Principe</td>
+                        <td>Essai de toutes les combinaisons</td>
+                        <td>Utilisation d'une liste préétablie</td>
+                    </tr>
+                    <tr>
+                        <td>Vitesse</td>
+                        <td>Lente</td>
+                        <td>Plus rapide pour les mots communs</td>
+                    </tr>
+                    <tr>
+                        <td>Efficacité</td>
+                        <td>Très élevée mais lente</td>
+                        <td>Élevée pour les mots de passe courants</td>
+                    </tr>
+                    <tr>
+                        <td>Complexité du mot de passe</td>
+                        <td>Indifférente</td>
+                        <td>Dépend du dictionnaire utilisé</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p> Quel attaque est la plus efficace face à un utilisateur lambda ?</p>
             <div class="question">
                 <input id="3" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="3" class="need-response">Envoyer</button>
             </div>
-            <p> Quel type de test peut distinguer les humains des robots ?</p>
+            <p> quelle attaque necessite une liste de mots pré-créée ?</p>
             <div class="question">
                 <input id="4" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
                 <button id="4" class="need-response">Envoyer</button>
+            </div>
+            <button class="read-and-understood">J'ai lu et compris</button>
+        </div>
+    </div>
+    <div class="task">
+        <div class="task-header">
+            <span class="task-number"></span>
+            <div class="task-dot">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle task-dot">
+                    <circle cx="12" cy="12" r="10"></circle>
+                </svg>
+            </div>
+            <span class="task-name">Comment se protéger ?</span>
+            <div class="task-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </div> 
+        </div>
+        <div class="task-content" style="display: none">
+            <p><strong>Conseils généraux</strong></p>
+            <ul>
+                <li>Utiliser des mots de passe complexes : Combiner lettres majuscules et minuscules, chiffres et caractères spéciaux.</li>
+                <li>Changer régulièrement de mot de passe : Ne pas utiliser le même mot de passe sur plusieurs sites.</li>
+                <li>Utiliser un gestionnaire de mots de passe : Pour générer et stocker des mots de passe forts et uniques.</li>
+                <li>Activer l'authentification à deux facteurs (2FA) : Une couche de sécurité supplémentaire qui peut prévenir les accès non autorisés même si le mot de passe est compromis.</li>
+            </ul>
+            
+            <p><strong>Pratiques spécifiques</strong></p>
+            <ul>
+                <li>Limiter le nombre de tentatives de connexion : Verrouiller le compte après plusieurs tentatives infructueuses.</li>
+                <li>Utiliser des CAPTCHA : Pour empêcher l'automatisation des tentatives de connexion.</li>
+                <li>Surveiller les tentatives de connexion suspectes : Utiliser des outils de détection d'intrusion pour repérer les activités anormales.</li>
+            </ul>
+            <p> Est ce qu'utiliser un seul mot de passe pour tout les sites est une bonne pratique ?</p>
+            <div class="question">
+                <input id="5" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
+                <button id="5" class="need-response">Envoyer</button>
+            </div>
+            <p> Quel type de test peut distinguer les humains des robots ?</p>
+            <div class="question">
+                <input id="6" type="text" class="responseFormat" placeholder="Format de réponse: ****** " autocomplete="off">
+                <button id="6" class="need-response">Envoyer</button>
             </div>
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
@@ -869,19 +944,7 @@ if ($_SESSION['theme'] == 'light'){
             </div>                        
         </div>
         <div class="task-content" style="display: none">
-            <p>En résumé, les attaques DoS (Denial of Service) et DDoS (Distributed Denial of Service) sont comparables à une foule qui bloque l’accès à une boulangerie, mais dans le monde numérique. Elles submergent les sites web et les services en ligne avec des demandes massives, les rendant inaccessibles.</p>
-            
-            <p>Ces attaques peuvent causer des interruptions significatives, nuire à la réputation des entreprises, et entraîner des pertes financières importantes. Pour se protéger efficacement contre ces menaces, il est crucial d'adopter plusieurs mesures préventives.</p>
-            
-            <ul>
-                <li><strong>Utilisation de pare-feux :</strong> Les pare-feux peuvent filtrer le trafic malveillant et bloquer les attaques avant qu'elles n'atteignent les systèmes cibles.</li>
-                <li><strong>Mise à jour régulière des systèmes :</strong> Maintenir les logiciels et les systèmes à jour avec les derniers correctifs de sécurité permet de combler les vulnérabilités exploitées par les attaquants.</li>
-                <li><strong>Utilisation de services spécialisés :</strong> Des services de protection contre les DDoS, offerts par des fournisseurs spécialisés, peuvent détecter et atténuer les attaques en temps réel.</li>
-            </ul>
-    
-            <p>La <strong>sensibilisation et la formation</strong> jouent également un rôle clé pour maintenir un environnement numérique sécurisé et accessible. En formant les employés aux bonnes pratiques de sécurité et en les sensibilisant aux menaces potentielles, les entreprises peuvent réduire considérablement les risques d'attaques réussies.</p>
-            
-            <p>En conclusion, bien que les attaques DoS et DDoS représentent une menace sérieuse pour les infrastructures numériques, des mesures proactives et une vigilance constante permettent de renforcer la sécurité et de garantir la disponibilité des services en ligne.</p>
+            <p>Les attaques par force brute et par dictionnaire sont des méthodes courantes utilisées par les cybercriminels pour compromettre les mots de passe et accéder aux systèmes. En comprenant ces techniques et en appliquant des mesures de sécurité appropriées, vous pouvez significativement réduire les risques de compromission de vos informations.</p>
             <button class="read-and-understood">J'ai lu et compris</button>
         </div>
     </div>
@@ -979,14 +1042,21 @@ if ($_SESSION['theme'] == 'light'){
         }
 
         var dict = {
-            "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
-            "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
-            "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
-            "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
+            "1": "3a3468fa89b2ab7cbfe5400858a8ec0066e9e8defa9a64c993b5f24210244df8",
+            "2": "bcee72e6df5d56319125920f6c69d8001e938e122cd14597e547d49cc9126e42",
+            "3": "a847f3e19c92d6592e9373d0f8a54485fc942c901b3cebcf797f6a103653eef2",
+            "4": "a847f3e19c92d6592e9373d0f8a54485fc942c901b3cebcf797f6a103653eef2",
+            "5": "bcee72e6df5d56319125920f6c69d8001e938e122cd14597e547d49cc9126e42",
+            "6": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59"
         };
 
         var dict2 = {
-            "3":"a3863c5d7ce546d24186581bcba0b0a157db9d318d9174d46d0db3f3f38cc1a6"
+            "1":"8a798890fe93817163b10b5f7bd2ca4d25d84c52739a645a889c173eee7d9d3d",
+            "2":"ca3704aa0b06f5954c79ee837faa152d84d6b2d42838f0637a15eda8337dbdce",
+            "3":"bdefd68cfd3856267de93118b8080240abaf0cdc147e672cec8eb60f336ee512",
+            "4":"bdefd68cfd3856267de93118b8080240abaf0cdc147e672cec8eb60f336ee512",
+            "5":"8a798890fe93817163b10b5f7bd2ca4d25d84c52739a645a889c173eee7d9d3d",
+
         }
 
 
