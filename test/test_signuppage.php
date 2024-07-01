@@ -1,5 +1,25 @@
 <?php
     session_start();
+    include '../include/database.php';
+    global $db;
+
+    
+    if (isset($_COOKIE['userToken'])){
+        echo $_COOKIE['userToken'];
+        $testToken = hash('sha512', $_COOKIE['userToken']);
+        $q = $db->prepare("SELECT * FROM users WHERE token = :TOKEN");
+        $q->execute([
+            'TOKEN' => $testToken,
+        ]);
+        $result = $q->fetch();
+        if ($result == true){
+            $_SESSION['email'] = $result['email'];
+            $_SESSION['pseudo'] = $result['pseudo'];
+            $_SESSION['id'] = $result['id'];
+            header('Location: test_mainpage.php');
+        }
+    }
+    
     if (isset($_POST["formsend"])){
 
         echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
@@ -13,13 +33,15 @@
             if($password == $confirmPassword){
                 $emailParts = explode('@', $email);
                 $PSEUDO = $emailParts[0];
+                $Token = hash('sha256', ($email . microtime(true)));
+
 
                 $options = [
                     'cost' => 12,
                 ];
                 $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
+                $hashtoken = hash('sha512', $Token);
 
-                include '../include/database.php';
                 global $db;
                 
                 $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
@@ -29,13 +51,17 @@
 
                 if($result == 0){
 
-                    $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd) VALUES (:PSEUDO, :EMAIL,  :PASSWORD)");
+                    $q = $db->prepare("INSERT INTO users (pseudo, email, psswrd, token) VALUES (:PSEUDO, :EMAIL,  :PASSWORD, :TOKEN)");
                     $q->execute([
                         'PSEUDO' => $PSEUDO,
                         'EMAIL' => $email,
-                        'PASSWORD' => $hashpass
+                        'PASSWORD' => $hashpass,
+                        'TOKEN' => $hashtoken
                     ]);
                     $_SESSION['create'] = 'good';
+                    if (isset($_POST['remember-me']) && $_POST['remember-me'] == 'on') {
+                        setcookie("userToken", $Token, time()+(60*60*24*3), "/");
+                    }
                 }
                 else{
                     $_SESSION['create'] = 'use email';

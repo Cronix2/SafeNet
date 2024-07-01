@@ -1,7 +1,25 @@
 <?php
 session_start();
 include '../include/database.php';
+global $db;
+
+if (isset($_COOKIE['userToken'])){
+    $testToken = hash('sha512', $_COOKIE['userToken']);
+    $q = $db->prepare("SELECT * FROM users WHERE token = :TOKEN");
+    $q->execute([
+        'TOKEN' => $testToken,
+    ]);
+    $result = $q->fetch();
+    if ($result == true){
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['pseudo'] = $result['pseudo'];
+        $_SESSION['id'] = $result['id'];
+        header('Location: test_mainpage.php');
+    }
+}
+
 $_SESSION['theme']='light';
+
 
 if (isset($_POST['formsend1'])) {
     echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
@@ -19,6 +37,16 @@ if (isset($_POST['formsend1'])) {
                 $_SESSION['email'] = $email;
                 $_SESSION['pseudo'] = $result['pseudo'];
                 $_SESSION['id'] = $result['id'];
+                if (isset($_POST['remember-me']) && $_POST['remember-me'] == 'on') {
+                    $Token = hash('sha256', ($email . microtime(true)));
+                    $hashtoken = hash('sha512', $Token);
+                    $updateTokenQuery = $db->prepare("UPDATE users SET token = :TOKEN WHERE email = :EMAIL");
+                    $updateTokenQuery->execute([
+                        'TOKEN' => $hashtoken,
+                        'EMAIL' => $email
+                    ]);
+                    setcookie("userToken", $Token, time()+(60*60*24*3), "/");
+                }
                 echo "<meta http-equiv='refresh' content='0; url=test_mainpage.php'>";
             } else {
                 $_SESSION['connect'] = 'error';
@@ -551,7 +579,7 @@ if (isset($_POST['formsend1'])) {
         <span id="forcedPassword" class="verification"></span>
         <div class="flex-row">
             <div>
-                <input type="checkbox" id="remember-me">
+                <input type="checkbox" id="remember-me" name="remember-me">
                 <label for="remember-me">Remember me </label>
             </div>
             <span class="span">Forgot password ?</span>
