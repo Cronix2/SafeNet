@@ -1,0 +1,909 @@
+body {
+font-family: sans-serif;
+background-color: #222;
+color: #eee;
+}
+
+.task {
+width: 90%;
+margin: 0 auto;
+background-color: #333;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+display: flex;
+align-items: center;
+}
+
+.task-icon {
+margin-right: 10px;
+}
+
+.task-title {
+font-weight: bold;
+}
+
+.task-arrow {
+margin-left: auto;
+}
+
+.content {
+padding: 20px;
+}
+
+.content-title {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.content-text {
+line-height: 1.5;
+}
+:root {
+    --light-background: #fefdf9;
+    --light-text: #000000;
+    --dark-background: #191c3a;
+    --dark-text: #ffffff;
+    --light-card-background: #f0f0f0; 
+    --dark-card-background: #151623;
+    --light-nav-background: #f0f0f0;
+    --dark-nav-background: #1D2033;
+    --task-color_1: rgb(8, 241, 8);
+    --task-color_2: red;
+}
+
+body {
+    /*background-image: url('pexels-photo-1072179.jpeg');*/
+    background-color: var(--light-background);
+    /*background-repeat: no-repeat;
+    background-size: cover;*/
+    color: var(--light-text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    --text-color: var(--light-text);
+    --card-background: var(--light-card-background);
+    --border-color: var(--dark-card-background);
+    --nav-background: var(--light-nav-background);
+
+}
+
+body.dark {
+    background-color: var(--dark-background);
+    color: var(--dark-text); 
+    --text-color: var(--dark-text);
+    --card-background: var(--dark-card-background);
+    --border-color: var(--light-card-background);
+    --nav-background: var(--dark-nav-background);
+}
+
+
+#sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar {
+    margin-top: 0;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--nav-background);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
+}
+
+.pseudo {
+    margin-right: 10px;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+
+.avatar {
+    width: 50px; /* Ajustez cette valeur pour changer la taille */
+    height: 50px; /* Assurez-vous que la hauteur est la même que la largeur pour un cercle parfait */
+    border-radius: 50%; /* Pour rendre l'image ronde */
+    border: 3px solid var(--border-color); /* Ajoute une bordure */
+    
+}
+
+
+
+#courses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+@media (max-width: 600px) {
+    .card {
+        flex: 0 0 100%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .card {
+        flex: 0 0 50%;
+    }
+}
+
+@media (min-width: 900px) {
+    .card {
+        flex: 0 0 33%;
+    }
+}
+
+.card {
+    background-color: var(--card-background);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    flex: 0 0 30%;
+    margin: 1%;
+    margin-left: 2%;
+    border-radius: 30px;
+    border: 2px solid black;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s ease;
+}
+
+body.dark .card {
+    border-color: white;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.container {
+    padding: 2px 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.btn-primary {
+    display: block;
+    background-color: #32d929;
+    border-color: #32d929;
+    color: #fff;
+    text-align: center;
+    border-radius: 0;
+    padding: 10px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-primary:hover {
+    background-color: #2ccf24;
+    color: white;
+}
+.btn-primary:active {
+    background-color: #000000;
+    color: white;
+}
+
+/* <reset-style> ============================ */
+    button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+/* <style for change-theme__icon> ======== */
+.change-theme__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-sun,
+.icon-moon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: auto;
+}
+
+/* .icon-sun */
+.icon-sun {
+    animation: ease reverse-change-theme-sun .6s forwards;
+}
+
+.change-theme__icon.active .icon-sun {
+    animation: ease change-theme-sun .4s forwards;
+}
+
+@keyframes reverse-change-theme-sun {
+    0% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}
+
+    50% {transform: rotate(8deg);}
+
+    100% {transform: rotate(0deg) scale(1);
+        opacity: 1;}}
+
+@keyframes change-theme-sun {
+    0% {transform: rotate(0deg) scale(1);
+        opacity: 1;}
+
+    100% {transform: rotate(-45deg) scale(.8);
+        opacity: 0;}}
+
+/* .icon-moon */
+.icon-moon {
+animation: ease reverse-change-theme-moon .4s forwards;
+}
+
+.change-theme__icon.active .icon-moon {
+animation: change-theme-moon .6s forwards;
+}
+
+@keyframes change-theme-moon {
+0% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}
+50% {transform: rotate(8deg);}
+100% {transform: rotate(0deg) scale(1);
+    opacity: 1;}}
+
+@keyframes reverse-change-theme-moon {
+0% {transform: rotate(0deg) scale(1);
+    opacity: 1;}
+
+100% {transform: rotate(-45deg) scale(.8);
+    opacity: 0;}}
+
+.search {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+}
+
+.search input[type="text"] {
+    width: 200px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search button[type="submit"] {
+    background-color: #4e99e9;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: .9s ease;
+}
+
+.search button[type="submit"]:hover {
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+    background-color: blue;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    background-color: #1e1f21;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    justify-content: center;
+}
+
+.footer-content .legal a {
+    margin-right: 15px;
+    color: #ebebeb;
+    text-decoration: none;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-content .copyright {
+    margin-top: 10px;
+    color: #b5bbc1;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task {
+    margin: 5px;
+    display: block;
+    height: auto;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--background-color); /* Ajout de cette ligne */
+
+}
+
+.task-header {
+    border-left: 5px solid var(--task-color_2);
+    border-top-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    border-top-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    width: 100%;
+    background-color: #303030; /* Gris anthracite */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff; /* Texte blanc */
+}
+
+.task .task-header {
+    border-radius: 10px; /* Ajustez la valeur selon vos préférences */
+}
+
+
+.task.open .task-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.open .task-content {
+    line-height: 1.5;
+    border-bottom-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    border-bottom-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+}
+
+.task-header .task-number {
+    margin-right: 10px;
+    color: var(--task-color_2);
+}
+
+.task-header .task-name {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.task-header .task-dot{
+    margin:auto;
+}
+
+
+.task-header .task-arrow {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.task-content {
+    display: none;
+    background-color: #f9f9f9; /* Fond blanc */
+    border-left: 5px solid var(--task-color_2); /* Bordure rouge à gauche */
+    padding: 10px;
+    clear: both; /* Assure que le contenu de la tâche s'affiche sous l'en-tête de la tâche */
+    width: 100%; /* Ajout de cette ligne */
+    color: #000000;
+}
+
+.task-header h3 {
+    margin-bottom: 5px;
+}
+
+.task-header p {
+    display: none;
+}
+
+.task.expanded .task-header p {
+    display: block;
+}
+
+
+.social-buttons {
+    margin-bottom: 10px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--card-background);
+    box-shadow: 0px 0px 15px #00000027;
+    padding: 15px 10px;
+    border-radius: 5em;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px #00000027;
+    transition: 0.3s;
+}
+
+.social-button:hover {
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 6px 3px #00000027;
+}
+
+.social-buttons svg {
+    transition: 0.3s;
+    height: 20px;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.facebook svg {
+    fill: #f2f2f2;
+}
+
+.facebook:hover svg {
+    fill: #3b5998;
+}
+
+.github {
+    background-color: #333;
+}
+
+.github svg {
+    width: 25px;
+    height: 25px;
+    fill: #f2f2f2;
+}
+
+.github:hover svg {
+    fill: #333;
+}
+
+
+.menu {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.task-header h3 {
+    margin-bottom: 5px;
+}
+
+.task-header p {
+    display: none;
+}
+
+.task.expanded.task-header p {
+    display: block;
+}
+
+.linkedin {
+    background-color: #0077b5;
+}
+
+.linkedin svg {
+    fill: #f2f2f2;
+}
+
+.linkedin:hover svg {
+    fill: #0077b5;
+}
+
+.instagram {
+    background-color: #c13584;
+}
+
+.instagram svg {
+    fill: #f2f2f2;
+}
+
+.instagram:hover svg {
+    fill: #c13584;
+}
+
+svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg circle {
+    margin: auto;
+
+}
+
+button.read-and-understood {
+    background-color: white;
+    border: 2px solid rgb(3, 196, 3);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.read-and-understood:hover {
+    background-color: rgb(0, 255, 0);
+    border: 2px solid rgb(0, 255, 0);
+    transition: background-color 0.3s ease;
+}
+
+.read-and-understood.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+}
+
+.responseFormat {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #a2a2a2;
+}
+
+.question {
+    margin: 10px;
+    display: flex;
+}
+
+.question input,
+.question button {
+    height: auto;
+    margin-left: 5px;
+}
+
+button.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+}
+
+input.glow-red {
+    box-shadow: 0 0 10px red;
+}
+
+input.glow-green {
+    border: 2px solid rgb(3, 196, 3);
+    background-color: #e3e3e3;
+    color: rgb(103, 103, 103);
+    pointer-events: none;
+}
+
+
+button.need-response {
+    background-color: white;
+    border: 2px solid rgb(3, 196, 3);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.need-response:hover {
+    background-color: rgb(0, 255, 0);
+    border: 2px solid rgb(0, 255, 0);
+    transition: background-color 0.3s ease;
+}
+
+.need-response.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+    pointer-events: none;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100rem;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Ubuntu, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    background-color: #fefefe;
+    margin: 15% auto auto auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 20px;
+    position: relative;
+}
+
+.exercice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+.exercice-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Ubuntu, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    background-color: #fefefe;
+    margin: 20px auto 20px auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 20px;
+    position: relative;
+}
+
+.titre_exo {
+    display: flex;
+    flex-direction: column;
+    font-family: Ubuntu, sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #191c3a;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    border-left: 5px solid red;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+}
+
+.texte_exo {
+    display: flex;
+    flex-direction: column;
+    font-family: Ubuntu, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    background-color: #ebebeb;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+    border-left: 5px solid red;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+}
+
+.finish {
+    border-left: 5px solid rgb(8, 241, 8);
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.numero_exo {
+    position: relative;
+    height: 50px; /* Ajustez la hauteur si nécessaire */
+}
+
+.numero_exo .round {
+    width: 10px; /* Taille du rond */
+    height: 10px; /* Taille du rond */
+    border-radius: 50%; /* Rend le div rond */
+    background-color: grey; /* Couleur du rond */
+    position: absolute;
+    bottom: 10px; /* Position en bas du div */
+    right: 10px; /* Position à droite du div */
+}
+
+.attack{
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+.attack:hover{
+    background-color: darkgreen;
+}
+
+.exo1-content {
+    display: flex;
+    align-items: center; /* Pour aligner verticalement les éléments au centre */
+    position: relative;
+    justify-content: space-around; /* Pour répartir l'espace autour des éléments */
+}
+
+.table {
+    height: 50%;
+    width: 50%;
+}
+
+.request {
+    /* border: 2px solid #000000; */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.request th:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.head_table {
+    background-color: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+    margin: 10%;
+    justify-content: center;
+}
+
+.pair {
+    background-color: #d5d5d5;
+    border: 2px solid #000000;
+}
+
+.impair {
+    background-color: #f2f2f2;
+    border: 2px solid #000000;
+}
+
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.desktop-image {
+    bottom: 0; /* Colle l'image au bas de l'image-container */
+
+}
+
+.green-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: green;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.text_table{
+    padding: 1px 10px 1px 10px;
+    min-height: 20px;
+    min-width: 120px;
+    justify-content: center;
+
+    display: flex;
+}
+
+
+.change_exo{
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.change_exo:hover{
+    background-color: darkgreen;
+}
+
+.zombie-image {
+    width: 120px; /* Ajustez la largeur selon vos préférences */
+    height: auto; /* Garde le ratio d'aspect */
+}

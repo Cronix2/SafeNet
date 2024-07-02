@@ -6,6 +6,8 @@ document.querySelector('.change-theme__icon').addEventListener('click', function
     this.classList.toggle('active');
 });
 
+
+
 function togglePasswordVisibility() {
         var passwordField = document.getElementById('password-field');
         if (passwordField.type === "password") {
@@ -23,6 +25,13 @@ function togglePasswordVisibility() {
         }
     }
     
+
+// changement de page
+function login_button() {
+    window.location.href = "../login/login.php";
+}
+
+
 // Fonction de validation du formulaire
 function validateForm() {
     // Récupérer les valeurs des champs email, password et confirmPassword
@@ -30,6 +39,7 @@ function validateForm() {
     var password = document.querySelector('input[name="PASSWORD"]').value;
     var confirmPassword = document.querySelector('input[name="CONFIRMPASSWORD"]').value;
     var regexemail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    var formemail = /^[a-zA-Z0-9._-]+@(esiea|et.esiea)\.fr$/;
     var upperCase = new RegExp('[A-Z]');
     var lowerCase = new RegExp('[a-z]');
     var numbers = new RegExp('[0-9]');
@@ -62,6 +72,13 @@ function validateForm() {
         document.querySelector('input[name="EMAIL"]').parentElement.classList.add('error');
         emailValid = false;
     }
+
+    if (!formemail.test(email)) {
+        document.getElementById('emailError').textContent = 'Email must be an esiea email';
+        document.querySelector('input[name="EMAIL"]').parentElement.classList.add('error');
+        emailValid = false;
+    }
+
     // Valider le mot de passe
     if (password === '') {
         document.getElementById('passwordError').textContent = 'Password is required';
@@ -110,28 +127,3 @@ function validateForm() {
     // Retourner true si tous les champs sont valides, sinon false
     return emailValid && passwordValid && confirmPasswordValid;
 }
-
-
-// Appeler la fonction validateForm lors de la soumission du formulaire
-document.querySelector('form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    validateForm();
-});
-
-/*
-// Sélectionnez l'élément de mot de passe
-var passwordField = document.getElementById('password-field');
-
-// Créez un élément span pour afficher le texte
-var forcedPasswordSpan = document.getElementById('forcedPassword');
-forcedPasswordSpan.textContent = 'Votre mot de passe doit contenir au moins :';
-
-// Ajoutez l'élément span après le champ de mot de passe
-passwordField.parentElement.appendChild(passwordHint);
-// Ajoutez un écouteur d'événements 'input' au champ de mot de passe
-passwordField.addEventListener('input', function() {
-    // Affichez le texte lorsque l'utilisateur commence à taper
-    passwordHint.style.display = 'block';
-
-});
-*/

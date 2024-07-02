@@ -1,20 +1,39 @@
+<?php
+    session_start();
+    include '../../../include/database.php';
+    if (!isset($_SESSION['pseudo'])){
+        header('Location: ../../../../../../index.php');
+        exit();
+    }
+    if ($_SESSION['theme'] == 'light'){
+        $button_theme = 'disactive';
+        $logo = '../../../img/SafeNet_Logo_2_dark.png';
+    } else {
+        $button_theme =  'active';
+        $logo = '../../../img/SafeNet_Logo_2_light.png';
+    }
+
+    if (!isset($_SESSION['cours1'])){
+        header('Location: ../Course.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
-    <link href="index.css" rel="stylesheet">
+    <title>SafeNet</title>
+    <link rel="icon" href="../../../img/SafeNet_Logo_1.png" type="image/png">
+    <link rel="stylesheet" type="text/css" href="Exo_2.css">
 </head>
 <header id="sticky-header">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand">
-                    <img src="../img/pexels-photo-1072179.jpeg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                <a class="navbar-brand" href="../../../include/index.php">
+                    <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
-                SafeNet
-                <button class="change-theme__icon" id="toggle-theme">
+                <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
                     <div class="icon-sun">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="24" width="24">
                             <path fill="#1c1c1e" d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" clip-rule="evenodd" fill-rule="evenodd"></path>
@@ -27,22 +46,101 @@
                         </svg>
                     </div>
                 </button>
-                <div class="search">
-                    <input placeholder="Search..." type="text">
-                    <button type="submit">Go</button>
-                </div>
-                <a class="pseudo">pseudo</a>
-                <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
+                <a class="pseudo"><?= $_SESSION['pseudo']; ?></a>
+                <img src="../../../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
     </nav>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <img src="../../../img/award.png" alt="Award" style="width: 100px; height: 100px;">
+            <h2>Bravo</h2>
+            <p>Vous avez triomphé !</p>
+            <p>Votre apprentissage dans ce domaine est terminé.</p>
+            <p>Vous pouvez commencer un nouveau cours depuis la page principale desormais.</p>
+            <button class="change_exo" id="changer_d'exo_popup">Retour au menu</button>
+        </div>
+    </div>
 </header>
-<body id="body">
-    <section id="courses">
-    </section>
-    <script src="index.js"></script>
+<body class = "<?= $_SESSION['theme']?>">
+    <div class="exercice">
+        <div class="exercice-content">
+            <div class="explications">
+                <div class="titre_exo">
+                    <h5 style="margin-left: 10px;">Exercice 2</h5>
+                </div>
+                <div class="texte_exo">
+                    <p style="margin-left: 10px;">Passons à quelque chose de plus complexe.</p>
+                    <p style="margin-left: 10px;">Dans cet exercice le serveur est plus rapide pour traiter les requêtes et à une meilleur capacité, une simple attaque DoS ne fonctionnerais pas.</p>
+                    <p style="margin-left: 10px;">Nous allons donc utiliser une attaques DDoS. Cliquer sur le premier boutton pour faire apparaitre des machines zombies avant de lancer votre attaque. Maintenant essayer de faire surcharger le serveur.</p>
+                    <div class="numero_exo">
+                        <div class="round"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="exo1">
+                <div class="exo1-content" id="testt">
+                    <div class="image-container" id="desktop-container">
+                        <img class="desktop-image" src="../../../img/module/module-1/exo_1_desktop.png" alt="Desktop">
+                    </div>
+                    <div class="image-zombie-container" id="zombie-container" style="display: flex; flex-direction: column; align-items: center;">
+                        <img class="zombie-image" src="../../../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../../../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../../../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../../../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                        <img class="zombie-image" src="../../../img/module/module-1/exo_1_zombie_desktop.png" alt="Desktop" style="display: none;">
+                    </div>
+                    <div class="image-container" id="server-container">
+                        <img id="serverImage" src="../../../img/module/module-1/exo_1_server.png" alt="Server">
+                    </div>
+                    <div class="table">
+                        <table class="request">
+                            <tr class="head_table">
+                                <td id="header_table" class="text_table">Requetes</td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne2" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne3" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne4" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne5" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne6" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne7" class="text_table"></td>
+                            </tr>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne8" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne9" class="text_table"></td>
+                            </tr>
+                            <tr class="pair">
+                                <td id="ligne10" class="text_table"></td>
+                            </tr>
+                            <tr class="impair">
+                                <td id="ligne11" class="text_table"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="attack" id="createZombie">Invoquer un nouvel attaquant</button>
+                <button class="attack" id="moveGreenDot">Envoyer une requete</button>
+            </div>
+        </div>
+    </div>
+    <button class="change_exo" id="changer_d'exo" style="display: none;">Retour au menu</button>
+    <script src="Exo_2.js"></script>
 </body>
-</html>
 <footer>
     <div class="footer-content">
         <div class="social-buttons">
@@ -92,3 +190,4 @@
         </div>
     </div>
 </footer>
+</html>

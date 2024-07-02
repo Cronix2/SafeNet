@@ -1,18 +1,45 @@
-/*
-:root {
-    --light-background: #fefdf9;
-    --light-text: #000000;
-    --dark-background: #3b3b3bd3;
-    --dark-text: #ffffff;
-    --light-card-background: #f0f0f0; 
-    --dark-card-background: #3f3f3f66;
-    --light-nav-background: #f0f0f0;
-    --dark-nav-background: #1D2033;
+body {
+font-family: sans-serif;
+background-color: #222;
+color: #eee;
 }
-*/
 
-/* SALOME CHANGE MOI CA, JE TROUVE CA IMMENSEMENT MOCHE */
+.task {
+width: 90%;
+margin: 0 auto;
+background-color: #333;
+padding: 10px;
+margin-bottom: 10px;
+border-radius: 5px;
+display: flex;
+align-items: center;
+}
 
+.task-icon {
+margin-right: 10px;
+}
+
+.task-title {
+font-weight: bold;
+}
+
+.task-arrow {
+margin-left: auto;
+}
+
+.content {
+padding: 20px;
+}
+
+.content-title {
+font-size: 24px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.content-text {
+line-height: 1.5;
+}
 :root {
     --light-background: #fefdf9;
     --light-text: #000000;
@@ -22,6 +49,8 @@
     --dark-card-background: #151623;
     --light-nav-background: #f0f0f0;
     --dark-nav-background: #1D2033;
+    --task-color_1: rgb(8, 241, 8);
+    --task-color_2: red;
 }
 
 body {
@@ -32,6 +61,7 @@ body {
     color: var(--light-text);
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
     align-items: center;
     margin: 0;
     padding: 0;
@@ -125,21 +155,18 @@ body.dark {
     justify-content: flex-start;
 }
 
-/* For screens smaller than 600px, cards take full width */
 @media (max-width: 600px) {
     .card {
         flex: 0 0 100%;
     }
 }
 
-/* For screens between 600px and 900px, cards take half the width */
 @media (min-width: 600px) and (max-width: 900px) {
     .card {
         flex: 0 0 50%;
     }
 }
 
-/* For screens larger than 900px, cards take one third of the width */
 @media (min-width: 900px) {
     .card {
         flex: 0 0 33%;
@@ -193,7 +220,6 @@ body.dark .card {
 }
 
 .card-text {
-    min-height: 10rem;
     font-size: 16px;
     color: var(--text-color);
 }
@@ -337,7 +363,7 @@ animation: change-theme-moon .6s forwards;
 }
 
 footer {
-    margin-top: 30px;
+    margin-top: auto;
     width: 100%;
     background-color: #1e1f21;
     padding: 20px;
@@ -362,6 +388,94 @@ footer {
 .footer-content .copyright {
     margin-top: 10px;
     color: #b5bbc1;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task {
+    margin: 5px;
+    display: block;
+    height: auto;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--background-color); /* Ajout de cette ligne */
+
+}
+
+.task-header {
+    border-left: 5px solid var(--task-color_2);
+    border-top-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    border-top-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    width: 100%;
+    background-color: #303030; /* Gris anthracite */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff; /* Texte blanc */
+}
+
+.task .task-header {
+    border-radius: 10px; /* Ajustez la valeur selon vos préférences */
+}
+
+
+.task.open .task-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.open .task-content {
+    line-height: 1.5;
+    border-bottom-left-radius: 10px; /* Ajustez la valeur selon vos préférences */
+    border-bottom-right-radius: 10px; /* Ajustez la valeur selon vos préférences */
+}
+
+.task-header .task-number {
+    margin-right: 10px;
+    color: var(--task-color_2);
+}
+
+.task-header .task-name {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.task-header .task-dot{
+    margin:auto;
+}
+
+
+.task-header .task-arrow {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.task-content {
+    display: none;
+    background-color: #f9f9f9; /* Fond blanc */
+    border-left: 5px solid var(--task-color_2); /* Bordure rouge à gauche */
+    padding: 10px;
+    clear: both; /* Assure que le contenu de la tâche s'affiche sous l'en-tête de la tâche */
+    width: 100%; /* Ajout de cette ligne */
+    color: #000000;
+}
+
+.task-header h3 {
+    margin-bottom: 5px;
+}
+
+.task-header p {
+    display: none;
+}
+
+.task.expanded .task-header p {
+    display: block;
 }
 
 
@@ -426,6 +540,34 @@ footer {
     fill: #333;
 }
 
+
+.menu {
+    height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.task-header h3 {
+    margin-bottom: 5px;
+}
+
+.task-header p {
+    display: none;
+}
+
+.task.expanded.task-header p {
+    display: block;
+}
+
 .linkedin {
     background-color: #0077b5;
 }
@@ -448,4 +590,147 @@ footer {
 
 .instagram:hover svg {
     fill: #c13584;
+}
+
+svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg circle {
+    margin: auto;
+
+}
+
+button.read-and-understood {
+    background-color: white;
+    border: 2px solid rgb(3, 196, 3);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.read-and-understood:hover {
+    background-color: rgb(0, 255, 0);
+    border: 2px solid rgb(0, 255, 0);
+    transition: background-color 0.3s ease;
+}
+
+.read-and-understood.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+}
+
+.responseFormat {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #a2a2a2;
+}
+
+.question {
+    margin: 10px;
+    display: flex;
+}
+
+.question input,
+.question button {
+    height: auto;
+    margin-left: 5px;
+}
+
+button.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+}
+
+input.glow-red {
+    box-shadow: 0 0 10px red;
+}
+
+input.glow-green {
+    border: 2px solid rgb(3, 196, 3);
+    background-color: #e3e3e3;
+    color: rgb(103, 103, 103);
+    pointer-events: none;
+}
+
+
+button.need-response {
+    background-color: white;
+    border: 2px solid rgb(3, 196, 3);
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.need-response:hover {
+    background-color: rgb(0, 255, 0);
+    border: 2px solid rgb(0, 255, 0);
+    transition: background-color 0.3s ease;
+}
+
+.need-response.clicked {
+    background-color: rgb(3, 196, 3);
+    color: white;
+    pointer-events: none;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100rem;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Ubuntu, sans-serif;
+    font-weight: bold;
+    color: #000000;
+    background-color: #fefefe;
+    margin: 5% auto auto auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    border-radius: 20px;
+    position: relative;
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.go-exercice{
+    display:none; 
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
 }
