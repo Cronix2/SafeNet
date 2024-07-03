@@ -141,35 +141,35 @@ SafeNet is a comprehensive network security and monitoring solution. It offers r
 ## 🧩 Modules
 
 | File                                                                                   | Summary                                                  |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | [create_container.py](https://github.com/Cronix2/SafeNet/blob/master/create_container.py) | Script to create Docker containers for the SafeNet setup |
 
 | File                                                                                     | Summary                                |
-| ------------------------------------------------------------------------------------------ | ---------------------------------------- |
+| ---------------------------------------------------------------------------------------- | -------------------------------------- |
 | [index.php](https://github.com/Cronix2/SafeNet/blob/master/Include/index.php)               | Main entry point for the web interface |
 | [database.php](https://github.com/Cronix2/SafeNet/blob/master/Include/database.php)         | Database connection and operations     |
 | [update_theme.php](https://github.com/Cronix2/SafeNet/blob/master/Include/update_theme.php) | Script to update the UI theme          |
 
 | File                                                                        | Summary                           |
-| ----------------------------------------------------------------------------- | ----------------------------------- |
+| --------------------------------------------------------------------------- | --------------------------------- |
 | [signup.js](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.js)   | JavaScript for the signup process |
 | [signup.css](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.css) | Stylesheet for the signup page    |
 | [signup.php](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.php) | PHP backend for user registration |
 
 | File                                                                              | Summary                            |
-| ----------------------------------------------------------------------------------- | ------------------------------------ |
+| --------------------------------------------------------------------------------- | ---------------------------------- |
 | [mainpage.js](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.js)   | JavaScript for the main dashboard  |
 | [mainpage.css](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.css) | Stylesheet for the main dashboard  |
 | [mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.php) | PHP backend for the main dashboard |
 
 | File                                                                     | Summary                             |
-| -------------------------------------------------------------------------- | ------------------------------------- |
+| ------------------------------------------------------------------------ | ----------------------------------- |
 | [login.js](https://github.com/Cronix2/SafeNet/blob/master/login/login.js)   | JavaScript for the login process    |
 | [login.css](https://github.com/Cronix2/SafeNet/blob/master/login/login.css) | Stylesheet for the login page       |
 | [login.php](https://github.com/Cronix2/SafeNet/blob/master/login/login.php) | PHP backend for user authentication |
 
 | File                                                                                              | Summary                            |
-| --------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| ------------------------------------------------------------------------------------------------- | ---------------------------------- |
 | [test_loginpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_loginpage.php)         | Testing script for login page      |
 | [test_mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_mainpage.php)           | Testing script for main page       |
 | [test_signuppage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_signuppage.php)       | Testing script for signup page     |
@@ -205,15 +205,14 @@ npm install
 
 1. **Start the application:**
 
-    ```sh
-    npm start
-    ```
-
+   ```sh
+   npm start
+   ```
 2. **Open your browser and navigate to:**
 
    ```sh
    http://localhost:3000
-    ```
+   ```
 
 ### 🧪 Tests
 
