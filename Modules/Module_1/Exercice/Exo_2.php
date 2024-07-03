@@ -2,7 +2,7 @@
     session_start();
     include '../../../include/database.php';
     if (!isset($_SESSION['pseudo'])){
-        header('Location: ../../../../../../index.php');
+        header('Location: ../../../../index.php');
         exit();
     }
     if ($_SESSION['theme'] == 'light'){
