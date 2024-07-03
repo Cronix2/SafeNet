@@ -58,7 +58,8 @@ SafeNet is a comprehensive network security and monitoring solution. It offers r
 
 ## 📂 Repository Structure
 
-<pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">└── SafeNet/
+```sh
+└── SafeNet/
     ├── Include
     │   ├── database.php
     │   ├── index.php
@@ -133,53 +134,48 @@ SafeNet is a comprehensive network security and monitoring solution. It offers r
         ├── docker-compose.yml
         ├── docker-compose.yml.swp
         └── env
-</code></div></div></pre>
+```
 
 ---
 
 ## 🧩 Modules
 
-<details closed><summary>Modules</summary>| File                                                                                   | Summary                                                  |
+| File                                                                                   | Summary                                                  |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | [create_container.py](https://github.com/Cronix2/SafeNet/blob/master/create_container.py) | Script to create Docker containers for the SafeNet setup |
 
-</details>
-<details closed><summary>Include</summary>| File                                                                                     | Summary                                |
+| File                                                                                     | Summary                                |
 | ------------------------------------------------------------------------------------------ | ---------------------------------------- |
 | [index.php](https://github.com/Cronix2/SafeNet/blob/master/Include/index.php)               | Main entry point for the web interface |
 | [database.php](https://github.com/Cronix2/SafeNet/blob/master/Include/database.php)         | Database connection and operations     |
 | [update_theme.php](https://github.com/Cronix2/SafeNet/blob/master/Include/update_theme.php) | Script to update the UI theme          |
 
-</details>
-<details closed><summary>signup</summary>| File                                                                        | Summary                           |
+| File                                                                        | Summary                           |
 | ----------------------------------------------------------------------------- | ----------------------------------- |
 | [signup.js](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.js)   | JavaScript for the signup process |
 | [signup.css](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.css) | Stylesheet for the signup page    |
 | [signup.php](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.php) | PHP backend for user registration |
 
-</details>
-<details closed><summary>mainpage</summary>| File                                                                              | Summary                            |
+| File                                                                              | Summary                            |
 | ----------------------------------------------------------------------------------- | ------------------------------------ |
 | [mainpage.js](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.js)   | JavaScript for the main dashboard  |
 | [mainpage.css](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.css) | Stylesheet for the main dashboard  |
 | [mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.php) | PHP backend for the main dashboard |
 
-</details>
-<details closed><summary>login</summary>| File                                                                     | Summary                             |
+| File                                                                     | Summary                             |
 | -------------------------------------------------------------------------- | ------------------------------------- |
 | [login.js](https://github.com/Cronix2/SafeNet/blob/master/login/login.js)   | JavaScript for the login process    |
 | [login.css](https://github.com/Cronix2/SafeNet/blob/master/login/login.css) | Stylesheet for the login page       |
 | [login.php](https://github.com/Cronix2/SafeNet/blob/master/login/login.php) | PHP backend for user authentication |
 
-</details>
-<details closed><summary>test</summary>| File                                                                                              | Summary                            |
+| File                                                                                              | Summary                            |
 | --------------------------------------------------------------------------------------------------- | ------------------------------------ |
 | [test_loginpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_loginpage.php)         | Testing script for login page      |
 | [test_mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_mainpage.php)           | Testing script for main page       |
 | [test_signuppage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_signuppage.php)       | Testing script for signup page     |
 | [test_twofactorpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_twofactorpage.php) | Testing script for two-factor page |
 
-</details>---
+---
 
 ## 🚀 Getting Started
 
@@ -189,34 +185,43 @@ Follow these steps to set up SafeNet on your local machine.
 
 1. **Clone the repository:**
 
-<pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">git clone https://github.com/Cronix2/SafeNet.git
-   </code></div></div></pre>
+```sh
+git clone https://github.com/Cronix2/SafeNet.git
+```
 
 1. **Navigate to the project directory:**
 
-<pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">cd SafeNet
-   </code></div></div></pre>
+```sh
+cd SafeNet
+```
 
 1. **Install dependencies:**
 
-<pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">npm install
-   </code></div></div></pre>
+```sh
+npm install
+```
 
 ### 🤖 Running SafeNet
 
 1. **Start the application:**
-   <pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">npm start
-   </code></div></div></pre>
+
+    ```sh
+    npm start
+    ```
+
 2. **Open your browser and navigate to:**
-   <pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>arduino</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-arduino">http://localhost:3000
-   </code></div></div></pre>
+
+   ```sh
+   http://localhost:3000
+    ```
 
 ### 🧪 Tests
 
 To run the test suite, execute:
 
-<pre><div class="dark bg-gray-950 rounded-md border-[0.5px] border-token-border-medium"><div class="flex items-center relative text-token-text-secondary bg-token-main-surface-secondary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>sh</span><div class="flex items-center"><span class="" data-state="closed"><button class="flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" class="icon-sm"><path fill="currentColor" fill-rule="evenodd" d="M7 5a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3h-2v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3h2zm2 2h5a3 3 0 0 1 3 3v5h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1h-9a1 1 0 0 0-1 1zM5 9a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-9a1 1 0 0 0-1-1z" clip-rule="evenodd"></path></svg>Copier le code</button></span></div></div><div class="overflow-y-auto p-4" dir="ltr"><code class="!whitespace-pre hljs language-sh">npm test
-</code></div></div></pre>
+```sh
+npm test
+```
 
 ---
 

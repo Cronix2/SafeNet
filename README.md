@@ -116,6 +116,8 @@ SafeNet est un site web dédié à l'enseignement des bases de l'informatique et
 
 ---
 
+---
+
 ## Getting Started
 
 ***Requirements***
