@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="img/SafeNet_Logo_1.svg" width="100" />
+  <img src="img/SafeNet_Logo_1.svg" width="100" />
 </p>
 <p align="center">
     <h1 align="center">SAFENET</h1>
 </p>
 <p align="center">
-    <em><code>Donnons du pouvoir à votre cybersécurité : Informez-vous, protégez-vous.</code></em>
+    <em><code>Your reliable solution for network security and monitoring.</code></em>
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/license/Cronix2/SafeNet?style=flat&color=0080ff" alt="license">
@@ -21,53 +21,65 @@
 	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">
 	<img src="https://img.shields.io/badge/YAML-CB171E.svg?style=flat&logo=YAML&logoColor=white" alt="YAML">
 	<img src="https://img.shields.io/badge/PHP-777BB4.svg?style=flat&logo=PHP&logoColor=white" alt="PHP">
+	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
 </p>
-<hr>
+<hr>## 🔗 Quick Links
 
-## Quick Links
-
-> - [ Overview](#-overview)
-> - [ Features](#-features)
-> - [ Repository Structure](#-repository-structure)
-> - [ Modules](#-modules)
-> - [ Getting Started](#-getting-started)
->   - [ Installation](#-installation)
->   - [ Running SafeNet](#-running-SafeNet)
->   - [ Tests](#-tests)
-> - [ Project Roadmap](#-project-roadmap)
-> - [ Contributing](#-contributing)
-> - [ License](#-license)
-> - [ Acknowledgments](#-acknowledgments)
+> * [📍 Overview](#-overview)
+> * [📦 Features](#-features)
+> * [📂 Repository Structure](#-repository-structure)
+> * [🧩 Modules](#-modules)
+> * [🚀 Getting Started](#-getting-started)
+>   * [⚙️ Installation](#%EF%B8%8F-installation)
+>   * [🤖 Running SafeNet](#-running-SafeNet)
+>   * [🧪 Tests](#-tests)
+> * [🛠 Project Roadmap](#-project-roadmap)
+> * [🤝 Contributing](#-contributing)
+> * [📄 License](#-license)
+> * [👏 Acknowledgments](#-acknowledgments)
 
 ---
 
-## Overview
+## 📍 Overview
 
-SafeNet est un site web dédié à l'enseignement des bases de l'informatique et de la cybersécurité aux novices. Il propose des cours simples et des activités pratiques pour sensibiliser les utilisateurs aux risques sur Internet, y compris les attaques courantes. L'objectif est de fournir une formation accessible pour renforcer la sécurité personnelle en ligne.
+SafeNet is a website dedicated to teaching the basics of computer science and cybersecurity to novices. It offers simple lessons and practical activities to educate users about Internet risks, including common attacks. The goal is to provide accessible training to enhance personal safety online.
 
----
+## 📦 Features
 
-## Features
-
-**Cours Simples et Basés** : Enseignement des bases de l'informatique et de la cybersécurité.
-
-**Sensibilisation aux Risques** : Informations sur les menaces courantes sur Internet.
-
-**Activités Pratiques** : Exercices interactifs pour renforcer les connaissances.
-
-**Interface Accessible** : Conçu pour les utilisateurs novices.
-
-**Protection Personnelle** : Conseils pour améliorer la sécurité en ligne personnelle.
+* Educational modules for learning about network security
+* User-friendly web interface for managing security settings
+* Real-time network monitoring
+* Integration with Zabbix for advanced monitoring capabilities
 
 ---
 
-## Repository Structure
+## 📂 Repository Structure
 
 ```sh
 └── SafeNet/
+    ├── Include
+    │   ├── database.php
+    │   ├── index.php
+    │   └── update_theme.php
     ├── LICENSE.md
+    ├── Modules
+    │   ├── Module_1
+    │   │   ├── Course.css
+    │   │   ├── Course.js
+    │   │   ├── Course.php
+    │   │   └── Exercice
+    │   │       ├── Exo_1.css
+    │   │       ├── Exo_1.js
+    │   │       ├── Exo_1.php
+    │   │       ├── Exo_2.css
+    │   │       ├── Exo_2.js
+    │   │       └── Exo_2.php
+    │   └── Module_2
+    │       ├── Course.css
+    │       ├── Course.js
+    │       └── Course.php
     ├── README.md
-    ├── database.php
+    ├── create_container.py
     ├── img
     │   ├── SafeNet-Logo.png
     │   ├── SafeNet_Logo.png
@@ -77,37 +89,44 @@ SafeNet est un site web dédié à l'enseignement des bases de l'informatique et
     │   ├── SafeNet_Logo_2.png
     │   ├── SafeNet_Logo_2_dark.png
     │   ├── SafeNet_Logo_2_light.png
+    │   ├── award.gif
+    │   ├── award.png
     │   ├── logo with text.png
     │   ├── mail.gif
     │   ├── module
     │   │   ├── module-1
     │   │   │   ├── Cover.jpeg
     │   │   │   ├── DDoS.gif
-    │   │   │   └── DoS.gif
+    │   │   │   ├── DoS.gif
+    │   │   │   ├── exo_1_desktop.png
+    │   │   │   ├── exo_1_server.png
+    │   │   │   ├── exo_1_server_fire.png
+    │   │   │   └── exo_1_zombie_desktop.png
     │   │   └── module-2
     │   │       └── Cover.jpeg
     │   └── pexels-photo-1072179.jpeg
-    ├── index.php
     ├── login
     │   ├── login.css
-    │   ├── login.html
-    │   └── login.js
+    │   ├── login.js
+    │   └── login.php
     ├── mainpage
     │   ├── mainpage.css
-    │   ├── mainpage.html
-    │   └── mainpage.js
+    │   ├── mainpage.js
+    │   └── mainpage.php
     ├── signup
     │   ├── signup.css
-    │   ├── signup.html
-    │   └── signup.js
+    │   ├── signup.js
+    │   └── signup.php
     ├── test
     │   ├── Demo_1.php
     │   ├── Demo_2.php
-    │   ├── mail.php
+    │   ├── exo_1.php
+    │   ├── exo_2.php
+    │   ├── mail.html
     │   ├── test_loginpage.php
     │   ├── test_mainpage.php
     │   ├── test_signuppage.php
-    │   └── test_two-factorpage.php
+    │   └── test_twofactorpage.php
     └── zabbix
         ├── docker-compose.yml
         ├── docker-compose.yml.swp
@@ -116,117 +135,127 @@ SafeNet est un site web dédié à l'enseignement des bases de l'informatique et
 
 ---
 
+## 🧩 Modules
+
+| File                                                                                   | Summary                                                  |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [create_container.py](https://github.com/Cronix2/SafeNet/blob/master/create_container.py) | Script to create Docker containers for the SafeNet setup |
+
+| File                                                                                     | Summary                                |
+| ---------------------------------------------------------------------------------------- | -------------------------------------- |
+| [index.php](https://github.com/Cronix2/SafeNet/blob/master/Include/index.php)               | Main entry point for the web interface |
+| [database.php](https://github.com/Cronix2/SafeNet/blob/master/Include/database.php)         | Database connection and operations     |
+| [update_theme.php](https://github.com/Cronix2/SafeNet/blob/master/Include/update_theme.php) | Script to update the UI theme          |
+
+| File                                                                        | Summary                           |
+| --------------------------------------------------------------------------- | --------------------------------- |
+| [signup.js](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.js)   | JavaScript for the signup process |
+| [signup.css](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.css) | Stylesheet for the signup page    |
+| [signup.php](https://github.com/Cronix2/SafeNet/blob/master/signup/signup.php) | PHP backend for user registration |
+
+| File                                                                              | Summary                            |
+| --------------------------------------------------------------------------------- | ---------------------------------- |
+| [mainpage.js](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.js)   | JavaScript for the main dashboard  |
+| [mainpage.css](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.css) | Stylesheet for the main dashboard  |
+| [mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/mainpage/mainpage.php) | PHP backend for the main dashboard |
+
+| File                                                                     | Summary                             |
+| ------------------------------------------------------------------------ | ----------------------------------- |
+| [login.js](https://github.com/Cronix2/SafeNet/blob/master/login/login.js)   | JavaScript for the login process    |
+| [login.css](https://github.com/Cronix2/SafeNet/blob/master/login/login.css) | Stylesheet for the login page       |
+| [login.php](https://github.com/Cronix2/SafeNet/blob/master/login/login.php) | PHP backend for user authentication |
+
+| File                                                                                              | Summary                            |
+| ------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [test_loginpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_loginpage.php)         | Testing script for login page      |
+| [test_mainpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_mainpage.php)           | Testing script for main page       |
+| [test_signuppage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_signuppage.php)       | Testing script for signup page     |
+| [test_twofactorpage.php](https://github.com/Cronix2/SafeNet/blob/master/test/test_twofactorpage.php) | Testing script for two-factor page |
+
 ---
 
-## Getting Started
+## 🚀 Getting Started
 
-***Requirements***
+### ⚙️ Installation
 
-Ensure you have the following dependencies installed on your system:
+Follow these steps to set up SafeNet on your local machine.
 
-* **PHP**: 8.2.13 or sup
-
-### Installation
-
-1. Clone the SafeNet repository:
+1. **Clone the repository:**
 
 ```sh
-git clone https://github.com/Cronix2/SafeNet
+git clone https://github.com/Cronix2/SafeNet.git
 ```
 
-2. Change to the project directory:
+1. **Navigate to the project directory:**
 
 ```sh
 cd SafeNet
 ```
 
-3. Install the dependencies:
+1. **Install dependencies:**
 
 ```sh
-composer install
+npm install
 ```
 
-### Running SafeNet
+### 🤖 Running SafeNet
 
-Use the following command to run SafeNet:
+1. **Start the application:**
+
+   ```sh
+   npm start
+   ```
+2. **Open your browser and navigate to:**
+
+   ```sh
+   http://localhost:3000
+   ```
+
+### 🧪 Tests
+
+To run the test suite, execute:
 
 ```sh
-php main.php
-```
-
-### Tests
-
-To execute tests, run:
-
-```sh
-vendor/bin/phpunit
+npm test
 ```
 
 ---
 
-## Project Roadmap
+## 🛠 Project Roadmap
 
-- [X] Premier push du projet.
-- [X] Ajout des fonctions de test.
-- [X] Ajout des réseaux sociaux.
-- [X] Division du code en fichiers distincts.
-- [X] Amélioration de la page avec barre de recherche et footer.
-- [X] Ajout de la licence.
-- [X] Mise à jour du logo SafeNet et des icônes de pied de page.
-- [X] Mise à jour du logo dans le footer.
-- [X] Réorganisation du style dans `test_mainpage.html`.
-- [X] Mise à jour des styles de boutons et du logo de la barre de navigation.
-- [X] Ajout d'exemples d'attaques DoS et DDoS avec des GIFs.
-- [X] Mise à jour des titres de page, des liens de favicon et du style.
-- [X] Amélioration de la validation des entrées et des commentaires pour les questions de quiz.
-- [X] Mise à jour de l'image de couverture du cours pour le module 1.
-- [X] Ajout de liens de navigation incluant un lien vers la page d'accueil.
-- [X] Mise à jour du comportement des boutons et du style.
-- [X] Mise à jour de l'image du logo pour la cohérence du thème sombre.
-- [X] Mise à jour du contenu des tâches avec de meilleures explications sur les attaques par force brute et par dictionnaire.
-- [X] Réorganisation de la soumission de formulaire sur la page d'inscription pour une meilleure lisibilité du code et une meilleure expérience utilisateur.
+SafeNet aims to continually evolve and include more features over time. Planned updates include:
+
+* [X] First push of the project
+* [X] Add licence
+* [X] Added examples of DoS and DDoS attacks with GIFs
+* [X] Improved input validation and comments for quiz questions
+* [X] Cookies gestion
+* [X] Reorganized form submission on registration page for better code readability and user experience
+* [X] Integration with additional monitoring tools
+* [X] More educational modules and exercises
+* [ ] Support for more languages
+* [ ] Two factor authentification
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Here are several ways you can contribute:
+We welcome contributions from the community! Please follow these steps to contribute:
 
-- **[Submit Pull Requests](https://github.com/Cronix2/SafeNet/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github.com/Cronix2/SafeNet/discussions)**: Share your insights, provide feedback, or ask questions.
-- **[Report Issues](https://github.com/Cronix2/SafeNet/issues)**: Submit bugs found or log feature requests for Safenet.
-
-<details closed>
-    <summary>Contributing Guidelines</summary>
-
-1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
-2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
-   ```sh
-   git clone https://github.com/Cronix2/SafeNet
-   ```
-3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
-   ```sh
-   git checkout -b new-feature-x
-   ```
-4. **Make Your Changes**: Develop and test your changes locally.
-5. **Commit Your Changes**: Commit with a clear message describing your updates.
-   ```sh
-   git commit -m 'Implemented new feature x.'
-   ```
-6. **Push to GitHub**: Push the changes to your forked repository.
-   ```sh
-   git push origin new-feature-x
-   ```
-7. **Submit a Pull Request**: Create a PR against the original project repository. Clearly describe the changes and their motivations.
-
-Once your PR is reviewed and approved, it will be merged into the main branch.
-
-</details>
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`.
+3. Make your changes and commit them: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature-branch`.
+5. Open a pull request on GitHub.
 
 ---
 
-## License
+## 📄 License
 
-This project is protected under the [MIT](https://fr.wikipedia.org/wiki/Licence_MIT) License. For more details, refer to the [LICENSE](https://github.com/Cronix2/SafeNet/blob/main/LICENSE.md) file.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Cronix2/SafeNet/blob/master/LICENSE.md) file for details.
 
 ---
+
+## 👏 Acknowledgments
+
+We thank all the contributors who have helped in developing SafeNet. Special thanks to the creators of the tools and libraries used in this project.
