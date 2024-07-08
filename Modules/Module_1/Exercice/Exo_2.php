@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../../../include/database.php';
+    include '../../../Include/database.php';
     if (!isset($_SESSION['pseudo'])){
         header('Location: ../../../../index.php');
         exit();
@@ -30,7 +30,7 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../../../include/index.php">
+                <a class="navbar-brand" href="../../../Include/index.php">
                     <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
@@ -58,7 +58,7 @@
             <h2>Bravo</h2>
             <p>Vous avez triomphé !</p>
             <p>Votre apprentissage dans ce domaine est terminé.</p>
-            <p>Vous pouvez commencer un nouveau cours depuis la page principale desormais.</p>
+            <p>Vous pouvez commencer un nouveau cours depuis la page principale désormais.</p>
             <button class="change_exo" id="changer_d'exo_popup">Retour au menu</button>
         </div>
     </div>
@@ -72,8 +72,8 @@
                 </div>
                 <div class="texte_exo">
                     <p style="margin-left: 10px;">Passons à quelque chose de plus complexe.</p>
-                    <p style="margin-left: 10px;">Dans cet exercice le serveur est plus rapide pour traiter les requêtes et à une meilleur capacité, une simple attaque DoS ne fonctionnerais pas.</p>
-                    <p style="margin-left: 10px;">Nous allons donc utiliser une attaques DDoS. Cliquer sur le premier boutton pour faire apparaitre des machines zombies avant de lancer votre attaque. Maintenant essayer de faire surcharger le serveur.</p>
+                    <p style="margin-left: 10px;">Dans cet exercice, le serveur est plus rapide pour traiter les requêtes et a une meilleure capacité ; une simple attaque DoS ne fonctionnerait pas.</p>
+                    <p style="margin-left: 10px;">Nous allons donc utiliser une attaque DDoS. Cliquez sur le premier bouton pour faire apparaître des machines zombies avant de lancer votre attaque. Maintenant, essayez de surcharger le serveur.</p>
                     <div class="numero_exo">
                         <div class="round"></div>
                     </div>

@@ -56,7 +56,7 @@ if (!isset($_SESSION['cours1'])){
             <span class="close-btn">&times;</span>
             <img src="../../../img/award.png" alt="Award" style="width: 100px; height: 100px;">
             <h2>Bravo</h2>
-            <p>Vous avez compris le fonctionnement d'une attaque DoS. Maintenant passons a quelque chose de plus compliqué.</p>
+            <p>Vous avez compris le fonctionnement d'une attaque DoS. Maintenant passons à quelque chose de plus compliqué.</p>
             <p>Cliquez sur le bouton pour passer à l'exercice suivant</p>
             <button class="change_exo" id="changer_d'exo_popup">Passez à l'exercice 2</button>
         </div>
@@ -70,9 +70,9 @@ if (!isset($_SESSION['cours1'])){
                     <h5 style="margin-left: 10px">Exercice 1</h5>
                 </div>
                 <div class="texte_exo">
-                    <p style="margin-left: 10px;">Bien, désormais mettons en pratique ce que vous avez appris. Ci-dessous vous avez d'un coté votre machine, et de l'autre le serveur cible.</p>
-                    <p style="margin-left: 10px;">Ce serveur est assez lent et assez faible, nous allons donc profiter de cela pour le surcharger. On sait qu'il traite une requète en 1 seconde, notre but sera donc de le surcharger.</p>
-                    <p style="margin-left: 10px;">Pour cette exercice nous utiliserons notre machine à nous, nous alons donc procéder à une attaque DoS. Cliquer sur le boutton et essayer de faire surcharger le serveur.</p>
+                    <p style="margin-left: 10px;">Bien, désormais mettons en pratique ce que vous avez appris. Ci-dessous vous avez d'un côté votre machine, et de l'autre le serveur cible.</p>
+                    <p style="margin-left: 10px;">Ce serveur est assez lent et assez faible, nous allons donc profiter de cela pour le surcharger. On sait qu'il traite une requête en 1 seconde, notre but sera donc de le surcharger.</p>
+                    <p style="margin-left: 10px;">Pour cet exercice nous utiliserons notre machine à nous, nous allons donc procéder à une attaque DoS. Cliquez sur le bouton et essayez de faire surcharger le serveur.</p>
                     <div class="numero_exo">
                         <div class="round"></div>
                     </div>
@@ -89,7 +89,7 @@ if (!isset($_SESSION['cours1'])){
                     <div class="table">
                         <table class="request">
                             <tr class="head_table">
-                                <td id="header_table" class="text_table">Requetes</td>
+                                <td id="header_table" class="text_table">Requêtes</td>
                             </tr>
                             <tr class="pair">
                                 <td id="ligne2" class="text_table"></td>
@@ -109,7 +109,7 @@ if (!isset($_SESSION['cours1'])){
                         </table>
                     </div>
                 </div>
-                <button class="attack" id="moveGreenDot">Envoyer une requete</button>
+                <button class="attack" id="moveGreenDot">Envoyer une requête</button>
             </div>
         </div>
     </div>

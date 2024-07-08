@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../include/database.php';
+include '../../Include/database.php';
 if (!isset($_SESSION['pseudo'])){
     header('Location: ../../../../../index.php');
     exit();
@@ -113,11 +113,11 @@ if ($_SESSION['theme'] == 'light'){
             <ul>
                 <li><strong>exemple d'attaque DoS :</strong>
             </ul>
-            <img src="../../img/module/module-1/DoS.gif" alt="Description du GIF">
+            <img src="../../img/module/module-1/DoS_better.gif" alt="Description du GIF" style="margin-left: 20px;">
             <ul>
                 <li><strong>exemple d'attaque DDoS :</strong>
             </ul>
-            <img src="../../img/module/module-1/DDoS.gif" alt="Description du GIF">
+            <img src="../../img/module/module-1/DDoS_better.gif" alt="Description du GIF" style="margin-left: 20px;">
             
             <p>Les attaques peuvent avoir des conséquences graves, notamment :</p>
             <ul>

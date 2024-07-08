@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../include/database.php';
+include '../Include/database.php';
 global $db;
 
 if (isset($_COOKIE['userToken'])){

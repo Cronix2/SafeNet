@@ -24,7 +24,7 @@ if ($_SESSION['theme'] == 'light'){
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../../include/index.php">
+                <a class="navbar-brand" href="../../Include/index.php">
                     <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">

@@ -1,6 +1,6 @@
 document.getElementById('toggle-theme').addEventListener('click', function() {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '../../include/update_theme.php', true);
+    xhr.open('POST', '../../Include/update_theme.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (this.status == 200) {

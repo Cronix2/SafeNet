@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include '../include/database.php';
+    include '../Include/database.php';
     if (!isset($_SESSION['pseudo'])){
         header('Location: ../../index.php');
         exit();

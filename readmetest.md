@@ -42,16 +42,13 @@
 
 ## 📍 Overview
 
-SafeNet is a comprehensive network security and monitoring solution. It offers robust tools for managing and analyzing network traffic, ensuring your systems are protected against various cyber threats. Designed for both educational and practical applications, SafeNet provides modules and exercises to enhance understanding and implementation of network security principles.
-
----
+SafeNet is a website dedicated to teaching the basics of computer science and cybersecurity to novices. It offers simple lessons and practical activities to educate users about Internet risks, including common attacks. The goal is to provide accessible training to enhance personal safety online.
 
 ## 📦 Features
 
-* Real-time network monitoring
-* Detection and prevention of DDoS attacks
-* User-friendly web interface for managing security settings
 * Educational modules for learning about network security
+* User-friendly web interface for managing security settings
+* Real-time network monitoring
 * Integration with Zabbix for advanced monitoring capabilities
 
 ---
@@ -228,10 +225,16 @@ npm test
 
 SafeNet aims to continually evolve and include more features over time. Planned updates include:
 
-* [ ] Enhanced DDoS detection algorithms
-* [ ] Integration with additional monitoring tools
-* [ ] More educational modules and exercises
+* [X] First push of the project
+* [X] Add licence
+* [X] Added examples of DoS and DDoS attacks with GIFs
+* [X] Improved input validation and comments for quiz questions
+* [X] Cookies gestion
+* [X] Reorganized form submission on registration page for better code readability and user experience
+* [X] Integration with additional monitoring tools
+* [X] More educational modules and exercises
 * [ ] Support for more languages
+* [ ] Two factor authentification
 
 ---
 
