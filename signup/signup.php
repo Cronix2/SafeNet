@@ -1,9 +1,6 @@
 <?php
     session_start();
-    include '../Include/database.php';
-    global $db;
-
-    
+    /*
     if (isset($_COOKIE['userToken'])){
         echo $_COOKIE['userToken'];
         $testToken = hash('sha512', $_COOKIE['userToken']);
@@ -19,10 +16,9 @@
             header('Location: ../mainpage/mainpage.php');
         }
     }
-    
-    if (isset($_POST["formsend"])){
+    */
 
-        echo "<script src='signup.js'></script>";
+    if (isset($_POST["formsend"])){
 
         echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
         
@@ -44,6 +40,7 @@
                 $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
                 $hashtoken = hash('sha512', $Token);
 
+                include '../Include/database.php';
                 global $db;
                 
                 $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
@@ -69,14 +66,7 @@
                     $_SESSION['create'] = 'use email';
                 }
             }
-            else{
-                //echo "Les mots de passe ne correspondent pas";
-            }
         }
-        else{
-            //echo "case vide";
-        }
-
     }
 ?>
 <!DOCTYPE html>
