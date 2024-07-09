@@ -1,8 +1,5 @@
 <?php
     session_start();
-    include '../Include/database.php';
-    global $db;
-
     
     if (isset($_COOKIE['userToken'])){
         echo $_COOKIE['userToken'];
@@ -42,6 +39,7 @@
                 $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
                 $hashtoken = hash('sha512', $Token);
 
+                include '../Include/database.php';
                 global $db;
                 
                 $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
