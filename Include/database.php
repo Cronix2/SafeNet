@@ -3,7 +3,7 @@
     define('HOST', 'localhost');
     define('DB_name', 'safenet');
     define('USER', 'root');
-    define('PASSWORD', '');
+    define('PASSWORD', 'root');
 
     try {
         $db = new PDO("mysql:host=".HOST.";dbname=".DB_name, USER, PASSWORD);

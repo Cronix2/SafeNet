@@ -22,6 +22,8 @@
     
     if (isset($_POST["formsend"])){
 
+        echo "<script src='signup.js'></script>";
+
         echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
         
         extract($_POST);

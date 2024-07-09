@@ -23,6 +23,7 @@ $_SESSION['theme']='light';
 
 if (isset($_POST['formsend1'])) {
     echo "<script>document.addEventListener('DOMContentLoaded', function() { validateForm(); });</script>";
+    
     extract($_POST);
     $email = htmlspecialchars($EMAIL);
     $password = htmlspecialchars($PASSWORD);
