@@ -19,7 +19,7 @@
                 ];
                 $hashpass = password_hash($password, PASSWORD_BCRYPT, $options);
 
-                include '../include/database.php';
+                include '../Include/database.php';
                 global $db;
 
                 $c = $db->prepare("SELECT email FROM users WHERE email = :EMAIL");
