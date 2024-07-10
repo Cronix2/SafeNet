@@ -88,20 +88,20 @@ window.onload = function() {
 }
 
 var dict = {
-    "1": "3a3468fa89b2ab7cbfe5400858a8ec0066e9e8defa9a64c993b5f24210244df8",
-    "2": "bcee72e6df5d56319125920f6c69d8001e938e122cd14597e547d49cc9126e42",
-    "3": "a847f3e19c92d6592e9373d0f8a54485fc942c901b3cebcf797f6a103653eef2",
-    "4": "a847f3e19c92d6592e9373d0f8a54485fc942c901b3cebcf797f6a103653eef2",
-    "5": "bcee72e6df5d56319125920f6c69d8001e938e122cd14597e547d49cc9126e42",
-    "6": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59"
+    "1": "oui",
+    "2": "non",
+    "3": "dictionnaire",
+    "4": "dictionnaire",
+    "5": "non",
+    "6": "captcha"
 };
 
 var dict2 = {
-    "1":"8a798890fe93817163b10b5f7bd2ca4d25d84c52739a645a889c173eee7d9d3d",
-    "2":"ca3704aa0b06f5954c79ee837faa152d84d6b2d42838f0637a15eda8337dbdce",
-    "3":"bdefd68cfd3856267de93118b8080240abaf0cdc147e672cec8eb60f336ee512",
-    "4":"bdefd68cfd3856267de93118b8080240abaf0cdc147e672cec8eb60f336ee512",
-    "5":"8a798890fe93817163b10b5f7bd2ca4d25d84c52739a645a889c173eee7d9d3d",
+    "1":"yes",
+    "2":"no",
+    "3":"attaque par dictionnaire",
+    "4":"attaque par dictionnaire",
+    "5":"no",
 
 }
 
@@ -110,11 +110,17 @@ var buttons = document.querySelectorAll('.need-response');
 
 
 buttons.forEach(function(button) {
+    /*
     async function hashInput(input) {
         const encoder = new TextEncoder();
         const data = encoder.encode(input.toLowerCase());
         const hash = await window.crypto.subtle.digest('SHA-256', data);
         return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+    */
+    async function hashInput(input) {
+        var data = input.toLowerCase();
+        return data;
     }
 
     button.addEventListener('click', async function() {
