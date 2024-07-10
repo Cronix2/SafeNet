@@ -1,23 +1,23 @@
 <?php
 session_start();
-include '../Include/database.php';
+include '../../Include/database.php';
 if (!isset($_SESSION['pseudo'])){
-    header('Location: ../../index.php');
+    header('Location: ../../../index.php');
     exit();
 }
 if ($_SESSION['theme'] == 'light'){
     $button_theme = 'disactive';
-    $logo = '../img/SafeNet_Logo_2_dark.png';
+    $logo = '../../img/SafeNet_Logo_2_dark.png';
 } else {
     $button_theme =  'active';
-    $logo = '../img/SafeNet_Logo_2_light.png';
+    $logo = '../../img/SafeNet_Logo_2_light.png';
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>SafeNet</title>
-    <link rel="icon" href="../img/SafeNet_Logo_1.png" type="image/png">
+    <link rel="icon" href="../../img/SafeNet_Logo_1.png" type="image/png">
 <style>
     body {
     font-family: sans-serif;
@@ -709,7 +709,7 @@ if ($_SESSION['theme'] == 'light'){
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">            
             <div class="nav">
-                <a class="navbar-brand" href="../Include/index.php">
+                <a class="navbar-brand" href="../../Include/index.php">
                     <img src="<?= $logo?>" alt="Logo" width="150" class="d-inline-block-align-text-top">
                 </a>
                 <button class="change-theme__icon <?= $button_theme?>" id="toggle-theme">
@@ -726,7 +726,7 @@ if ($_SESSION['theme'] == 'light'){
                     </div>
                 </button>
                 <a class="pseudo"><?= $_SESSION['pseudo']; ?></a>
-                <img src="../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
+                <img src="../../img/pexels-photo-1072179.jpeg" alt="Avatar" class="avatar">
             </div>
         </div>
     </nav>
@@ -954,7 +954,7 @@ if ($_SESSION['theme'] == 'light'){
 
         document.getElementById('toggle-theme').addEventListener('click', function() {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../Include/update_theme.php', true);
+            xhr.open('POST', '../../Include/update_theme.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function() {
                 if (this.status == 200) {
@@ -964,9 +964,9 @@ if ($_SESSION['theme'] == 'light'){
 
                     var logo = document.querySelector('img[alt="Logo"]');
                     if (newTheme === 'dark') {
-                        logo.src = "../img/SafeNet_Logo_2_light.png";
+                        logo.src = "../../img/SafeNet_Logo_2_light.png";
                     } else {
-                        logo.src = "../img/SafeNet_Logo_2_dark.png";
+                        logo.src = "../../img/SafeNet_Logo_2_dark.png";
                     }
                 }
             };
@@ -1065,8 +1065,7 @@ if ($_SESSION['theme'] == 'light'){
 
         buttons.forEach(function(button) {
             async function hashInput(input) {
-                const encoder = new TextEncoder();
-                const data = encoder.encode(input.toLowerCase());
+                var data = input.toLowerCase();
                 return data;
             }
 
