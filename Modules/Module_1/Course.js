@@ -89,10 +89,6 @@ window.onload = function() {
 }
 
 var dict = {
-    // "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
-    // "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
-    // "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
-    // "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
     "1": "dos",
     "2": "ddos",
     "3": "pare-feu",
@@ -121,6 +117,7 @@ buttons.forEach(function(button) {
         const encoder = new TextEncoder();
         const data = encoder.encode(input.toLowerCase());
         //const hash = await sha256(data);
+        console.log(data);
         return data;
     }
 
@@ -132,9 +129,7 @@ buttons.forEach(function(button) {
         var alternativeAnswer = dict2[inputId];
         //var hashedInput = await hashInput(input.value);
         var hashedInput = await hashInputWithHashJs(input.value);
-        // print the hashed input to the console
-        console.log(hashedInput);
-    
+
         if (hashedInput === expectedAnswer || hashedInput === alternativeAnswer || input.value === 'test') {
             this.classList.add('clicked');
             input.classList.add('glow-green');
