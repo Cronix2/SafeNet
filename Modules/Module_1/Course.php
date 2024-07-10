@@ -232,6 +232,19 @@ if ($_SESSION['theme'] == 'light'){
                 }
             });
         });
+        var popup = document.getElementById("popup");
+        var closeBtn = document.getElementsByClassName("close-btn")[0];
+        closeBtn.onclick = function() {
+            popup.style.display = "none";
+        }
+
+        function openPopup() {
+            popup.style.display = "block";
+        }
+
+        function go_exercice() {
+            window.location.href = "Exercice/Exo_1.php";
+        }
     </script>
     <script type="module" src="Course.js"></script>
 

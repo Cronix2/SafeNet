@@ -115,7 +115,6 @@ buttons.forEach(function(button) {
 
     async function hashInputWithHashJs(input) {
         var hash = input.toLowerCase();
-        console.log(hash);
         return hash.toString();
     }
 
@@ -172,16 +171,4 @@ tasks.forEach(function(task) {
     });
 });
 
-var popup = document.getElementById("popup");
-var closeBtn = document.getElementsByClassName("close-btn")[0];
-closeBtn.onclick = function() {
-    popup.style.display = "none";
-}
 
-function openPopup() {
-    popup.style.display = "block";
-}
-
-function go_exercice() {
-    window.location.href = "Exercice/Exo_1.php";
-}
