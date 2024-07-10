@@ -89,8 +89,8 @@ window.onload = function() {
 }
 
 var dict = {
-    "1": "dos",
-    "2": "ddos",
+    "1": "ddos",
+    "2": "dos",
     "3": "pare-feu",
     "4": "captcha",
 };
@@ -114,11 +114,9 @@ buttons.forEach(function(button) {
     */
 
     async function hashInputWithHashJs(input) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(input.toLowerCase());
-        //const hash = await sha256(data);
-        console.log(data);
-        return data;
+        var hash = CryptoJS.SHA256(input.toLowerCase());
+        console.log(hash);
+        return hash.toString();
     }
 
     button.addEventListener('click', async function() {
