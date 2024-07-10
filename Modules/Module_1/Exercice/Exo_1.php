@@ -72,7 +72,7 @@ if (!isset($_SESSION['cours1'])){
                 <div class="texte_exo">
                     <p style="margin-left: 10px;">Bien, désormais mettons en pratique ce que vous avez appris. Ci-dessous vous avez d'un côté votre machine, et de l'autre le serveur cible.</p>
                     <p style="margin-left: 10px;">Ce serveur est assez lent et assez faible, nous allons donc profiter de cela pour le surcharger. On sait qu'il traite une requête en 1 seconde, notre but sera donc de le surcharger.</p>
-                    <p style="margin-left: 10px;">Pour cet exercice nous utiliserons notre machine à nous, nous allons donc procéder à une attaque DoS. Cliquez sur le bouton et essayez de faire surcharger le serveur.</p>
+                    <p style="margin-left: 10px;">Pour cet exercice nous utiliserons notre propre machine, nous allons donc procéder à une attaque DoS. Cliquez sur le bouton et essayez de faire surcharger le serveur.</p>
                     <div class="numero_exo">
                         <div class="round"></div>
                     </div>

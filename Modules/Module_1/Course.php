@@ -233,7 +233,7 @@ if ($_SESSION['theme'] == 'light'){
             });
         });
     </script>
-    <script src="Course.js"></script>
+    <script type="module" src="Course.js"></script>
 
 </body>
 <footer>

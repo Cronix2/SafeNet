@@ -104,12 +104,30 @@ var buttons = document.querySelectorAll('.need-response');
 
 
 buttons.forEach(function(button) {
+    /*
     async function hashInput(input) {
         const encoder = new TextEncoder();
         const data = encoder.encode(input.toLowerCase());
         const hash = await window.crypto.subtle.digest('SHA-256', data);
         return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
+    */
+    
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder('utf-8').encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    async function hashInputWithHashJs(input) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(input.toLowerCase());
+        const hash = await sha256(data);
+        return hash;
+    }
+
 
     button.addEventListener('click', async function() {
         var input = this.previousElementSibling;
@@ -117,7 +135,11 @@ buttons.forEach(function(button) {
         var inputId = input.id;
         var expectedAnswer = dict[inputId];
         var alternativeAnswer = dict2[inputId];
-        var hashedInput = await hashInput(input.value);
+        //var hashedInput = await hashInput(input.value);
+        var hashedInput = await hashInputWithHashJs(input.value);
+        // print the hashed input to the console
+        console.log(hashedInput);
+    
         if (hashedInput === expectedAnswer || hashedInput === alternativeAnswer || input.value === 'test') {
             this.classList.add('clicked');
             input.classList.add('glow-green');

@@ -214,7 +214,7 @@
 
         // changement de page
         function login_button() {
-            window.location.href = "test_loginpage.php";
+            window.location.href = "../login/login.php";
         }
 
 
