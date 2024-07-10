@@ -89,14 +89,18 @@ window.onload = function() {
 }
 
 var dict = {
-    "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
-    "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
-    "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
-    "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
+    // "1": "deeb92f091caa8e2404885e30da06e8507eee571e81b062ef6723c4ec0b8ecf0",
+    // "2": "c1299854f2b209632ab22aeb848c24c2b02da4b37ecf93a830ee9c7f6f809924",
+    // "3": "295a76218a5e21829dc844f9f66da652c18becafd21e6354f1acd496fc66bf1b",
+    // "4": "e54154cc0a4e97e99609fad08e18f6b463e7c530d836baef6d67c1ec11ddde59",
+    "1": "dos",
+    "2": "ddos",
+    "3": "pare-feu",
+    "4": "captcha",
 };
 
 var dict2 = {
-    "3":"a3863c5d7ce546d24186581bcba0b0a157db9d318d9174d46d0db3f3f38cc1a6"
+    "3":"firewall"
 }
 
 
@@ -112,22 +116,13 @@ buttons.forEach(function(button) {
         return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
     */
-    
-    async function sha256(message) {
-        const msgBuffer = new TextEncoder('utf-8').encode(message);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashHex;
-    }
 
     async function hashInputWithHashJs(input) {
         const encoder = new TextEncoder();
         const data = encoder.encode(input.toLowerCase());
-        const hash = await sha256(data);
-        return hash;
+        //const hash = await sha256(data);
+        return data;
     }
-
 
     button.addEventListener('click', async function() {
         var input = this.previousElementSibling;
