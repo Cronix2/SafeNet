@@ -114,7 +114,7 @@ buttons.forEach(function(button) {
     */
 
     async function hashInputWithHashJs(input) {
-        var hash = CryptoJS.SHA256(input.toLowerCase());
+        var hash = input.toLowerCase();
         console.log(hash);
         return hash.toString();
     }
