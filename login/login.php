@@ -127,7 +127,7 @@ if (isset($_POST['formsend1'])) {
                 <input type="checkbox" id="remember-me" name="remember-me">
                 <label for="remember-me">Remember me </label>
             </div>
-            <span class="span">Forgot password ?</span>
+            <!-- <span class="span">Forgot password ?</span> -->
         </div>
         <input type='submit' class="button-submit" name="formsend1">
     </form>
